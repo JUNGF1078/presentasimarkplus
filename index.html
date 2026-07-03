@@ -300,7 +300,7 @@
       <div class="qh">Scan &amp; isi tesnya</div>
       <div class="qs">Arahkan kamera HP ke QR ini untuk membuka tes kepribadian AI. Isi sambil menonton videonya.</div>
       <div class="qr-img"><img src="assets/qr-personality.png" alt="QR code — AI Personality Test"></div>
-      <a class="btn btn-primary" id="quizBtn" href="https://ai-personality-production-30d7.up.railway.app" target="_blank" rel="noopener" style="padding:10px 18px">Buka tes kepribadian →</a>
+      <a class="btn btn-primary" id="quizBtn" href="https://ai-personality-production-30d7.up.railway.app/" target="_blank" rel="noopener" style="padding:10px 18px">Buka tes kepribadian →</a>
       <div class="qr-note">Scan QR atau klik tombol untuk mulai</div>
     </div>
     <div class="video-card">
@@ -515,14 +515,29 @@
     {id:'roadmap-cta',name:'Section 0 · Skills & Roadmap'},
     {id:'modules',    name:'The Modules'},
   ];
-  let pIdx = 0, presenting = false;
+  let pIdx = 0, presenting = false, pAnim = null;
   const pBar=document.getElementById('presentBar'), pName=document.getElementById('presentName'),
         pProg=document.getElementById('presentProg'), pPrev=document.getElementById('presentPrev'),
         pNext=document.getElementById('presentNext');
+  function pScrollTo(el){
+    if(pAnim) cancelAnimationFrame(pAnim);
+    const target = el.getBoundingClientRect().top + window.pageYOffset - 58;
+    const start = window.pageYOffset, dist = target - start;
+    const dur = Math.min(900, Math.max(450, Math.abs(dist) * 0.5));
+    let t0 = null;
+    function step(ts){
+      if(t0===null) t0 = ts;
+      const p = Math.min(1, (ts - t0) / dur);
+      const e = p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2, 3)/2;   // easeInOutCubic
+      window.scrollTo({top: start + dist * e, behavior: 'auto'});
+      if(p < 1) pAnim = requestAnimationFrame(step);
+    }
+    pAnim = requestAnimationFrame(step);
+  }
   function pShow(){
     const s=P_STEPS[pIdx]; pName.textContent=s.name; pProg.textContent=(pIdx+1)+' / '+P_STEPS.length;
     pPrev.disabled = pIdx===0; pNext.textContent = pIdx===P_STEPS.length-1 ? 'Done ✓' : 'Next →';
-    const el=document.getElementById(s.id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    const el=document.getElementById(s.id); if(el) pScrollTo(el);
   }
   function pGo(n){ pIdx=Math.max(0,Math.min(P_STEPS.length-1,pIdx+n)); pShow(); }
   function pEnter(){ presenting=true; document.body.classList.add('presenting'); pIdx=0;

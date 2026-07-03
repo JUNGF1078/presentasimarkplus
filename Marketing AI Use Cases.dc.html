@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="./dc-lite.js"></script>
 </head>
 <body>
 <button id="lu-fs" title="Full screen" style="position:fixed;right:16px;bottom:16px;z-index:99999;display:inline-flex;align-items:center;gap:6px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,22,40,.35);">⛶ Full screen</button>
@@ -300,10 +300,7 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {&quot;width&quot;: 1600, &quot;height&quot;: 1050},
-  &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#7e93cf&quot;, &quot;options&quot;: [&quot;#7e93cf&quot;, &quot;#a7c563&quot;, &quot;#e5a175&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Demo&quot;}
-}">
+<script>
 class Component extends DCLogic {
   state = { ind: 'retail', uc: 0, ddOpen: false, openSkill: null };
 
@@ -595,6 +592,8 @@ class Component extends DCLogic {
   }
 }
 
+
+try{window.__dcRegister(Component);}catch(e){console.error("register",e);}
 </script>
 </body>
 </html>

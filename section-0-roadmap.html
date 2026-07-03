@@ -338,22 +338,22 @@
   ];
 
   var J_ROOK = [
-    { name:{en:'The shortcut',id:'Jalan pintas'},
-      do:{en:'You skip the setup and fire a one-liner — “write a proposal for a retail client.” No context, no data.',id:'Kamu lewati setup dan tembak satu baris — “buatin proposal buat klien retail.” Tanpa konteks, tanpa data.'},
-      get:{en:'AI has nothing to work with, so it fills the gaps by guessing.',id:'AI tak punya bahan, jadi ia mengisi kekosongan dengan menebak.'},
-      mock:function(){return '<div class="mk mk-chat"><div class="bub user">'+t({en:'write a proposal for a retail client',id:'buatin proposal buat klien retail dong'})+'</div></div>';} },
-    { name:{en:'The blind copy',id:'Salin buta'},
-      do:{en:'The draft looks confident, so you paste it straight into an email — without reading it.',id:'Draft-nya terlihat meyakinkan, jadi kamu tempel langsung ke email — tanpa dibaca.'},
-      get:{en:'It contains an invented price and a placeholder name.',id:'Isinya ada harga karangan dan nama placeholder.'},
-      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>proposal.docx · '+t({en:'unread',id:'belum dibaca'})+'</span></div><div class="mk-body"><div>Dear [Client Name],</div><span class="flag" style="border-left-color:#e55e5e;background:rgba(229,94,94,.12);color:#f0a6a6">✗ Investment: Rp 2,3M <small style="color:#e0a0a0">'+t({en:'invented — not in the price list',id:'karangan — tidak ada di price list'})+'</small></span></div></div>';} },
-    { name:{en:'The blowback',id:'Bumerang'},
-      do:{en:'The client replies within the hour: the number is wrong, and the name is not theirs.',id:'Klien membalas dalam sejam: angkanya salah, dan namanya bukan mereka.'},
-      get:{en:'AI felt faster — but the work got worse. This is the 0.3–0.8× trap.',id:'AI terasa lebih cepat — tapi hasilnya lebih buruk. Inilah jebakan 0,3–0,8×.'},
-      mock:function(){return '<div class="mk mk-chat"><div class="bub" style="background:rgba(229,94,94,.14);border:1px solid rgba(229,94,94,.4);color:#f2c4c4;border-radius:12px 12px 12px 4px">'+t({en:'Where did this number come from? And that is not our company name 😬',id:'Ini angkanya dari mana? Nama perusahaan kami juga keliru 😬'})+'</div></div>';} },
-    { name:{en:'The fix — get in control',id:'Perbaikannya — ambil kendali'},
-      do:{en:'New habit: read every output, verify every number against a source, add context before you ask.',id:'Kebiasaan baru: baca tiap output, cek tiap angka ke sumber, beri konteks sebelum bertanya.'},
-      get:{en:'You stop delegating your thinking. Welcome to Adept.',id:'Kamu berhenti mendelegasikan cara berpikirmu. Selamat datang di Adept.'},
-      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>'+t({en:'new habit',id:'kebiasaan baru'})+'</span></div><div class="mk-body"><div class="rev">☑ '+t({en:'read the output',id:'baca output-nya'})+'</div><div class="rev">☑ '+t({en:'numbers checked vs pricing.md',id:'angka dicek ke pricing.md'})+'</div><div class="rev">☑ '+t({en:'context added: who · what · limits',id:'konteks ditambah: siapa · apa · batas'})+'</div></div></div>';} }
+    { name:{en:'The shortcut',id:'Main gas doang'},
+      do:{en:'You skip the setup and fire a one-liner — “write a proposal for a retail client.” No context, no data.',id:'Skip semua setup, langsung tembak satu baris: “bikinin proposal buat klien retail dong.” Nggak ada konteks, nggak ada data.'},
+      get:{en:'AI has nothing to work with, so it fills the gaps by guessing.',id:'AI-nya nggak dikasih bahan apa-apa, ya udah dia ngarang sendiri biar keliatan jadi.'},
+      mock:function(){return '<div class="mk mk-chat"><div class="bub user">'+t({en:'write a proposal for a retail client',id:'bikinin proposal buat klien retail dong'})+'</div></div>';} },
+    { name:{en:'The blind copy',id:'Copas buta'},
+      do:{en:'The draft looks confident, so you paste it straight into an email — without reading it.',id:'Draft-nya keliatan meyakinkan, langsung kamu copas ke email — tanpa dibaca dulu.'},
+      get:{en:'It contains an invented price, a placeholder name, and a fake stat.',id:'Isinya ada harga ngarang, nama placeholder yang belum diganti, plus klaim palsu. Aduh.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>proposal-email.txt · outbox</span></div><div class="mk-body"><div>To: ibu.sari@urbanmart.co.id</div><div class="dim">Subject: Penawaran Program Training</div><div style="margin-top:6px">Dear [Client Name],</div><span class="flag" style="border-left-color:#e55e5e;background:rgba(229,94,94,.12);color:#f0a6a6">✗ Investasi program: Rp 2,3M <small style="color:#e0a0a0">'+t({en:'invented — not in pricing.md',id:'ngarang — ga ada di pricing.md'})+'</small></span><span class="flag" style="border-left-color:#e55e5e;background:rgba(229,94,94,.12);color:#f0a6a6">✗ “sudah dipakai 500+ klien” <small style="color:#e0a0a0">'+t({en:'no proof',id:'ga ada buktinya'})+'</small></span></div></div>';} },
+    { name:{en:'The blowback',id:'Kena batunya'},
+      do:{en:'The client replies within the hour: the number is wrong, and the name is not theirs.',id:'Belum ada sejam, klien langsung bales: angkanya ngaco, nama perusahaannya juga salah.'},
+      get:{en:'AI felt faster — but the work got worse. This is the 0.3–0.8× trap.',id:'AI berasa cepet — padahal hasil kerjaan malah makin ancur. Ini nih jebakan 0,3–0,8×.'},
+      mock:function(){return '<div class="mk mk-chat"><div class="bub" style="background:rgba(229,94,94,.14);border:1px solid rgba(229,94,94,.4);color:#f2c4c4;border-radius:12px 12px 12px 4px">'+t({en:'Where did this number come from? And that is not even our company name 😬',id:'Halo, ini angka Rp2,3M dari mana ya? Nama perusahaan kami juga salah tulis 😬'})+'</div></div>';} },
+    { name:{en:'The fix — get in control',id:'Balik pegang setir'},
+      do:{en:'New habit: read every output, verify every number against a source, add context before you ask.',id:'Kebiasaan baru: baca dulu tiap output, cek tiap angka ke sumbernya, kasih konteks dulu sebelum nyuruh AI.'},
+      get:{en:'You stop delegating your thinking. Welcome to Adept.',id:'Kamu berhenti nyerahin cara mikir ke AI. Nah, ini baru naik ke level Adept.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>'+t({en:'new habit',id:'kebiasaan baru'})+'</span></div><div class="mk-body"><div class="rev">☑ '+t({en:'read the output first',id:'baca dulu output-nya'})+'</div><div class="rev">☑ '+t({en:'numbers checked vs pricing.md',id:'angka dicek ke pricing.md'})+'</div><div class="rev">☑ '+t({en:'context added: who · what · limits',id:'konteks ditambah: siapa · apa · batasannya'})+'</div></div></div>';} }
   ];
 
   var J_MASTER = [
