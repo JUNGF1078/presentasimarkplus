@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<button id="lu-fs" title="Full screen" style="position:fixed;right:16px;bottom:16px;z-index:99999;display:inline-flex;align-items:center;gap:6px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,22,40,.35);">⛶ Full screen</button>
+<script>(function(){var b=document.getElementById("lu-fs");if(!b)return;function u(){b.textContent=document.fullscreenElement?"⤢ Exit full screen":"⛶ Full screen";}b.addEventListener("click",function(){if(document.fullscreenElement){document.exitFullscreen();}else{(document.documentElement.requestFullscreen()||Promise.resolve()).catch&&document.documentElement.requestFullscreen().catch(function(){});}});document.addEventListener("fullscreenchange",u);u();})();</script>
+
+
+<a href="index.html#modules" title="Kembali ke menu" style="position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:7px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 15px;text-decoration:none;box-shadow:0 6px 20px rgba(15,22,40,.35);">&#9750; Menu Level Up</a>
+<svg class="lu-memphis" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.15;"><g><circle cx="95" cy="120" r="36" fill="none" stroke="#6f98b2" stroke-width="7"/><circle cx="95" cy="120" r="17" fill="none" stroke="#6f98b2" stroke-width="7"/><g fill="#ed9e72"><circle cx="185" cy="70" r="6"/><circle cx="210" cy="70" r="6"/><circle cx="235" cy="70" r="6"/><circle cx="185" cy="95" r="6"/><circle cx="210" cy="95" r="6"/><circle cx="235" cy="95" r="6"/></g><path d="M40 215 q18 -26 36 0 t36 0 t36 0" fill="none" stroke="#e55e5e" stroke-width="7" stroke-linecap="round"/><circle cx="1505" cy="120" r="72" fill="#435f9c"/><path d="M1330 70 q22 -28 44 0 t44 0" fill="none" stroke="#acc673" stroke-width="7" stroke-linecap="round"/><g stroke="#e55e5e" stroke-width="7" stroke-linecap="round"><path d="M1420 210h44"/><path d="M1442 188v44"/></g><path d="M1300 250 l26 46 -52 0 z" fill="#f6d7b8"/><path d="M55 860 a62 62 0 0 1 124 0 z" fill="#e55e5e"/><path d="M120 690 l42 74 -84 0 z" fill="none" stroke="#acc673" stroke-width="7"/><g fill="#879ac1"><circle cx="250" cy="770" r="6"/><circle cx="275" cy="770" r="6"/><circle cx="300" cy="770" r="6"/><circle cx="250" cy="795" r="6"/><circle cx="275" cy="795" r="6"/><circle cx="300" cy="795" r="6"/></g><circle cx="1525" cy="800" r="42" fill="none" stroke="#a48bac" stroke-width="7"/><path d="M1330 835 q22 -28 44 0 t44 0 t44 0" fill="none" stroke="#6f98b2" stroke-width="7" stroke-linecap="round"/><g fill="#ed9e72"><circle cx="1470" cy="690" r="6"/><circle cx="1495" cy="690" r="6"/><circle cx="1520" cy="690" r="6"/></g></g></svg>
+
+<x-dc>
+<helmet>
+  <title>AI Workflow Studio — B2B Sales & Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;padding:0;background:#16233d;}
+    body{background:radial-gradient(1100px 650px at 85% -10%,#24365a,#16233d 60%) fixed #16233d;}
+    *{box-sizing:border-box;}
+    ::selection{background:rgba(126,147,207,.35);}
+    @keyframes blinkDot{0%,100%{opacity:.25;}50%{opacity:1;}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+    ::-webkit-scrollbar{width:8px;height:8px;}
+    ::-webkit-scrollbar-thumb{background:#3a4f74;border-radius:6px;}
+    ::-webkit-scrollbar-track{background:transparent;}
+  body{background:radial-gradient(1200px 820px at 82% -12%,#33507f,#22314f 62%) fixed #22314f;min-height:100vh;}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:transparent;position:relative;z-index:1;color:#eef2f9;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;padding:28px 40px 32px 40px;gap:16px;max-width:1800px;margin:0 auto;width:100%;">
+
+  <!-- Header -->
+  <header style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#8194ba;white-space:nowrap;">Demo · AI Tools in the Daily Workflow</div>
+        <div style="display:flex;gap:4px;">
+          <span style="width:24px;height:5px;border-radius:999px;background:#7e93cf;"></span>
+          <span style="width:24px;height:5px;border-radius:999px;background:#a7c563;"></span>
+          <span style="width:24px;height:5px;border-radius:999px;background:#e5a175;"></span>
+          <span style="width:24px;height:5px;border-radius:999px;background:#e55e5e;"></span>
+        </div>
+      </div>
+      <h1 style="margin:0;font-size:30px;font-weight:700;letter-spacing:-0.01em;background:linear-gradient(90deg,#FFFFFF,#b6c4dd);-webkit-background-clip:text;background-clip:text;color:transparent;">AI Workflow Studio — B2B Sales & Marketing</h1>
+      <p style="margin:0;font-size:14px;color:#8194ba;max-width:720px;">Pick a track and a use case: see the workspace in VS Code, the actual prompting & iteration with the AI assistant, and the detailed output it produces.</p>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:14px;">
+      <!-- Track toggle -->
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#8194ba;">TRACK</div>
+        <div style="display:flex;background:#20304e;border:1px solid #2c3f61;border-radius:12px;padding:4px;gap:4px;">
+          <button onClick="{{ pickSales }}" style="{{ salesBtnStyle }}" style-hover="color:#eef2f9;">B2B Sales</button>
+          <button onClick="{{ pickMkt }}" style="{{ mktBtnStyle }}" style-hover="color:#eef2f9;">Marketing</button>
+        </div>
+      </div>
+      <!-- Industry dropdown -->
+      <div style="position:relative;flex:none;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#8194ba;margin-bottom:6px;">TARGET INDUSTRY</div>
+        <button onClick="{{ toggleDd }}" style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:12px;background:#20304e;border:1px solid {{ accent }};color:#eef2f9;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:600;min-width:240px;justify-content:space-between;" style-hover="background:#26385c;">
+          <span style="display:flex;align-items:center;gap:10px;white-space:nowrap;"><span style="color:{{ accent }};">{{ indIcon }}</span>{{ indName }}</span>
+          <span style="color:#8194ba;font-size:11px;">{{ ddArrow }}</span>
+        </button>
+        <sc-if value="{{ ddOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;right:0;top:100%;margin-top:6px;z-index:50;background:#26385c;border:1px solid #3a4f74;border-radius:12px;padding:6px;min-width:240px;box-shadow:0 16px 40px rgba(0,0,0,.55);animation:fadeUp .18s ease both;">
+            <sc-for list="{{ indOptions }}" as="o" hint-placeholder-count="4">
+              <button onClick="{{ o.onClick }}" style="{{ o.style }}" style-hover="background:#2c3f61;">
+                <span style="color:{{ accent }};width:18px;">{{ o.icon }}</span>
+                <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
+                  <span style="font-size:14px;font-weight:600;">{{ o.name }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8194ba;">{{ o.tag }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </header>
+
+  <!-- ICP strip -->
+  <div style="display:flex;align-items:center;gap:14px;border:1px solid #2c3f61;border-radius:12px;background:linear-gradient(90deg,{{ accentDim }},rgba(0,0,0,0) 45%);padding:10px 16px;">
+    <span style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;padding:4px 10px;border-radius:6px;color:{{ accent }};background:{{ accentDim }};border:1px solid {{ accentBorder }};">ICP</span>
+    <p style="margin:0;font-size:13.5px;color:#cdd9ec;line-height:1.5;">{{ icp }}</p>
+  </div>
+
+  <!-- Body -->
+  <main style="flex:1;display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start;">
+
+    <!-- Use case list -->
+    <div style="display:flex;flex-direction:column;gap:9px;" data-screen-label="use-case-list">
+      <sc-for list="{{ ucList }}" as="u" hint-placeholder-count="6">
+        <button onClick="{{ u.onClick }}" style="{{ u.style }}" style-hover="border-color:#51689a;">
+          <span style="{{ u.numStyle }}">{{ u.num }}</span>
+          <span style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;">
+            <span style="display:block;font-size:14.5px;font-weight:600;line-height:1.3;text-align:left;">{{ u.title }}</span>
+            <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.4;color:#8194ba;">output: {{ u.out }}</span>
+          </span>
+        </button>
+      </sc-for>
+      <div style="margin-top:4px;padding:13px 15px;border:1px dashed #3a4f74;border-radius:12px;font-size:12px;color:#5f7391;line-height:1.6;">Same loop every time: <span style="color:#e5a175;">human sets intent</span> → <span style="color:{{ accent }};">AI drafts</span> → <span style="color:#e5a175;">human reviews, iterates & decides</span>.</div>
+    </div>
+
+    <!-- Right column -->
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0;" data-screen-label="use-case-detail">
+
+      <!-- What AI / Human do -->
+      <section style="border:1px solid #2c3f61;border-radius:14px;background:linear-gradient(180deg,#20304e,#20304e);box-shadow:0 10px 30px rgba(0,0,0,.25);padding:18px 22px;animation:fadeUp .3s ease both;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:5px;">
+          <h2 style="margin:0;font-size:20px;font-weight:700;">{{ ucTitle }}</h2>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:{{ accent }};border:1px solid {{ accentBorder }};background:{{ accentDim }};border-radius:999px;padding:3px 10px;">{{ ucStage }}</span>
+        </div>
+        <p style="margin:0 0 14px 0;font-size:13.5px;color:#93a1b8;line-height:1.55;">{{ ucSub }}</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:{{ accent }};">✦ WHAT AI DOES</div>
+            <sc-for list="{{ aiDoes }}" as="b" hint-placeholder-count="4">
+              <div style="font-size:13px;color:#cdd9ec;line-height:1.5;display:flex;gap:8px;"><span style="color:{{ accent }};flex:none;">·</span>{{ b }}</div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:#e5a175;">👤 HUMAN CHECKPOINT</div>
+            <sc-for list="{{ humanDoes }}" as="b" hint-placeholder-count="3">
+              <div style="font-size:13px;color:#cdd9ec;line-height:1.5;display:flex;gap:8px;"><span style="color:#e5a175;flex:none;">·</span>{{ b }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <!-- VS Code window -->
+      <div style="display:flex;flex-direction:column;border:1px solid #3a4f74;border-radius:12px;overflow:hidden;background:#1b2942;box-shadow:0 20px 50px rgba(0,0,0,.5);height:520px;overflow-x:auto;" data-screen-label="vscode-window">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:#1f2e4a;border-bottom:1px solid #2c3f61;">
+          <div style="display:flex;gap:7px;">
+            <span style="width:11px;height:11px;border-radius:50%;background:#e55e5e;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#edc07a;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#a7c563;"></span>
+          </div>
+          <div style="display:flex;gap:14px;margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5f7391;"><span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Terminal</span></div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8194ba;">agate-workspace — AI Assistant</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#a7c563;">● connected</div>
+        </div>
+
+        <div style="flex:1;display:grid;grid-template-columns:46px minmax(170px,216px) minmax(420px,1fr) minmax(280px,340px);min-height:0;min-width:960px;">
+
+          <!-- Activity bar -->
+          <div style="border-right:1px solid #2c3f61;background:#111c30;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;">
+            <span style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#eef2f9;background:#2c3f61;box-shadow:inset 2px 0 0 {{ accent }};">▤</span>
+            <span style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#5f7391;">⌕</span>
+            <span style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#5f7391;">⎇</span>
+            <span style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:{{ accent }};">✦</span>
+            <span style="margin-top:auto;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#5f7391;">⚙</span>
+          </div>
+
+          <!-- Explorer -->
+          <div style="border-right:1px solid #2c3f61;display:flex;flex-direction:column;min-height:0;">
+            <div style="padding:9px 13px 7px 13px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#8194ba;">EXPLORER</div>
+            <div style="flex:1;overflow-y:auto;padding:0 6px 12px 6px;">
+              <sc-for list="{{ tree }}" as="row" hint-placeholder-count="12">
+                <button onClick="{{ row.onClick }}" style="{{ row.style }}" style-hover="background:#26385c;">
+                  <span style="{{ row.iconStyle }}">{{ row.icon }}</span>
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ row.name }}</span>
+                  <sc-if value="{{ row.isNew }}" hint-placeholder-val="{{ false }}">
+                    <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a7c563;border:1px solid rgba(167,197,99,.4);border-radius:4px;padding:1px 4px;">NEW</span>
+                  </sc-if>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- Editor -->
+          <div style="display:flex;flex-direction:column;min-width:0;min-height:0;background:#172338;">
+            <div style="display:flex;align-items:center;background:#1b2942;border-bottom:1px solid #2c3f61;">
+              <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="2">
+                <button onClick="{{ tb.onClick }}" style="{{ tb.style }}" style-hover="color:#eef2f9;">
+                  <span style="{{ tb.dotStyle }}">◆</span> {{ tb.name }}
+                </button>
+              </sc-for>
+              <div style="margin-left:auto;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#5f7391;">{{ openFileMeta }}</div>
+            </div>
+            <div style="flex:1;overflow-y:auto;padding:12px 0;">
+              <sc-for list="{{ editorLines }}" as="ln" hint-placeholder-count="14">
+                <div style="display:flex;gap:14px;padding:1px 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;">
+                  <span style="width:22px;text-align:right;color:#51689a;flex:none;user-select:none;">{{ ln.n }}</span>
+                  <span style="{{ ln.style }}">{{ ln.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:5px 16px;border-top:1px solid #2c3f61;background:#1f2e4a;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#5f7391;">
+              <span style="color:#a7c563;">⎇ main</span><span>markdown</span><span>UTF-8</span><span>0 problems</span>
+              <span style="margin-left:auto;color:{{ accent }};">{{ statusHint }}</span>
+            </div>
+          </div>
+
+          <!-- AI chat -->
+          <div style="border-left:1px solid #2c3f61;display:flex;flex-direction:column;min-height:0;">
+            <div style="display:flex;align-items:center;gap:8px;padding:9px 13px;border-bottom:1px solid #2c3f61;">
+              <span style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#7e93cf,#a7c563);display:flex;align-items:center;justify-content:center;font-size:12px;">✦</span>
+              <span style="font-size:13px;font-weight:600;">AI Assistant</span>
+              <span style="margin-left:auto;display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#8194ba;"><span style="width:6px;height:6px;border-radius:50%;background:#a7c563;animation:blinkDot 2.4s ease-in-out infinite;"></span>context: CLAUDE.md ✓</span>
+            </div>
+            <div sc-ref="chatScroll" style="flex:1;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:11px;">
+              <sc-for list="{{ chat }}" as="m" hint-placeholder-count="5">
+                <div style="{{ m.wrapStyle }}">
+                  <div style="{{ m.labelStyle }}">{{ m.roleLabel }} · {{ m.time }}</div>
+                  <div style="{{ m.bubbleStyle }}"><sc-for list="{{ m.parts }}" as="pt" hint-placeholder-count="1"><span style="{{ pt.style }}">{{ pt.t }}</span></sc-for></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:11px 13px;border-top:1px solid #2c3f61;">
+              <div style="display:flex;align-items:center;gap:10px;border:1px solid #3a4f74;border-radius:10px;padding:9px 13px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5f7391;background:#172338;">
+                <span style="flex:1;">Type your next instruction…</span>
+                <span style="color:{{ accent }};">▸</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output -->
+      <section style="border:1px solid #2c3f61;border-radius:14px;background:linear-gradient(180deg,#20304e,#20304e);box-shadow:0 10px 30px rgba(0,0,0,.25);padding:18px 22px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:#8194ba;">SIMULATED OUTPUT — EXPORTED FILES</span>
+          <sc-for list="{{ files }}" as="f" hint-placeholder-count="2">
+            <span style="display:flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#eef2f9;background:#2c3f61;border:1px solid #3a4f74;border-radius:8px;padding:5px 11px;"><span style="{{ f.dotStyle }}"></span>{{ f.name }}</span>
+          </sc-for>
+          <span style="margin-left:auto;display:flex;gap:8px;">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8194ba;border:1px solid #3a4f74;border-radius:8px;padding:5px 10px;">⇩ export</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8194ba;border:1px solid #3a4f74;border-radius:8px;padding:5px 10px;">⧉ share</span>
+          </span>
+        </div>
+
+        <!-- Generic table -->
+        <sc-if value="{{ isTable }}" hint-placeholder-val="{{ true }}">
+          <div style="border:1px solid #3a4f74;border-radius:10px;overflow:hidden;animation:fadeUp .3s ease both;">
+            <div style="display:grid;grid-template-columns:2fr 100px 2.2fr 1.5fr;gap:0;background:#2c3f61;padding:9px 14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8194ba;">
+              <span>{{ th1 }}</span><span>{{ th2 }}</span><span>{{ th3 }}</span><span>{{ th4 }}</span>
+            </div>
+            <sc-for list="{{ tableRows }}" as="tr" hint-placeholder-count="5">
+              <div style="display:grid;grid-template-columns:2fr 100px 2.2fr 1.5fr;gap:0;padding:10px 14px;border-top:1px solid #2c3f61;font-size:13px;align-items:center;background:#1b2942;">
+                <span style="font-weight:600;">{{ tr.a }}</span>
+                <span style="{{ tr.bStyle }}">{{ tr.b }}</span>
+                <span style="color:#93a1b8;font-size:12.5px;">{{ tr.c }}</span>
+                <span style="{{ tr.dStyle }}">{{ tr.d }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- Notion page -->
+        <sc-if value="{{ isNotion }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#FFFFFF;border-radius:10px;overflow:hidden;color:#37352F;font-family:ui-sans-serif,-apple-system,'Segoe UI',sans-serif;animation:fadeUp .3s ease both;">
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;border-bottom:1px solid #EDECE9;font-size:12px;color:#9B9A97;">
+              <span style="font-weight:600;color:#37352F;">◧ Notion</span><span>/</span><span>{{ notionSpace }}</span>
+              <span style="margin-left:auto;background:#EDECE9;border-radius:4px;padding:2px 8px;font-size:11px;">AI generated · needs review</span>
+            </div>
+            <div style="padding:20px 32px 24px 32px;">
+              <div style="font-size:21px;font-weight:700;margin-bottom:13px;">{{ notionTitle }}</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:15px;">
+                <sc-for list="{{ notionProps }}" as="p" hint-placeholder-count="4">
+                  <div style="display:flex;gap:10px;font-size:13px;">
+                    <span style="width:130px;color:#9B9A97;flex:none;">{{ p.k }}</span>
+                    <span style="background:{{ p.bg }};border-radius:4px;padding:1px 8px;font-size:12px;">{{ p.v }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-for list="{{ notionSections }}" as="s" hint-placeholder-count="3">
+                <div style="margin-bottom:11px;">
+                  <div style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;margin-bottom:4px;"><span style="color:#9B9A97;font-size:11px;">▾</span>{{ s.h }}</div>
+                  <div style="font-size:13px;line-height:1.6;color:#504F4B;white-space:pre-line;padding-left:17px;">{{ s.body }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- Word doc -->
+        <sc-if value="{{ isDoc }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#F3F2F1;border-radius:10px;overflow:hidden;animation:fadeUp .3s ease both;">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;background:#2B579A;color:#fff;font-family:ui-sans-serif,'Segoe UI',sans-serif;font-size:12px;">
+              <span style="font-weight:700;">W</span><span>{{ docFileName }}</span>
+              <span style="margin-left:auto;opacity:.8;">AutoSave ● · Draft — review before sending</span>
+            </div>
+            <div style="display:flex;justify-content:center;padding:20px;">
+              <div style="background:#fff;width:min(680px,100%);box-shadow:0 2px 10px rgba(0,0,0,.15);padding:32px 44px;font-family:Cambria,Georgia,serif;color:#1a1a1a;">
+                <div style="font-size:19px;font-weight:700;color:#2B579A;margin-bottom:2px;">{{ docTitle }}</div>
+                <div style="font-size:11.5px;color:#767676;margin-bottom:14px;">{{ docMeta }}</div>
+                <sc-for list="{{ docBlocks }}" as="b" hint-placeholder-count="6">
+                  <div style="{{ b.style }}">{{ b.text }}</div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- Social captions -->
+        <sc-if value="{{ isSocial }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;animation:fadeUp .3s ease both;">
+            <sc-for list="{{ captions }}" as="c" hint-placeholder-count="3">
+              <div style="background:#FFFFFF;border-radius:10px;padding:16px;color:#191919;font-family:ui-sans-serif,-apple-system,'Segoe UI',sans-serif;display:flex;flex-direction:column;gap:10px;">
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#7e93cf,#a7c563);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">{{ brandInitials }}</span>
+                  <span style="display:flex;flex-direction:column;">
+                    <span style="font-size:13px;font-weight:700;white-space:nowrap;">{{ brandName }}</span>
+                    <span style="font-size:11px;color:#8A8A8A;">{{ c.channel }}</span>
+                  </span>
+                  <span style="margin-left:auto;font-size:10px;font-weight:700;color:#fff;background:#191919;border-radius:4px;padding:2px 7px;">{{ c.tag }}</span>
+                </div>
+                <div style="font-size:13px;line-height:1.55;white-space:pre-line;">{{ c.text }}</div>
+                <div style="font-size:12px;color:#0A66C2;font-weight:600;">{{ c.hashtags }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- Email -->
+        <sc-if value="{{ isEmail }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:230px minmax(0,1fr);gap:14px;animation:fadeUp .3s ease both;">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ emails }}" as="e" hint-placeholder-count="4">
+                <div style="{{ e.style }}">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8194ba;">{{ e.day }}</div>
+                  <div style="font-size:12.5px;font-weight:600;line-height:1.3;">{{ e.subject }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="background:#FFFFFF;border-radius:10px;overflow:hidden;color:#191919;font-family:ui-sans-serif,'Segoe UI',sans-serif;">
+              <div style="padding:12px 18px;border-bottom:1px solid #EAEAEA;">
+                <div style="font-size:14.5px;font-weight:700;">{{ emailSubject }}</div>
+                <div style="font-size:12px;color:#8A8A8A;margin-top:2px;">From: {{ emailFrom }} · To: {{ emailTo }}</div>
+              </div>
+              <div style="padding:16px 18px;font-size:13.5px;line-height:1.65;white-space:pre-line;">{{ emailBody }}</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- Deck (+ optional tender) -->
+        <sc-if value="{{ isDeck }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;animation:fadeUp .3s ease both;">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+              <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="3">
+                <div style="aspect-ratio:16/9;border-radius:8px;overflow:hidden;border:1px solid #3a4f74;background:{{ sl.bg }};padding:14px 16px;display:flex;flex-direction:column;justify-content:{{ sl.justify }};">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.16em;color:{{ sl.eyeColor }};margin-bottom:6px;">{{ sl.eyebrow }}</div>
+                  <div style="font-size:{{ sl.titleSize }};font-weight:700;line-height:1.15;color:{{ sl.titleColor }};">{{ sl.title }}</div>
+                  <div style="font-size:9.5px;line-height:1.5;color:{{ sl.bodyColor }};margin-top:6px;white-space:pre-line;">{{ sl.body }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ showTender }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#F3F2F1;border-radius:10px;overflow:hidden;">
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;background:#2B579A;color:#fff;font-family:ui-sans-serif,'Segoe UI',sans-serif;font-size:12px;">
+                  <span style="font-weight:700;">W</span><span>tender-response.docx</span>
+                  <span style="margin-left:auto;opacity:.8;">Compliance matrix pre-filled from knowledge base</span>
+                </div>
+                <div style="display:flex;justify-content:center;padding:18px;">
+                  <div style="background:#fff;width:min(680px,100%);box-shadow:0 2px 10px rgba(0,0,0,.15);padding:26px 38px;font-family:Cambria,Georgia,serif;color:#1a1a1a;">
+                    <div style="font-size:16px;font-weight:700;color:#2B579A;margin-bottom:12px;">{{ tenderTitle }}</div>
+                    <sc-for list="{{ tenderRows }}" as="tr" hint-placeholder-count="4">
+                      <div style="display:grid;grid-template-columns:2fr 90px 3fr;gap:12px;padding:7px 0;border-bottom:1px solid #E8E8E8;font-size:12px;align-items:center;">
+                        <span style="font-weight:600;">{{ tr.req }}</span>
+                        <span style="{{ tr.statusStyle }}">{{ tr.status }}</span>
+                        <span style="color:#555;">{{ tr.evidence }}</span>
+                      </div>
+                    </sc-for>
+                    <div style="font-size:11px;color:#B94A34;margin-top:12px;font-style:italic;">⚠ Sections marked DRAFT require legal & director review before submission.</div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #2c3f61;padding-top:14px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:999px;padding:5px 12px;">AI drafts · human decides</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:999px;padding:5px 12px;">Every output starts from the knowledge base</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:999px;padding:5px 12px;">Proposal SLA: 8 days → ~4 · Content: ~5 days → same-day</span>
+    </div>
+    <div style="font-size:12px;color:#5f7391;white-space:nowrap;">Agate · Level Up — internal training demo</div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1680, &quot;height&quot;: 1100},
+  &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#7e93cf&quot;, &quot;options&quot;: [&quot;#7e93cf&quot;, &quot;#a7c563&quot;, &quot;#e5a175&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Demo&quot;}
+}">
+class Component extends DCLogic {
+  state = { track: 'sales', ind: 'A', uc: 0, ddOpen: false };
+
+  componentDidUpdate() {
+    const el = this.refs && this.refs.chatScroll;
+    if (el) el.scrollTop = el.scrollHeight;
+  }
+
+  get accent() { return this.props.accent ?? '#7e93cf'; }
+
+  getIndustries() { return this.SEGMENTS(); }
+
+  SEGMENTS() {
+    return {
+      A: {
+        name: 'State-Owned & Enterprise', icon: '▦', tag: 'SOE · govt · tenders', tagword: 'EnterpriseSales',
+        we: 'Enterprise services provider selling to SOEs & government via e-procurement tenders',
+        co: 'Solusi Enterprise',
+        icp: 'Government agencies, SOEs & large corporates buying via tenders (e-procurement); multi-unit accounts, formal procurement.',
+        buyer: 'Procurement Committee / Division Head',
+        leads: [
+          ['PT Nusantara Energi (SOE)', 93, 'Tender for digital services published', 'Bid/no-bid analysis'],
+          ['Kementerian ABC', 86, 'e-procurement RFP opens next month', 'Pre-bid preparation'],
+          ['PT Telko Negara', 72, 'New transformation directorate formed', 'Nurture sequence'],
+          ['Pemda Kota Wijaya', 57, 'Budget year ending — no new spend', 'Revisit next FY'],
+          ['PT Logistik Raya', 40, 'No active tenders or signals', 'Disqualify'],
+        ],
+        account: 'PT Nusantara Energi', contact: 'Mr. Haris', role: 'Head of Procurement Unit',
+        pains: 'Tender responses take weeks and still miss compliance items; TOR requirements differ per unit; clarification meetings poorly prepped',
+        angle: 'Lead with the point-by-point TOR compliance matrix — most bids die at the admin check, not the pitch.',
+        topic: 'Winning public tenders: compliance-first proposals without the all-nighters',
+        stat: '100% admin pass rate, proposal turnaround −50%',
+        hook: 'Most tenders are lost at the compliance checklist, not the pitch.',
+        scene: 'The tender closes Friday. The compliance matrix is still a blank spreadsheet.',
+        deckTitle: 'Enterprise Services — Tender Bid',
+        tender: 'Tender Response — Enterprise Digital Services (e-Proc)',
+        riskName: 'e-procurement compliance', riskFix: 'point-by-point TOR matrix reviewed before submission',
+        tenderReq: 'e-Procurement vendor qualification', tenderEvidence: 'vendor registration + past government references',
+      },
+      B: {
+        name: 'Tech & Digital Agency', icon: '⌗', tag: 'software · agency · retainer', tagword: 'AgencySales',
+        we: 'Software house & digital agency selling projects and retainers to client companies',
+        co: 'Studio Digital',
+        icp: 'Companies buying software & digital services — project-based and retainers; deals won on scoping speed and clarity.',
+        buyer: 'Client CTO / Head of Digital',
+        leads: [
+          ['RetailCo Digital', 91, 'Budget approved for analytics platform', 'Book intro call'],
+          ['Bank Mitra', 87, 'RFI for social-listening tool', 'Respond to RFI'],
+          ['LogistikApp', 73, 'Hiring data engineers — build vs buy', 'Nurture sequence'],
+          ['FMCG Nusantara', 60, 'Agency review rumored', 'Warm intro via ex-client'],
+          ['StartupKecil', 42, 'Pre-seed, no budget', 'Disqualify'],
+        ],
+        account: 'RetailCo Digital', contact: 'Ms. Rina', role: 'Head of Digital',
+        pains: 'Scoping calls end without written requirements; SOWs rebuilt from scratch each deal; effort estimates vary wildly per team',
+        angle: 'Sell turnaround: a clear SOW in the same week wins before the better portfolio does.',
+        topic: 'From discovery call to SOW in a day: how agencies win on speed',
+        stat: 'SOW turnaround 6 days → same-week',
+        hook: 'Your best proposal is the one that arrives first.',
+        scene: 'Day 6. The client signed with the agency that sent its SOW on day 2.',
+        deckTitle: 'Analytics Platform — SOW & Pilot',
+        tender: 'MSA + SOW Pack — Analytics Retainer',
+        riskName: 'scope creep on fixed price', riskFix: 'change-request clause + phased milestones',
+        tenderReq: 'Data security & NDA terms', tenderEvidence: 'MSA template + security policy docs',
+      },
+      C: {
+        name: 'Education & Certification', icon: '◉', tag: 'training · certification · MoU', tagword: 'CorporateTraining',
+        we: 'Training institute & certification body selling corporate programs, certification & MoUs',
+        co: 'EduCert Institute',
+        icp: 'Corporates & institutions needing training and competency certification (SKKNI/BNSP), sold via HR/L&D and MoUs.',
+        buyer: 'Head of HR-L&D / Corporate Partnerships',
+        leads: [
+          ['PT Tambang Sejahtera', 92, 'Mandatory certification deadline Q4', 'Book intro call'],
+          ['Bank Artha', 85, 'New L&D budget approved', 'Warm intro via alumni'],
+          ['LogistikCo', 71, 'Audit flagged competency gaps', 'Nurture sequence'],
+          ['RetailChain U', 56, 'Training already outsourced', 'Revisit at renewal'],
+          ['MicroBiz Assoc.', 38, 'No budget signal found', 'Disqualify'],
+        ],
+        account: 'PT Tambang Sejahtera', contact: 'Mrs. Dewi', role: 'HR & HSE Manager',
+        pains: 'TNA takes weeks of back-and-forth; proposals miss SKKNI/BNSP mapping; batch schedules clash with assessor capacity',
+        angle: 'Anchor on the regulation deadline — certification urgency beats training nice-to-haves.',
+        topic: 'Mandatory certification: from compliance burden to competency strategy',
+        stat: 'Inquiry→proposal turnaround −60%',
+        hook: 'The certification deadline is fixed. Your preparation time isn\'t.',
+        scene: 'Audit day. Half the operators\' certifications expired last month.',
+        deckTitle: 'Corporate Certification Program',
+        tender: 'Proposal — In-house Certification Program (BNSP)',
+        riskName: 'assessor availability', riskFix: 'batch schedule locked against assessor calendar',
+        tenderReq: 'BNSP-licensed assessors', tenderEvidence: 'assessor list + license numbers on file',
+      },
+      D: {
+        name: 'Manufacturing, Pharma & Health', icon: '⬢', tag: 'distributors · technical sales', tagword: 'TechnicalSales',
+        we: 'Manufacturer / principal selling via distributors, farms, clinics & hospitals',
+        co: 'AgriPharma',
+        icp: 'Distributors, farms, clinics & hospitals — technical selling with product trials, licenses and territory agreements.',
+        buyer: 'Distributor Principal / Procurement + Technical',
+        leads: [
+          ['CV AgroFarm Jaya', 90, 'Expanding to 3 new provinces', 'Book intro call'],
+          ['MediDistribusi', 84, 'Dropped a competing principal', 'Warm intro'],
+          ['Klinik Satwa Group', 70, 'Expressed trial interest', 'Nurture sequence'],
+          ['FarmasiKita', 54, 'Credit-terms issues in history', 'Revisit with terms'],
+          ['TokoTani Makmur', 36, 'Below volume threshold', 'Disqualify'],
+        ],
+        account: 'CV AgroFarm Jaya', contact: 'Mr. Anton', role: 'Purchasing & Technical Lead',
+        pains: 'Field-visit reports pile up unanalyzed; offers rebuilt per distributor; rebate & exclusivity asks squeeze margin',
+        angle: 'Lead with the trial protocol and tiered pricing — technical evidence sells before discounts do.',
+        topic: 'Technical selling: turning field-visit data into reorder revenue',
+        stat: 'Trial→order conversion +38%',
+        hook: 'The order you lose is the field visit you never wrote up.',
+        scene: 'The field visit found the problem. The report never left the notebook.',
+        deckTitle: 'Distributor Partnership & Trial Plan',
+        tender: 'Supply Offer — Distributor Agreement + Trial',
+        riskName: 'regulatory licensing (marketing authorization)', riskFix: 'license docs attached; trial under approved protocol',
+        tenderReq: 'Marketing authorization & GDP', tenderEvidence: 'registration numbers + GDP certificate',
+      },
+      E: {
+        name: 'Consumer Brand, Retail & F&B', icon: '▣', tag: 'wholesale · reseller · HORECA', tagword: 'WholesaleGrowth',
+        we: 'Consumer brand selling wholesale to resellers, retail, gift shops & HORECA',
+        co: 'Rasa Premium',
+        icp: 'Resellers, gift shops, minimarkets & HORECA buying wholesale — decisions ride on store margin, MOQ and payment terms.',
+        buyer: 'Reseller Owner / Retail Buyer',
+        leads: [
+          ['Toko Oleh-Oleh Dago', 91, 'Asked for the wholesale price list', 'Send tiered offer'],
+          ['Kafe Kopi Kita', 86, 'Opening 4 new outlets', 'Book a visit'],
+          ['GiftBox Corp', 73, 'Corporate gifting season in Q4', 'Nurture sequence'],
+          ['Minimart Chain', 58, 'Historically high margin demands', 'Revisit with sim'],
+          ['Warung Bu Sri', 35, 'Volume too small', 'Disqualify'],
+        ],
+        account: 'Toko Oleh-Oleh Dago', contact: 'Bu Lina', role: 'Owner',
+        pains: 'Quotes & margin simulations built by hand per reseller; dormant resellers go unnoticed for months; haggling erodes margin',
+        angle: 'Lead with the store-margin simulation — buyers decide on their margin, not your price.',
+        topic: 'Wholesale that scales: margin simulations, not gut-feel discounts',
+        stat: 'Reorder rate +27% after re-activation',
+        hook: 'Your dormant resellers are your cheapest growth channel.',
+        scene: '9:04 AM. A reseller asks for the margin simulation. It takes you two days.',
+        deckTitle: 'Wholesale Partnership Pack',
+        tender: 'Proposal — Reseller Partnership (3 Tiers + MOQ)',
+        riskName: 'payment terms & AR risk', riskFix: 'deposit policy + credit check before first PO',
+        tenderReq: 'Halal & BPOM certification', tenderEvidence: 'certificates on file (validity checked)',
+      },
+      F: {
+        name: 'SMEs & Services', icon: '◈', tag: 'local · orders · subscriptions', tagword: 'LocalBusiness',
+        we: 'Local service business (printing, travel, professional services) selling orders & subscriptions',
+        co: 'PrintKilat',
+        icp: 'Small businesses, schools & communities ordering services locally — deals won on response speed and clear options.',
+        buyer: 'Owner / Operations Manager',
+        leads: [
+          ['Sekolah Harapan', 89, 'Yearbook + uniform season', 'Send quote today'],
+          ['Komunitas Lari BDG', 84, 'Event merch inquiry via WA', 'Quick 3-option quote'],
+          ['Kantor Notaris S&P', 68, 'Regular monthly printing needs', 'Nurture sequence'],
+          ['Travel Barokah', 55, 'Seasonal demand only', 'Revisit pre-season'],
+          ['Warung Kopi 24', 33, 'One-off small order', 'Disqualify'],
+        ],
+        account: 'Sekolah Harapan', contact: 'Pak Yusuf', role: 'Operations Head',
+        pains: 'Quotes take a day while competitors reply in minutes; specs stay unclear until production; repeat orders left to chance',
+        angle: 'Win on response time — a tidy 3-option quote in 10 minutes closes local deals.',
+        topic: 'The 10-minute quote: how small services win on speed',
+        stat: 'Quote turnaround 1 day → ~10 minutes',
+        hook: 'The client asked three vendors. The fastest quote won.',
+        scene: 'The client messaged three vendors at 9 AM. By 9:15, one had a quote.',
+        deckTitle: 'Service Package & Subscription Offer',
+        tender: 'Quote Pack — 3 Options + Subscription',
+        riskName: 'production deadline clash', riskFix: 'production queue checked before quote confirmation',
+        tenderReq: 'Sample & spec approval', tenderEvidence: 'sample workflow + spec sheet template',
+      },
+    };
+  }
+
+  _oldIndustries() {
+    return {
+      retail: {
+        name: 'Retail & FMCG', icon: '▣', tag: 'chains · D2C · loyalty',
+        icp: 'Mid-size retail & FMCG players, 50–500 outlets, pushing loyalty apps and D2C.',
+        buyer: 'Head of L&D / Trade Marketing',
+        leads: [
+          ['UrbanMart Group', 92, 'Opening 60 new stores in Q3', 'Book intro call'],
+          ['FreshDaily Co.', 88, 'New CMO hired from telco', 'Warm intro via ex-client'],
+          ['StyleHub Retail', 74, 'Launched loyalty app, low ratings', 'Nurture sequence'],
+          ['MegaGrosir', 61, 'Flat traffic YoY, cost-cutting mode', 'Nurture sequence'],
+          ['TokoKita Mart', 43, 'No digital initiatives found', 'Disqualify'],
+        ],
+        account: 'UrbanMart Group', contact: 'Ms. Sari', role: 'Head of L&D',
+        pains: 'Frontliner turnover 38%/yr; e-learning completion stuck at 31%; product knowledge gap hurts upsell at cashier',
+        angle: 'Position gamified frontliner academy as a revenue enabler (basket size), not a training cost.',
+        topic: 'Why retail frontliner training fails — and what gamification fixes',
+        stat: '87% completion vs. 31% industry average',
+        hook: 'Your best salesperson quits every 9 months.',
+        deckTitle: 'Gamified Frontliner Academy',
+        tender: 'RFP Response — National Retail Loyalty & Training Program',
+      },
+      banking: {
+        name: 'Banking & Finance', icon: '◈', tag: 'banks · multifinance',
+        icp: 'Regional banks & multifinance with active digital transformation budgets, 1M+ customers, compliance mandates.',
+        buyer: 'Head of Learning / Digital Banking',
+        leads: [
+          ['Bank Sejahtera', 94, 'RFP for digital academy published', 'Respond to RFP'],
+          ['FinFlex Capital', 85, 'Regulator flagged compliance gaps', 'Book intro call'],
+          ['KoperasiPlus', 70, 'Piloting mobile onboarding', 'Nurture sequence'],
+          ['Bank Mitra Daerah', 58, 'Budget freeze announced', 'Revisit next quarter'],
+          ['DanaCepat', 41, 'No L&D function found', 'Disqualify'],
+        ],
+        account: 'Bank Sejahtera', contact: 'Mr. Irawan', role: 'Head of Learning',
+        pains: 'Compliance training treated as checkbox; 12,000 staff across 300 branches; audit findings on knowledge retention',
+        angle: 'Lead with measurable behavior change (L3/L4), not completion — auditors want evidence.',
+        topic: 'Compliance training that regulators — and employees — actually respect',
+        stat: 'Knowledge retention +42% at 90 days',
+        hook: 'Your compliance training passed the audit. Did anyone learn anything?',
+        deckTitle: 'Digital Banking Academy',
+        tender: 'Tender Response — Bank-wide Compliance Learning Platform',
+      },
+      health: {
+        name: 'Healthcare', icon: '✚', tag: 'hospitals · insurers',
+        icp: 'Hospital groups & health insurers rolling out patient/member apps, 2,000+ clinical and frontline staff.',
+        buyer: 'Chief People Officer / Head of Member Experience',
+        leads: [
+          ['MediCare Group', 91, 'Acquired 4 regional hospitals', 'Book intro call'],
+          ['Sehat+ Clinics', 83, 'New patient app launched', 'Warm intro via ex-client'],
+          ['AsuransiSehat', 72, 'Member churn up 15%', 'Nurture sequence'],
+          ['Klinik Prima', 55, 'Single-site, small budget', 'Nurture sequence'],
+          ['LabKita', 39, 'No engagement initiatives', 'Disqualify'],
+        ],
+        account: 'MediCare Group', contact: 'dr. Ayu', role: 'Chief People Officer',
+        pains: 'Post-acquisition onboarding chaos across 4 hospitals; protocol adherence varies by site; nurse turnover rising',
+        angle: 'Standardized gamified onboarding as a patient-safety story — protocol adherence is the KPI that lands.',
+        topic: 'Onboarding 4 hospitals at once: a playbook for protocol consistency',
+        stat: 'Protocol adherence variance cut by 60%',
+        hook: 'Four hospitals. Four different ways to do the same procedure.',
+        deckTitle: 'Clinical Onboarding Academy',
+        tender: 'RFP — Group-wide Clinical Staff Engagement Program',
+      },
+      mfg: {
+        name: 'Manufacturing', icon: '⬢', tag: 'plants · HSE · frontline',
+        icp: 'Manufacturers with 1,000+ frontline workers, HSE training mandates, low-literacy-friendly format needs.',
+        buyer: 'HSE Director / Plant HR',
+        leads: [
+          ['PT Baja Prima', 90, 'Safety incident in Q1, board pressure', 'Book intro call'],
+          ['NusaSteel', 82, 'New plant opening 2027', 'Book intro call'],
+          ['PackagingCo', 69, 'ISO recertification due', 'Nurture sequence'],
+          ['TekstilJaya', 52, 'Union negotiations ongoing', 'Revisit next quarter'],
+          ['MebelKita', 37, 'Training fully outsourced', 'Disqualify'],
+        ],
+        account: 'PT Baja Prima', contact: 'Mr. Budi', role: 'HSE Director',
+        pains: 'Toolbox talks are sign-and-forget; incident repeat rate high; 3 shifts make classroom training impractical',
+        angle: 'Micro safety drills per shift on shared kiosks — sell incident-rate reduction, not content hours.',
+        topic: 'Beyond the toolbox talk: safety training that survives the shift floor',
+        stat: 'Repeat incidents down 45% in pilot plants',
+        hook: 'Everyone signed the safety briefing. The incident happened anyway.',
+        deckTitle: 'Frontline Safety Academy',
+        tender: 'Tender — HSE Training Digitalization Program',
+      },
+    };
+  }
+
+  // helpers for editor lines
+  L(text, c, w) { return { text: text || ' ', c: c || '#cdd9ec', w: w }; }
+
+  getUseCases(I) {
+    const L = this.L.bind(this);
+    const H = '#e5a175', T = '#a7c563', P = '#7e93cf', R = '#e55e5e', S = '#8194ba';
+    const p0 = I.pains.split(';')[0];
+
+    const SALES = [
+      { title: 'Pipeline Review & Next Actions', out: 'pipeline-review.md', stage: 'MONDAY MORNING', kind: 'table',
+        sub: 'AI reads the CRM export and turns it into a triaged pipeline: which deals are stalling, why, and what to do about each — before your first coffee.',
+        aiDoes: ['Flags deals idle >14 days with the likely reason', 'Scores risk per deal from activity + signal data', 'Drafts one concrete next action per deal', 'Writes re-engagement message drafts for stalled deals'],
+        humanDoes: ['Judge the relationship reality behind each flag', 'Approve or rewrite outreach before it goes out', 'Decide which deals to walk away from'],
+        files: [['pipeline-review.md', T], ['crm-export.csv', S]],
+        editorName: 'pipeline-review.md', editorMeta: '04_sales · generated 08:12',
+        editor: () => [
+          L('# Pipeline Review — Mon, W27', H, 600), L(),
+          L('## At risk (idle > 14 days)', H, 600),
+          L('1. ' + I.leads[0][0] + ' — proposal sent 18d ago, no reply', R),
+          L('   → champion went quiet · re-engagement draft below'),
+          L('2. ' + I.leads[2][0] + ' — waiting on budget confirmation', R), L(),
+          L('## Re-engagement draft — ' + I.leads[0][0], H, 600),
+          L('Hi ' + I.contact + ', saw the news re: ' + I.leads[0][2].toLowerCase() + '.'),
+          L('That changes the timeline math on our proposal — worth a'),
+          L('15-min call to re-scope before your board review?', ),
+          L('  [no discount offered — per playbook]', T), L(),
+          L('⚠ 2 deals recommended for close-lost — your call', P),
+        ],
+        chat: [
+          { r: 'user', t: 'Read @crm-export.csv + @pipeline-notes.md. Flag every deal idle >14 days, score the risk, and draft one next action per deal. Sort by close date.' },
+          { r: 'sys', t: '+ 04_sales/pipeline-review.md created' },
+          { r: 'ai', t: '12 deals reviewed, 4 at risk. Biggest: ' + I.leads[0][0] + ' — proposal sent 18 days ago, champion went quiet. Next actions drafted for each; 2 deals recommended for close-lost.' },
+          { r: 'user', t: 'Only deals closing this quarter. For ' + I.leads[0][0] + ', draft a re-engagement message that references their ' + I.leads[0][2].toLowerCase() + '.' },
+          { r: 'ai', t: 'Filtered to 6 deals. Re-engagement draft added — it references the signal, keeps it to a 15-min ask, and offers no discount (per playbook). Review before sending.' },
+        ],
+        art: () => ({ th1: 'DEAL', th2: 'RISK', th3: 'WHY', th4: 'NEXT ACTION',
+          tableRows: I.leads.slice(0, 5).map((l, i) => {
+            const risk = [82, 64, 55, 38, 21][i];
+            return { a: l[0], b: risk + '%', c: i === 0 ? 'Proposal idle 18d — champion quiet' : i === 1 ? l[2] : i === 2 ? 'Budget confirmation pending 3 wks' : i === 3 ? 'Waiting on legal review' : 'On track — demo booked',
+              d: i === 0 ? 'Send re-engagement' : i === 1 ? 'Call sponsor' : i === 2 ? 'CFO one-pager' : i === 3 ? 'Nudge legal contact' : 'No action',
+              bStyle: 'font-family:IBM Plex Mono,monospace;font-size:13px;font-weight:600;color:' + (risk > 60 ? '#e55e5e' : risk > 40 ? '#e5a175' : '#a7c563') + ';',
+              dStyle: 'font-size:12px;font-family:IBM Plex Mono,monospace;color:' + (risk > 60 ? '#eef2f9' : '#93a1b8') + ';' };
+          }) }) },
+
+      { title: 'Account Research Brief', out: 'Notion page', stage: 'PRE-CALL', kind: 'notion',
+        sub: 'Before Thursday\'s call: a one-page brief — pains, entry angle, discovery questions — assembled from public sources in minutes, exported straight to the team\'s Notion CRM.',
+        aiDoes: ['Reads annual reports, press & job postings for the account', 'Maps likely pains to our case studies', 'Drafts entry angle + discovery questions', 'Marks every uncertain fact with [verify]'],
+        humanDoes: ['Verify facts before quoting them in a call', 'Adjust the angle for relationship context', 'Decide who approaches and how'],
+        files: [['account-brief.md', T], ['account-brief · Notion', P]],
+        editorName: 'account-brief.md', editorMeta: '02_clients/' + I.account.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+        editor: () => [
+          L('# Account Brief — ' + I.account, H, 600),
+          L('Prepared for Thursday call · sources: 12 public docs', S), L(),
+          L('## Pains (public sources)', H, 600),
+          L('- ' + I.pains.split(';')[0]),
+          L('- ' + (I.pains.split(';')[1] || '').trim()), L(),
+          L('## Entry angle', H, 600),
+          L(I.angle, T), L(),
+          L('## Verify before the call', H, 600),
+          L('- CFO name [verify — source is 2024 press]', R),
+          L('- Budget cycle timing [verify]', R),
+        ],
+        chat: [
+          { r: 'user', t: 'Build an account brief for ' + I.account + ' before Thursday\'s call. Sources: @annual-report.pdf, 6 months of press, job postings + @icp.md for fit. Mark anything uncertain with [verify].' },
+          { r: 'sys', t: '+ account-brief.md created · exported to Notion' },
+          { r: 'ai', t: 'Brief ready. Strongest angle: ' + I.angle.split('—')[0].trim() + ' Two facts marked [verify]: the CFO name and their budget cycle.' },
+          { r: 'user', t: 'Add their procurement process and who signs above Rp 500jt.' },
+          { r: 'ai', t: 'Added: procurement appears to run through a vendor committee [verify — inferred from a job post]. Signing authority isn\'t public — I\'ve added it as discovery question #3 instead of guessing.' },
+        ],
+        art: () => ({ notionSpace: 'Sales CRM / Account Briefs',
+          notionTitle: '◨ Account Brief — ' + I.account,
+          notionProps: [
+            { k: 'Industry', v: I.name, bg: '#E7F3F8' },
+            { k: 'Fit score', v: I.leads[0][1] + ' / 100', bg: '#DBEDDB' },
+            { k: 'Key contact', v: I.contact + ' — ' + I.role, bg: '#F1F0EF' },
+            { k: 'Signal', v: I.leads[0][2], bg: '#FAEBDD' },
+            { k: 'Status', v: 'Draft — needs human review', bg: '#FFE2DD' },
+          ],
+          notionSections: [
+            { h: 'Pains (from public sources)', body: I.pains + '.' },
+            { h: 'Entry angle', body: I.angle },
+            { h: 'Discovery questions', body: '1. How do you measure success on this today — activity or outcomes?\n2. Who owns the budget: L&D, ops, or the business line?\n3. Who signs above Rp 500jt, and what does procurement look like? [verify]' },
+          ] }) },
+
+      { title: 'Meeting Follow-up Pack', out: 'MoM + email + tasks', stage: 'SAME DAY', kind: 'email',
+        sub: 'Paste the raw meeting transcript; get back the internal MoM, a client-ready follow-up email, and CRM tasks with owners — while the meeting is still warm.',
+        aiDoes: ['Extracts decisions, open questions & commitments from the transcript', 'Drafts the client follow-up email in your voice', 'Creates CRM tasks with owners and due dates', 'Flags anything ambiguous for you to clarify'],
+        humanDoes: ['Check nuance — what was said vs. what was meant', 'Approve the email; relationships are yours', 'Confirm task owners actually agreed to them'],
+        files: [['mom.md', T], ['follow-up-draft.md', T], ['tasks.csv', S]],
+        editorName: 'mom.md', editorMeta: '04_sales · from transcript, 14:32',
+        editor: () => [
+          L('# MoM — ' + I.account + ' · scoping call', H, 600),
+          L('Attendees: ' + I.contact + ' (' + I.role + '), AM, SE', S), L(),
+          L('## Decisions', H, 600),
+          L('- Pilot scope agreed in principle (subset first)', T),
+          L('- Their technical PIC joins next call re: ' + I.riskName), L(),
+          L('## Open questions', H, 600),
+          L('- Budget phasing: FY split unclear', R),
+          L('- Success metric: activity vs outcomes — they lean outcomes'), L(),
+          L('## Commitments', H, 600),
+          L('- Us: scoping doc by Fri · Them: usage data by Wed'),
+        ],
+        chat: [
+          { r: 'user', t: 'Here\'s the raw transcript: @meeting-notes.md. Produce: internal MoM, follow-up email to ' + I.contact + ', and CRM tasks with owners.' },
+          { r: 'sys', t: '+ mom.md · follow-up-draft.md · tasks.csv' },
+          { r: 'ai', t: 'Done. MoM: 2 decisions, 2 open questions, 2 commitments. Follow-up email leads with their deadline. 5 CRM tasks assigned. One ambiguity flagged: they said "next quarter" — fiscal or calendar?' },
+          { r: 'user', t: 'The email is too long. Cut to 120 words, and move the pricing discussion out — that\'s for the call, not email.' },
+          { r: 'ai', t: 'Trimmed to 112 words. Pricing paragraph removed, replaced with a scheduling ask for the scoping call. Draft is in follow-up-draft.md — send when ready.' },
+        ],
+        art: () => ({
+          emails: [
+            { day: 'CLIENT · draft', subject: 'Follow-up: pilot scope + next steps', active: true },
+            { day: 'INTERNAL', subject: 'MoM — decisions & open questions', active: false },
+            { day: 'CRM · 5 tasks', subject: 'Scoping doc (Fri) · data request (Wed) …', active: false },
+          ].map((e, i) => ({ day: e.day, subject: e.subject,
+            style: 'padding:10px 12px;border-radius:10px;display:flex;flex-direction:column;gap:3px;border:1px solid ' + (i === 0 ? this.accent : '#2c3f61') + ';background:' + (i === 0 ? '#26385c' : '#20304e') + ';color:#eef2f9;' })),
+          emailFrom: 'sales@' + I.co.toLowerCase().replace(/[^a-z]+/g, '') + '.id',
+          emailTo: I.contact.toLowerCase().replace(/[^a-z]+/g, '.') + '@' + I.account.toLowerCase().replace(/[^a-z]+/g, '') + '.com',
+          emailSubject: 'Follow-up: pilot scope + next steps',
+          emailBody: 'Hi ' + I.contact + ',\n\nThank you for today — especially the clarity on what success looks like.\n\nAs agreed:\n• We\'ll send the pilot scoping doc by Friday\n• Your team shares current usage data by Wednesday\n• Next call covers ' + I.riskName + '\n\nWould Tuesday or Thursday next week work for the scoping call?\n\nBest,\n(112 words · pricing intentionally omitted — discuss live)' }) },
+
+      { title: 'Proposal Draft & Iteration', out: 'proposal-v2.docx', stage: 'DEAL STAGE', kind: 'doc',
+        sub: 'The core loop: AI drafts the proposal from your template + pricing + case studies, flags what it\'s unsure about, and you iterate in plain language until it\'s right.',
+        aiDoes: ['Drafts all 7 sections from proposal-template.md', 'Pulls prices only from pricing-rates.md — never invents', 'Selects the most relevant case study', 'Applies revisions as targeted diffs, not rewrites'],
+        humanDoes: ['Challenge the scope assumptions', 'Own pricing strategy & phasing decisions', 'Sign off before anything leaves the building'],
+        files: [['proposal-v2.docx', '#2B579A'], ['proposal-v1.md', S]],
+        editorName: 'proposal-v2.md', editorMeta: '03_proposals · v2 after 1 iteration',
+        editor: () => [
+          L('# Proposal: ' + I.deckTitle, H, 600),
+          L(I.account + ' · v2 — revised per AM feedback', S), L(),
+          L('## Investment (2 phases)  ← changed in v2', H, 600),
+          L('Phase 1: Pilot (subset) — from pricing-rates.md', T),
+          L('Phase 2: Full rollout — from pricing-rates.md', T), L(),
+          L('## Risks & Mitigation  ← new in v2', H, 600),
+          L('- ' + I.riskName + ': ' + I.riskFix),
+          L('- Adoption: champion program per site'), L(),
+          L('✓ v1 → v2 diff: 3 sections touched, rest untouched', P),
+          L('⚠ Pricing sign-off: director approval required', R),
+        ],
+        chat: [
+          { r: 'user', t: 'Draft the proposal for ' + I.account + ' using @proposal-template.md. All numbers from @pricing-rates.md, needs from @meeting-notes.md — if something\'s missing, mark it, don\'t invent it.' },
+          { r: 'sys', t: '+ proposal-v1.md created' },
+          { r: 'ai', t: 'Draft v1 done — 7 sections per template. Flagged for your review: the rollout assumption (all sites at once) and the package tier vs. their stated budget range.' },
+          { r: 'user', t: 'Good catch. Split the investment into 2 phases — pilot first. And add a Risks & Mitigation section for ' + I.riskName + '.' },
+          { r: 'ai', t: 'v2 ready: Phase 1 pilot + Phase 2 rollout (total stays within their range), new Risks section added. Diff touches 3 sections only — everything else unchanged. Director sign-off still needed on pricing.' },
+        ],
+        art: () => ({ docFileName: 'proposal-v2.docx', docTitle: 'Proposal: ' + I.deckTitle,
+          docMeta: I.account + ' · v2 — revised after human review · pricing pending director sign-off',
+          docBlocks: [
+            { text: 'Executive Summary', style: 'font-size:14px;font-weight:700;color:#2B579A;margin:10px 0 4px 0;' },
+            { text: p0 + '. This program addresses it with a measured, phased deployment — pilot first, evidence before scale.', style: 'font-size:12.5px;line-height:1.65;margin-bottom:10px;background:#F0F4FA;padding:10px 12px;border-left:3px solid #2B579A;' },
+            { text: '5. Investment (revised: 2 phases)', style: 'font-size:13px;font-weight:700;margin:8px 0 3px 0;' },
+            { text: 'Phase 1 — Pilot (subset of sites/teams): scoped from pricing-rates.md. Phase 2 — Full rollout: triggered by pilot success criteria. Total within indicated budget range.', style: 'font-size:12.5px;line-height:1.65;color:#333;margin-bottom:8px;' },
+            { text: '6. Risks & Mitigation (new in v2)', style: 'font-size:13px;font-weight:700;margin:8px 0 3px 0;' },
+            { text: I.riskName + ' — ' + I.riskFix + '; Adoption — champion program per site; Data — residency confirmed in writing before kickoff.', style: 'font-size:12.5px;line-height:1.65;color:#333;margin-bottom:8px;' },
+            { text: '⚠ v1→v2 diff: 3 sections changed. Pricing requires director approval before sending.', style: 'font-size:11.5px;color:#B94A34;font-style:italic;margin-top:10px;' },
+          ] }) },
+
+      { title: 'Pitch Deck & Tender Docs', out: 'pitch.pptx + tender.docx', stage: 'BOTTOM OF FUNNEL', kind: 'deck',
+        sub: 'When the deal gets real: a client-specific deck from the master template, plus a tender response with the compliance matrix pre-filled and gaps honestly flagged.',
+        aiDoes: ['Builds the deck from the master template — right case study, right pricing tier', 'Pre-fills the tender compliance matrix, citing evidence docs', 'Flags requirements we can\'t evidence as DRAFT', 'Drafts the formal cover letter'],
+        humanDoes: ['Own the story arc — reorder for this room', 'Verify pricing & legal commitments', 'Close the gaps or decide to no-bid'],
+        files: [['pitch.pptx', H], ['tender-response.docx', '#2B579A']],
+        editorName: 'bid-checklist.md', editorMeta: '03_proposals · bid pack status',
+        editor: () => [
+          L('# Bid Pack — ' + I.account, H, 600), L(),
+          L('## pitch.pptx', H, 600),
+          L('✓ 14 slides from master template', T),
+          L('✓ Case study: most relevant to ' + I.name.toLowerCase(), T),
+          L('✓ Pricing tier from pricing-rates.md', T), L(),
+          L('## tender-response.docx', H, 600),
+          L('✓ 11/13 compliance rows evidenced', T),
+          L('⚠ Gap: security-compliance wording — legal text applied', R),
+          L('⚠ Gap: reference approval pending — chase by Friday', R), L(),
+          L('Decision to submit + pricing: human/director only', P),
+        ],
+        chat: [
+          { r: 'user', t: 'Prepare bid materials for ' + I.account + ': deck from @master-deck-template.pptx + compliance matrix from @TOR.pdf. Cite an evidence doc per row (@company-profile.md, @case-studies/); mark gaps as DRAFT. Never invent certifications.' },
+          { r: 'sys', t: '+ pitch.pptx · tender-response.docx' },
+          { r: 'ai', t: 'Deck: 14 slides, case study selected for ' + I.name.toLowerCase() + '. Compliance: 11/13 rows evidenced with sources. 2 gaps flagged DRAFT: security-compliance wording and a pending reference approval.' },
+          { r: 'user', t: 'For the compliance gap, use the "in progress" language legal approved last quarter.' },
+          { r: 'ai', t: 'Updated row 3 with the approved wording (source: legal/approved-phrases.md). Both files regenerated. Submission decision and pricing sign-off remain with you and the director.' },
+        ],
+        art: () => ({ showTender: true,
+          slides: [
+            { bg: 'linear-gradient(135deg,#14203a,#16233d)', eyebrow: 'PROPOSAL · ' + I.name.toUpperCase(), eyeColor: '#7e93cf', title: I.deckTitle, titleSize: '15px', titleColor: '#FFFFFF', justify: 'center', body: 'Prepared for ' + I.account + '\nAgate · Level Up', bodyColor: '#8194ba' },
+            { bg: '#FCFDFE', eyebrow: 'THE PROBLEM', eyeColor: '#2E6E8E', title: 'What it costs you today', titleSize: '12.5px', titleColor: '#141B24', justify: 'flex-start', body: '• ' + I.pains.split(';').slice(0, 2).join('\n• '), bodyColor: '#5f7391' },
+            { bg: '#FCFDFE', eyebrow: 'EVIDENCE', eyeColor: '#2E6E8E', title: I.stat, titleSize: '13.5px', titleColor: '#1F3A54', justify: 'flex-start', body: 'Comparable deployment, same industry.\nMethod + measurement in appendix.\n\nInvestment: from pricing-rates.md ✓', bodyColor: '#5f7391' },
+          ],
+          tenderTitle: I.tender + ' — Compliance Matrix',
+          tenderRows: [
+            { req: 'Min. 5 years relevant track record', status: '✓ MET', evidence: 'company-profile.md — track record + references', statusStyle: 'font-size:11px;font-weight:700;color:#2E7D4F;' },
+            { req: I.tenderReq, status: '✓ MET', evidence: I.tenderEvidence, statusStyle: 'font-size:11px;font-weight:700;color:#2E7D4F;' },
+            { req: 'Security & document compliance', status: 'DRAFT', evidence: 'Legal-approved "in progress" wording applied — confirm scope', statusStyle: 'font-size:11px;font-weight:700;color:#B94A34;' },
+            { req: 'Reference client, same industry', status: '✓ MET', evidence: 'Case study + reference contact (approval needed)', statusStyle: 'font-size:11px;font-weight:700;color:#2E7D4F;' },
+          ] }) },
+    ];
+
+    const MKT = [
+      { title: 'Lead Filtering & Scoring', out: 'scored-leads.csv', stage: 'TOP OF FUNNEL', kind: 'table',
+        sub: 'Turn a raw list of 400 companies into a ranked shortlist — scored against your ICP, enriched with buying signals, deduped against the CRM.',
+        aiDoes: ['Scores every lead 0–100 against the ICP in the knowledge base', 'Scans news, job posts & LinkedIn for buying signals', 'Dedupes against CRM and flags past conversations', 'Suggests a next action per lead with reasoning'],
+        humanDoes: ['Sanity-check top 10 against your gut', 'Approve the "disqualify" list before it disappears', 'Own signals AI can\'t see (politics, history)'],
+        files: [['scored-leads.csv', T], ['signal-sources.md', S]],
+        editorName: 'scored-leads.md', editorMeta: '05_marketing · 400 → 38 qualified',
+        editor: () => [
+          L('# Scored Leads — ' + I.name, H, 600),
+          L('Input: 400 · above threshold (80): 38 · disqualified: 214', S), L(),
+          L('| company            | fit | signal                     |', T),
+          L('| ' + I.leads[0][0].padEnd(18) + ' |  ' + I.leads[0][1] + ' | ' + I.leads[0][2].slice(0, 26) + ' |'),
+          L('| ' + I.leads[1][0].padEnd(18) + ' |  ' + I.leads[1][1] + ' | ' + I.leads[1][2].slice(0, 26) + ' |'),
+          L('| ' + I.leads[2][0].padEnd(18) + ' |  ' + I.leads[2][1] + ' | ' + I.leads[2][2].slice(0, 26) + ' |'), L(),
+          L('## Post-iteration', H, 600),
+          L('- 6 removed: closed-lost within 12 months', R),
+          L('- Source link added per signal', T),
+        ],
+        chat: [
+          { r: 'user', t: 'Score these 400 companies against @icp.md. For each: fit score, strongest buying signal with source, suggested next action. Dedupe against @crm-export.csv.' },
+          { r: 'sys', t: '+ scored-leads.csv created' },
+          { r: 'ai', t: '400 scored: 38 above threshold (80), 148 mid-band for nurture, 214 disqualified with reasons. Top signal cluster: expansion announcements (' + I.leads[0][0] + ', ' + I.leads[1][0] + ').' },
+          { r: 'user', t: 'Exclude anyone we lost a deal with in the last 12 months, and add a source link for every signal.' },
+          { r: 'ai', t: '6 removed (closed-lost history found in CRM). Source links added per signal. The disqualified list is in a separate tab — please skim before it\'s archived.' },
+        ],
+        art: () => ({ th1: 'COMPANY', th2: 'FIT', th3: 'BUYING SIGNAL', th4: 'NEXT ACTION',
+          tableRows: I.leads.map(l => {
+            const good = l[1] >= 80, mid = l[1] >= 60;
+            return { a: l[0], b: String(l[1]), c: l[2], d: l[3],
+              bStyle: 'font-family:IBM Plex Mono,monospace;font-size:13px;font-weight:600;color:' + (good ? '#a7c563' : mid ? '#e5a175' : '#e55e5e') + ';',
+              dStyle: 'font-size:12px;font-family:IBM Plex Mono,monospace;color:' + (l[3] === 'Disqualify' ? '#5f7391' : good ? '#eef2f9' : '#93a1b8') + ';' };
+          }) }) },
+
+      { title: 'Campaign Brief & Persona', out: 'Notion page', stage: 'PLANNING', kind: 'notion',
+        sub: 'The quarter\'s campaign brief — objective, persona, messaging pillars, channel mix — drafted from your case studies and iterated until the persona actually feels the pain.',
+        aiDoes: ['Drafts objective, persona & messaging pillars from real case-study pains', 'Proposes channel mix with budget split rationale', 'Grounds every claim in a knowledge-base source', 'Publishes to Notion as a draft for team comments'],
+        humanDoes: ['Pressure-test the persona against real conversations', 'Own the budget allocation call', 'Align sales team on the same messaging'],
+        files: [['campaign-brief · Notion', P], ['campaign-brief.md', S]],
+        editorName: 'campaign-brief.md', editorMeta: '05_marketing · Q3 brief, v2',
+        editor: () => [
+          L('# Q3 Campaign Brief — ' + I.name, H, 600), L(),
+          L('## Objective', H, 600),
+          L('40 MQLs from ' + I.name.toLowerCase() + ' segment · pipeline Rp 4M+'), L(),
+          L('## Persona  ← revised in v2', H, 600),
+          L('Was: ' + I.buyer.split('/')[0].trim() + ' (too senior)', R),
+          L('Now: the operational layer who feels this daily:', T),
+          L('"' + p0 + '"'), L(),
+          L('## Messaging pillars', H, 600),
+          L('1. ' + I.hook),
+          L('2. ' + I.stat + ' — proof over promise'),
+          L('3. Pilot-first, measured, no big-bang risk'),
+        ],
+        chat: [
+          { r: 'user', t: 'Draft the Q3 campaign brief for the ' + I.name.toLowerCase() + ' segment: objective, persona, messaging pillars, channel mix. Ground the pains in @case-studies/ + @icp.md, and check @crm-export.csv for real objections — no generic marketing-speak.' },
+          { r: 'sys', t: '+ campaign-brief.md · exported to Notion' },
+          { r: 'ai', t: 'Brief drafted. Persona: ' + I.buyer + '. Three pillars, each tied to a case-study fact. Channel mix: LinkedIn 50% / email 30% / event 20% with rationale.' },
+          { r: 'user', t: 'The persona is too senior — they approve, but they don\'t feel it. Target the operational layer who lives with this pain daily.' },
+          { r: 'ai', t: 'Persona shifted down a level. Pillar 2 rewritten around daily friction ("' + p0.toLowerCase() + '") instead of strategic outcomes. Exec persona kept as secondary audience for the whitepaper only.' },
+        ],
+        art: () => ({ notionSpace: 'Marketing / Campaign Briefs',
+          notionTitle: '◨ Q3 Campaign Brief — ' + I.name,
+          notionProps: [
+            { k: 'Objective', v: '40 MQLs · Rp 4M+ pipeline', bg: '#DBEDDB' },
+            { k: 'Persona (v2)', v: 'Operational layer — feels the pain daily', bg: '#E7F3F8' },
+            { k: 'Channels', v: 'LinkedIn 50 · Email 30 · Event 20', bg: '#FAEBDD' },
+            { k: 'Status', v: 'Draft v2 — open for team comments', bg: '#FFE2DD' },
+          ],
+          notionSections: [
+            { h: 'Messaging pillars', body: '1. ' + I.hook + '\n2. ' + I.stat + ' — proof over promise\n3. Pilot-first, measured, no big-bang risk' },
+            { h: 'Persona pain (grounded)', body: p0 + '. Source: case-study interviews, not assumption.' },
+            { h: 'What we will NOT say', body: 'No "revolutionary AI", no invented statistics, no client names without written approval.' },
+          ] }) },
+
+      { title: 'Long-form Content Draft', out: 'whitepaper.docx', stage: 'DEMAND GEN', kind: 'doc',
+        sub: 'A thought-leadership piece drafted from your own case studies and data — not generic AI filler. You supply the opinion; AI does the assembly and cites every figure.',
+        aiDoes: ['Outlines from a one-line topic + persona', 'Pulls real numbers from internal case studies, cited', 'Drafts in brand tone (defined once in CLAUDE.md)', 'Leaves the POV section intentionally empty for you'],
+        humanDoes: ['Supply the argument — AI assembles, you argue', 'Check every number against its source', 'Kill anything that sounds like everyone else'],
+        files: [['whitepaper-draft.docx', '#2B579A'], ['sources.md', S]],
+        editorName: 'whitepaper-draft.md', editorMeta: '05_marketing · 1,240 words · v2',
+        editor: () => [
+          L('# ' + I.topic, H, 600),
+          L('Persona: ' + I.buyer + ' · every figure cited', S), L(),
+          L('## Intro  ← rewritten in v2', H, 600),
+          L(I.hook, T),
+          L('That\'s not an effort problem. It\'s a process problem —'),
+          L('and the data says it\'s fixable.'), L(),
+          L('## 2. What the data shows', H, 600),
+          L(I.stat + '  [source: case-study file]', T), L(),
+          L('## 3. Our POV', H, 600),
+          L('⚠ intentionally empty — needs the human argument', R),
+        ],
+        chat: [
+          { r: 'user', t: 'Draft a 1,200-word article: "' + I.topic + '". Persona: ' + I.buyer + '. Use numbers from @case-studies/ only, with the source file cited for every figure. No invented statistics.' },
+          { r: 'sys', t: '+ whitepaper-draft.md created' },
+          { r: 'ai', t: '1,240 words drafted, every figure cited to its source file. Section 3 ("Our POV") left intentionally empty — that argument has to come from you, not me.' },
+          { r: 'user', t: 'The intro is throat-clearing. Start from the hook: "' + I.hook + '"' },
+          { r: 'ai', t: 'Rewrote the intro to open on the hook, cut 90 words of setup. The stat now lands in paragraph 2 instead of page 2. Exported to .docx for review.' },
+        ],
+        art: () => ({ docFileName: 'whitepaper-draft.docx', docTitle: I.topic,
+          docMeta: 'Whitepaper draft · persona: ' + I.buyer + ' · v2 — AI draft, human POV pending',
+          docBlocks: [
+            { text: I.hook, style: 'font-size:15px;font-weight:700;color:#1a1a1a;margin:6px 0;' },
+            { text: 'That\'s not an effort problem. It\'s a process problem — and the data says it\'s fixable.', style: 'font-size:12.5px;line-height:1.65;color:#333;margin-bottom:10px;' },
+            { text: '1. Why the current approach fails', style: 'font-size:13px;font-weight:700;color:#2B579A;margin:8px 0 3px 0;' },
+            { text: 'The default process rewards activity, not outcomes. ' + p0 + ' — the pattern repeats across the industry.', style: 'font-size:12.5px;line-height:1.65;color:#333;margin-bottom:8px;' },
+            { text: '2. What the data shows', style: 'font-size:13px;font-weight:700;color:#2B579A;margin:8px 0 3px 0;' },
+            { text: 'In a comparable deployment: ' + I.stat + ' [source: case-study file]. The mechanism: grounded context, fast iteration, disciplined review.', style: 'font-size:12.5px;line-height:1.65;color:#333;margin-bottom:8px;' },
+            { text: '3. Our POV — ⚠ intentionally empty: AI assembles, the human argues.', style: 'font-size:11.5px;color:#B94A34;font-style:italic;margin-top:10px;' },
+          ] }) },
+
+      { title: 'Captions & Ad Copy Variants', out: '3 variants / channel', stage: 'DEMAND GEN', kind: 'social',
+        sub: 'One core idea, many surfaces: LinkedIn, Instagram, ad headlines — three hook strategies each, iterated until they stop sounding like every AI post ever.',
+        aiDoes: ['Generates 3 hook strategies per channel (pain / stat / story)', 'Adapts length, tone & conventions per platform', 'Keeps every claim tied to a verified number', 'Suggests which variant to A/B against which segment'],
+        humanDoes: ['Pick the variant that sounds like you', 'Check brand & legal red lines', 'Own the calendar and community replies'],
+        files: [['captions-pack.md', T]],
+        editorName: 'captions-pack.md', editorMeta: '05_marketing · 9 variants · v2',
+        editor: () => [
+          L('# Captions Pack — ' + I.name + ' campaign', H, 600), L(),
+          L('## LinkedIn · variant B  ← rewritten in v2', H, 600),
+          L('Was: "In today\'s fast-paced landscape…"', R),
+          L('Now: opens on a concrete scene from the case study:', T),
+          L('"' + I.scene + '"'), L(),
+          L('## Rules applied', H, 600),
+          L('- Claim: "' + I.stat + '" (verified)', T),
+          L('- Max 2 hashtags · no emoji · brand voice per CLAUDE.md'),
+        ],
+        chat: [
+          { r: 'user', t: 'From @whitepaper-draft.md, create caption variants for LinkedIn + Instagram + Google Ads. 3 hook types each: pain-led / stat-led / story-led. Only verified numbers. Max 2 hashtags, no emoji.' },
+          { r: 'sys', t: '+ captions-pack.md created · 9 variants' },
+          { r: 'ai', t: '9 variants ready. Recommendation: test pain-led vs stat-led on LinkedIn for the operational persona; story-led fits Instagram best.' },
+          { r: 'user', t: 'Variant B sounds like every AI post ever written. Rewrite it opening on a concrete scene from the case study.' },
+          { r: 'ai', t: 'Rewritten — it now opens on the concrete case-study scene, then lands the verified stat. Generic opener deleted from all remaining variants too.' },
+        ],
+        art: () => ({ captions: [
+          { channel: 'LinkedIn · post', tag: 'PAIN-LED', hashtags: '#B2BSales #' + I.tagword,
+            text: I.hook + '\n\n' + p0 + '. The problem isn\'t effort — it\'s a process built for a slower market.\n\nWe wrote up what actually moves the number →' },
+          { channel: 'LinkedIn · variant B (v2)', tag: 'STORY-LED', hashtags: '#LevelUp',
+            text: I.scene + '\n\nMultiply that across the whole operation.\n\n' + I.stat + ' — here\'s the mechanism.' },
+          { channel: 'Google Ads · headline', tag: 'STAT-LED', hashtags: 'CTA: Download the playbook',
+            text: 'H1: ' + I.deckTitle + ' — the playbook\nH2: ' + I.stat + '\nDesc: How ' + I.name.toLowerCase() + ' teams turn training from cost into performance. Field-tested, measured, documented.' },
+        ] }) },
+
+      { title: 'Nurture Email Sequence', out: '4-touch sequence', stage: 'MID FUNNEL', kind: 'email',
+        sub: 'Leads scored 60–85 get a 4-touch sequence — one idea per email, personalized per segment, iterated until it gives value before it asks for anything.',
+        aiDoes: ['Drafts a 4-touch sequence mapped to the buyer journey', 'Personalizes the hook per segment & buying signal', 'Writes subject-line A/B pairs per touch', 'Sets exit conditions (any reply → account owner)'],
+        humanDoes: ['Approve once; read every reply personally', 'Tune timing to industry rhythm (audits, budget cycles)', 'Pull accounts out the moment they go warm'],
+        files: [['nurture-sequence.md', T], ['ab-subjects.csv', S]],
+        editorName: 'nurture-sequence.md', editorMeta: '05_marketing · 4 touches · v2',
+        editor: () => [
+          L('# Nurture — ' + I.name + ' (score 60–85)', H, 600), L(),
+          L('Touch 1 · Day 0  — the problem, named', T),
+          L('Touch 2 · Day 4  — ' + I.stat + ' (how)', T),
+          L('Touch 3 · Day 10 — teardown, NO CTA  ← changed in v2', P),
+          L('Touch 4 · Day 18 — the soft ask', T), L(),
+          L('## v2 change', H, 600),
+          L('Was: touch 3 pitched a demo (too salesy)', R),
+          L('Now: pure-value teardown · sequence = value,value,value,ask', T), L(),
+          L('Exit: any reply → route to account owner', S),
+        ],
+        chat: [
+          { r: 'user', t: 'Create a 4-touch nurture sequence for ' + I.name.toLowerCase() + ' leads scored 60–85 in @scored-leads.csv. Pain focus: ' + p0.toLowerCase() + '. One idea per email, under 120 words, soft CTA. Subject A/B pairs.' },
+          { r: 'sys', t: '+ nurture-sequence.md · ab-subjects.csv' },
+          { r: 'ai', t: 'Sequence drafted: problem → proof → teardown → ask, days 0/4/10/18. Exit condition: any reply routes to the account owner. Subject A/B pairs included per touch.' },
+          { r: 'user', t: 'Touch 3 feels salesy. Replace it with a pure-value teardown — no CTA at all.' },
+          { r: 'ai', t: 'Replaced. Touch 3 is now a 90-second teardown of the typical approach with zero ask. The sequence reads value–value–value–ask, and the final ask converts better when it\'s the first one.' },
+        ],
+        art: () => ({
+          emails: [
+            ['Day 0 · Touch 1', 'The ' + I.name.toLowerCase() + ' problem nobody budgets for'],
+            ['Day 4 · Touch 2', I.stat + ' — how one team did it'],
+            ['Day 10 · Touch 3', 'A 90-second teardown (no ask, promise)'],
+            ['Day 18 · Touch 4', 'Worth a 20-minute conversation?'],
+          ].map((e, i) => ({ day: e[0], subject: e[1],
+            style: 'padding:10px 12px;border-radius:10px;display:flex;flex-direction:column;gap:3px;border:1px solid ' + (i === 0 ? this.accent : '#2c3f61') + ';background:' + (i === 0 ? '#26385c' : '#20304e') + ';color:#eef2f9;' })),
+          emailFrom: 'marketing@' + I.co.toLowerCase().replace(/[^a-z]+/g, '') + '.id',
+          emailTo: I.contact.toLowerCase().replace(/[^a-z]+/g, '.') + '@' + I.account.toLowerCase().replace(/[^a-z]+/g, '') + '.com',
+          emailSubject: 'The ' + I.name.toLowerCase() + ' problem nobody budgets for',
+          emailBody: 'Hi ' + I.contact + ',\n\n' + p0 + ' — we see this pattern in ' + I.name.toLowerCase() + ' more than anywhere else.\n\nOne team rewired the process instead of adding headcount: ' + I.stat + '.\n\nI wrote a short teardown of how. Want me to send it over?\n\n— (no meeting ask yet · any reply routes to the account owner)' }) },
+
+      { title: 'Campaign Readout Deck', out: 'readout.pptx', stage: 'REPORTING', kind: 'deck',
+        sub: 'End of quarter: AI turns the raw campaign data into a readout deck — and when you ask for the honest story instead of the vanity story, it reorders the narrative.',
+        aiDoes: ['Builds funnel slides from campaign-data.csv', 'Extracts 3 learnings with supporting numbers', 'Drafts next-quarter bets with rationale', 'Restructures the narrative on request'],
+        humanDoes: ['Decide what the honest story is', 'Own the budget asks that follow', 'Present it — the room reads you, not slides'],
+        files: [['readout.pptx', H], ['campaign-data.csv', S]],
+        editorName: 'readout-outline.md', editorMeta: '05_marketing · Q2 readout · v2',
+        editor: () => [
+          L('# Q2 Campaign Readout — outline v2', H, 600), L(),
+          L('## Narrative  ← reordered in v2', H, 600),
+          L('1. The problem: SQL conversion flat despite volume', R),
+          L('2. What worked: CPL down 34% (supporting, not lead)', T),
+          L('3. Diagnosis: MQL quality, not quantity'),
+          L('4. Q3 bets: scoring threshold up, nurture rebuild'), L(),
+          L('## v1 (rejected)', H, 600),
+          L('Led with the CPL win — vanity-first narrative', S),
+          L('"Lead with the problem — that\'s the honest story" — AM', P),
+        ],
+        chat: [
+          { r: 'user', t: 'Build the Q2 campaign readout deck: funnel numbers from @campaign-data.csv vs targets in @campaign-brief.md, 3 learnings, next-quarter bets with rationale.' },
+          { r: 'sys', t: '+ readout.pptx created · 12 slides' },
+          { r: 'ai', t: '12 slides. Notable: CPL down 34%, but SQL conversion is flat — volume grew, quality didn\'t. Flagged as the key learning with the supporting funnel math.' },
+          { r: 'user', t: 'Lead with the SQL problem, not the CPL win. That\'s the honest story, and it sets up the Q3 budget ask.' },
+          { r: 'ai', t: 'Reordered: problem-first narrative. The CPL win moved to slide 6 as supporting evidence. Q3 bets now follow directly from the diagnosis — scoring threshold + nurture rebuild.' },
+        ],
+        art: () => ({ showTender: false,
+          slides: [
+            { bg: 'linear-gradient(135deg,#14203a,#16233d)', eyebrow: 'Q2 READOUT · MARKETING', eyeColor: '#7e93cf', title: 'The SQL problem\n(and the CPL win)', titleSize: '14px', titleColor: '#FFFFFF', justify: 'center', body: 'Honest numbers first ·  Agate Level Up', bodyColor: '#8194ba' },
+            { bg: '#FCFDFE', eyebrow: 'THE PROBLEM', eyeColor: '#2E6E8E', title: 'SQL conversion: flat', titleSize: '13px', titleColor: '#141B24', justify: 'flex-start', body: 'MQL volume +61% · SQL conversion 11% → 11%\nDiagnosis: quality, not quantity\nCPL −34% is real — but it\'s not the story', bodyColor: '#5f7391' },
+            { bg: '#FCFDFE', eyebrow: 'Q3 BETS', eyeColor: '#2E6E8E', title: 'Two bets, one thesis', titleSize: '13px', titleColor: '#1F3A54', justify: 'flex-start', body: '1. Raise scoring threshold 70 → 80\n2. Rebuild nurture: value-first sequence\nThesis: fewer, warmer leads → SQL up', bodyColor: '#5f7391' },
+          ] }) },
+    ];
+
+    return this.state.track === 'sales' ? SALES : MKT;
+  }
+
+  getTree(uc) {
+    const gen = uc.files.map(f => f[0].replace(' · Notion', '.notion').split(' ')[0]);
+    const trackFolder = this.state.track === 'sales' ? '04_sales' : '05_marketing';
+    return [
+      { i: 0, icon: '▾', name: 'AGATE-WORKSPACE', folder: true },
+      { i: 1, icon: '◆', name: 'CLAUDE.md', claude: true },
+      { i: 1, icon: '▾', name: '01_knowledge', folder: true },
+      { i: 2, icon: '≡', name: 'icp.md' },
+      { i: 2, icon: '≡', name: 'pricing-rates.md' },
+      { i: 2, icon: '≡', name: 'case-studies/' , folder: true},
+      { i: 2, icon: '≡', name: 'proposal-template.md' },
+      { i: 1, icon: '▾', name: '02_clients', folder: true },
+      { i: 2, icon: '≡', name: 'meeting-notes.md' },
+      { i: 2, icon: '≡', name: 'crm-export.csv' },
+      { i: 1, icon: '▾', name: trackFolder, folder: true },
+      ...gen.map(g => ({ i: 2, icon: '≡', name: g, isNew: true })),
+      { i: 2, icon: '◆', name: uc.editorName, active: true, isNew: true },
+    ].filter((r, idx, arr) => arr.findIndex(x => x.name === r.name) === idx);
+  }
+
+  claudeLines(I) {
+    const L = this.L.bind(this);
+    return [
+      L('# CLAUDE.md — Workspace Context', '#e5a175', 600), L(),
+      L('## Who we are', '#e5a175', 600),
+      L('- ' + I.we),
+      L('- Tone: professional, solution-driven, data-backed'), L(),
+      L('## Rules for AI', '#e5a175', 600),
+      L('- Prices & packages: pricing-rates.md only — NEVER invent numbers', '#e55e5e'),
+      L('- Case studies: max 2, most relevant to client industry'),
+      L('- Every output is a draft. Humans decide.', '#a7c563'), L(),
+      L('## Output', '#e5a175', 600),
+      L('- Save generated files to the track folder', '#8194ba'),
+    ];
+  }
+
+  renderVals() {
+    const accent = this.accent;
+    const accentDim = accent + '18', accentBorder = accent + '44';
+    const inds = this.getIndustries();
+    const I = inds[this.state.ind];
+    const ucs = this.getUseCases(I);
+    const uc = ucs[Math.min(this.state.uc, ucs.length - 1)];
+    const showClaude = this.state.openClaude === true;
+
+    const indOptions = Object.keys(inds).map(k => ({
+      name: k + ' · ' + inds[k].name, tag: inds[k].tag, icon: inds[k].icon,
+      onClick: () => this.setState({ ind: k, ddOpen: false }),
+      style: 'display:flex;align-items:center;gap:11px;width:100%;padding:9px 12px;border:none;border-radius:8px;cursor:pointer;text-align:left;font-family:inherit;color:#eef2f9;background:' + (k === this.state.ind ? '#2c3f61' : 'transparent') + ';',
+    }));
+
+    const ucList = ucs.map((u, i) => ({
+      num: '0' + (i + 1), title: u.title, out: u.out,
+      onClick: () => this.setState({ uc: i, openClaude: false }),
+      style: 'display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;cursor:pointer;text-align:left;font-family:inherit;color:#eef2f9;transition:border-color .15s,background .15s;background:' + (i === this.state.uc ? '#26385c' : '#20304e') + ';border:1px solid ' + (i === this.state.uc ? accent : '#2c3f61') + ';',
+      numStyle: 'font-family:IBM Plex Mono,monospace;font-size:12px;font-weight:600;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;' + (i === this.state.uc ? 'background:' + accentDim + ';color:' + accent + ';border:1px solid ' + accentBorder + ';' : 'background:#2c3f61;color:#8194ba;border:1px solid #3a4f74;'),
+    }));
+
+    const tree = this.getTree(uc).map(r => ({
+      icon: r.icon, name: r.name, isNew: !!r.isNew,
+      onClick: r.claude ? (() => this.setState({ openClaude: true }))
+        : r.active !== undefined || r.name === uc.editorName ? (() => this.setState({ openClaude: false }))
+        : (() => {}),
+      style: 'display:flex;align-items:center;gap:8px;width:100%;padding:3.5px 8px 3.5px ' + (8 + r.i * 13) + 'px;border:none;border-radius:6px;cursor:' + ((r.claude || r.active) ? 'pointer' : 'default') + ';font-family:IBM Plex Mono,monospace;font-size:11.5px;text-align:left;background:' + ((r.active && !showClaude) || (r.claude && showClaude) ? '#2c3f61' : 'transparent') + ';color:' + (r.folder ? '#8194ba' : r.active ? '#eef2f9' : '#b6c4dd') + ';',
+      iconStyle: 'flex:none;font-size:10px;color:' + (r.claude || r.active ? '#7e93cf' : r.folder ? '#5f7391' : '#a7c563') + ';',
+    }));
+
+    const rawLines = showClaude ? this.claudeLines(I) : uc.editor();
+    const editorLines = rawLines.map((ln, i) => {
+      const hl = ln.text.indexOf('←') !== -1;
+      return {
+        n: i + 1, text: ln.text,
+        style: 'white-space:pre-wrap;color:' + (ln.c || '#cdd9ec') + ';' + (ln.w ? 'font-weight:' + ln.w + ';' : '') + (hl ? 'background:' + accent + '14;border-radius:4px;padding:0 6px;margin:0 -6px;box-shadow:inset 2px 0 0 ' + accent + ';' : ''),
+      };
+    });
+
+    const chat = uc.chat.map((m, i) => {
+      const isUser = m.r === 'user', isSys = m.r === 'sys';
+      return {
+        roleLabel: isUser ? (this.state.track === 'sales' ? 'SALES / AM' : 'MARKETER') : isSys ? 'SYSTEM' : 'AI ASSISTANT',
+        text: m.t,
+        time: '09:' + String(38 + i * 3).padStart(2, '0'),
+        parts: m.t.split(/(@[A-Za-z0-9._\/-]+)/g).filter(s => s.length).map(s => ({
+          t: s,
+          style: s[0] === '@' ? 'font-family:IBM Plex Mono,monospace;font-size:11px;color:#a7c563;background:rgba(167,197,99,.12);border:1px solid rgba(167,197,99,.3);border-radius:5px;padding:0 4px;white-space:nowrap;' : '',
+        })),
+        wrapStyle: 'display:flex;flex-direction:column;gap:4px;animation:fadeUp .4s ease both;animation-delay:' + (i * 60) + 'ms;',
+        labelStyle: 'font-family:IBM Plex Mono,monospace;font-size:9px;letter-spacing:.15em;color:' + (isUser ? '#e5a175' : isSys ? '#5f7391' : accent) + ';' + (isUser ? 'text-align:right;' : ''),
+        bubbleStyle: 'font-size:12px;line-height:1.55;white-space:pre-line;border-radius:10px;padding:9px 12px;max-width:95%;' + (isUser
+          ? 'background:#2c3f61;color:#eef2f9;align-self:flex-end;border:1px solid #3a4f74;'
+          : isSys
+            ? 'background:transparent;color:#5f7391;font-family:IBM Plex Mono,monospace;font-size:10.5px;border:1px dashed #3a4f74;'
+            : 'background:' + accent + '14;color:#e3ebf6;border:1px solid ' + accent + '3a;'),
+      };
+    });
+
+    const files = uc.files.map(f => ({ name: f[0], dotStyle: 'width:8px;height:8px;border-radius:2px;background:' + f[1] + ';flex:none;' }));
+
+    const defaults = { th1: '', th2: '', th3: '', th4: '', tableRows: [], notionSpace: '', notionTitle: '', notionProps: [], notionSections: [], docFileName: '', docTitle: '', docMeta: '', docBlocks: [], captions: [], emails: [], emailFrom: '', emailTo: '', emailSubject: '', emailBody: '', slides: [], showTender: false, tenderTitle: '', tenderRows: [] };
+
+    const trackBtn = (on) => 'padding:8px 18px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;transition:background .15s,color .15s;' + (on ? 'background:' + accent + ';color:#16233d;' : 'background:transparent;color:#8194ba;');
+
+    return Object.assign({}, defaults, uc.art(), {
+      accent, accentDim, accentBorder,
+      pickSales: () => this.setState({ track: 'sales', uc: 0, openClaude: false }),
+      pickMkt: () => this.setState({ track: 'mkt', uc: 0, openClaude: false }),
+      salesBtnStyle: trackBtn(this.state.track === 'sales'),
+      mktBtnStyle: trackBtn(this.state.track === 'mkt'),
+      indName: I.name, indIcon: I.icon, indOptions,
+      ddOpen: this.state.ddOpen, ddArrow: this.state.ddOpen ? '▲' : '▼',
+      toggleDd: () => this.setState(s => ({ ddOpen: !s.ddOpen })),
+      icp: I.icp + ' Primary buyer: ' + I.buyer + '.',
+      brandName: I.co,
+      brandInitials: I.co.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(),
+      ucList, ucTitle: uc.title, ucSub: uc.sub, ucStage: uc.stage,
+      aiDoes: uc.aiDoes, humanDoes: uc.humanDoes, files,
+      tree,
+      openFileName: showClaude ? 'CLAUDE.md' : uc.editorName,
+      tabs: [
+        { name: 'CLAUDE.md', active: showClaude, onClick: () => this.setState({ openClaude: true }) },
+        { name: uc.editorName, active: !showClaude, onClick: () => this.setState({ openClaude: false }) },
+      ].map(t => ({
+        name: t.name, onClick: t.onClick,
+        style: 'display:flex;align-items:center;gap:7px;padding:8px 16px;border:none;border-right:1px solid #2c3f61;cursor:pointer;font-family:IBM Plex Mono,monospace;font-size:12px;transition:color .15s;' + (t.active ? 'background:#172338;color:#eef2f9;box-shadow:inset 0 2px 0 ' + accent + ';' : 'background:transparent;color:#5f7391;'),
+        dotStyle: 'font-size:10px;color:' + (t.active ? '#7e93cf' : '#51689a') + ';',
+      })),
+      openFileMeta: showClaude ? 'workspace context · read every session' : uc.editorMeta,
+      editorLines,
+      statusHint: uc.out,
+      chat,
+      isTable: uc.kind === 'table', isNotion: uc.kind === 'notion', isDoc: uc.kind === 'doc',
+      isSocial: uc.kind === 'social', isEmail: uc.kind === 'email', isDeck: uc.kind === 'deck',
+    });
+  }
+}
+
+</script>
+</body>
+</html>

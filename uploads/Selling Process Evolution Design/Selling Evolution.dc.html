@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<button id="lu-fs" title="Full screen" style="position:fixed;right:16px;bottom:16px;z-index:99999;display:inline-flex;align-items:center;gap:6px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,22,40,.35);">⛶ Full screen</button>
+<script>(function(){var b=document.getElementById("lu-fs");if(!b)return;function u(){b.textContent=document.fullscreenElement?"⤢ Exit full screen":"⛶ Full screen";}b.addEventListener("click",function(){if(document.fullscreenElement){document.exitFullscreen();}else{(document.documentElement.requestFullscreen()||Promise.resolve()).catch&&document.documentElement.requestFullscreen().catch(function(){});}});document.addEventListener("fullscreenchange",u);u();})();</script>
+
+<script>if(!window.claude){window.claude={complete:function(o){return new Promise(function(r){setTimeout(function(){r("\u2039Mode demo lokal\u203a Fitur live-chat memerlukan koneksi Claude (hanya aktif di dalam Claude). Lihat tab / kolom \"Contoh Percakapan\" untuk alur lengkap yang tersimulasi.");},700);});}};}</script>
+<a href="../../index.html#modules" title="Kembali ke menu" style="position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:7px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 15px;text-decoration:none;box-shadow:0 6px 20px rgba(15,22,40,.35);">&#9750; Menu Level Up</a>
+<svg class="lu-memphis" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.15;"><g><circle cx="95" cy="120" r="36" fill="none" stroke="#6f98b2" stroke-width="7"/><circle cx="95" cy="120" r="17" fill="none" stroke="#6f98b2" stroke-width="7"/><g fill="#ed9e72"><circle cx="185" cy="70" r="6"/><circle cx="210" cy="70" r="6"/><circle cx="235" cy="70" r="6"/><circle cx="185" cy="95" r="6"/><circle cx="210" cy="95" r="6"/><circle cx="235" cy="95" r="6"/></g><path d="M40 215 q18 -26 36 0 t36 0 t36 0" fill="none" stroke="#e55e5e" stroke-width="7" stroke-linecap="round"/><circle cx="1505" cy="120" r="72" fill="#435f9c"/><path d="M1330 70 q22 -28 44 0 t44 0" fill="none" stroke="#acc673" stroke-width="7" stroke-linecap="round"/><g stroke="#e55e5e" stroke-width="7" stroke-linecap="round"><path d="M1420 210h44"/><path d="M1442 188v44"/></g><path d="M1300 250 l26 46 -52 0 z" fill="#f6d7b8"/><path d="M55 860 a62 62 0 0 1 124 0 z" fill="#e55e5e"/><path d="M120 690 l42 74 -84 0 z" fill="none" stroke="#acc673" stroke-width="7"/><g fill="#879ac1"><circle cx="250" cy="770" r="6"/><circle cx="275" cy="770" r="6"/><circle cx="300" cy="770" r="6"/><circle cx="250" cy="795" r="6"/><circle cx="275" cy="795" r="6"/><circle cx="300" cy="795" r="6"/></g><circle cx="1525" cy="800" r="42" fill="none" stroke="#a48bac" stroke-width="7"/><path d="M1330 835 q22 -28 44 0 t44 0 t44 0" fill="none" stroke="#6f98b2" stroke-width="7" stroke-linecap="round"/><g fill="#ed9e72"><circle cx="1470" cy="690" r="6"/><circle cx="1495" cy="690" r="6"/><circle cx="1520" cy="690" r="6"/></g></g></svg>
+
+<x-dc>
+<helmet>
+  <title>Selling Evolution — B2B Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;padding:0;background:#16233d;}
+    *{box-sizing:border-box;}
+    ::selection{background:rgba(126,147,207,.35);}
+    @keyframes ring1{from{transform:rotateX(72deg) rotateZ(0deg);}to{transform:rotateX(72deg) rotateZ(360deg);}}
+    @keyframes ring2{from{transform:rotateX(72deg) rotateY(50deg) rotateZ(360deg);}to{transform:rotateX(72deg) rotateY(50deg) rotateZ(0deg);}}
+    @keyframes ring3{from{transform:rotateX(20deg) rotateY(-40deg) rotateZ(0deg);}to{transform:rotateX(20deg) rotateY(-40deg) rotateZ(360deg);}}
+    @keyframes corePulse{0%,100%{opacity:.75;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+    @keyframes blinkDot{0%,100%{opacity:.25;}50%{opacity:1;}}
+    ::-webkit-scrollbar{width:10px;height:10px;}
+    ::-webkit-scrollbar-thumb{background:#3a4f74;border-radius:6px;}
+    ::-webkit-scrollbar-track{background:transparent;}
+  body{background:radial-gradient(1200px 820px at 82% -12%,#33507f,#22314f 62%) fixed #22314f;min-height:100vh;}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:transparent;position:relative;z-index:1;color:#eef2f9;font-family:'Nunito',sans-serif;padding:0 0 64px 0;">
+
+  <!-- Header -->
+  <header style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:36px 44px 24px 44px;border-bottom:1px solid #2c3f61;">
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#8194ba;">B2B Service — Level UP</div>
+      <h1 style="margin:0;font-size:34px;font-weight:700;letter-spacing:-0.01em;">Selling Evolution</h1>
+      <p style="margin:0;font-size:15px;color:#8194ba;max-width:640px;">Dari <span style="color:#e5a175;">Traditional</span> ke <span style="color:#7e93cf;">Autonomous</span> — klik tiap tahap untuk melihat definisi, peran manusia vs AI, input context / system prompt, dan simulasi percakapannya.</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8194ba;white-space:nowrap;">
+      <span style="width:8px;height:8px;border-radius:50%;background:#a7c563;display:inline-block;animation:blinkDot 2.4s ease-in-out infinite;"></span>
+      interactive prototype
+    </div>
+  </header>
+
+  <!-- Stage stepper -->
+  <nav style="display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:stretch;gap:0;padding:28px 44px 8px 44px;">
+    <sc-for list="{{ stages }}" as="s" hint-placeholder-count="4">
+      <button onClick="{{ s.onClick }}" style="{{ s.cardStyle }}" style-hover="border-color:#51689a;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+          <span style="{{ s.numStyle }}">{{ s.num }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8194ba;">AI {{ s.aiPct }}%</span>
+        </div>
+        <div style="font-size:17px;font-weight:600;margin-top:10px;text-align:left;">{{ s.name }}</div>
+        <div style="font-size:12.5px;color:#8194ba;margin-top:3px;text-align:left;line-height:1.4;">{{ s.tagline }}</div>
+        <div style="height:4px;border-radius:2px;background:#2c3f61;margin-top:12px;overflow:hidden;">
+          <div style="{{ s.miniBarStyle }}"></div>
+        </div>
+      </button>
+      <sc-if value="{{ s.showArrow }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;justify-content:center;color:#51689a;font-size:18px;">→</div>
+      </sc-if>
+    </sc-for>
+  </nav>
+
+  <!-- Stage hero -->
+  <section style="position:relative;margin:20px 44px 0 44px;border:1px solid #2c3f61;border-radius:16px;background:linear-gradient(135deg,#20304e00,#20304e);padding:28px 32px;overflow:hidden;min-height:150px;" data-screen-label="stage-hero">
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:8px;max-width:62%;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="{{ heroNumStyle }}">{{ curNum }}</span>
+        <h2 style="margin:0;font-size:26px;font-weight:700;">{{ curName }}</h2>
+        <span style="{{ heroTagStyle }}">{{ curMode }}</span>
+      </div>
+      <p style="margin:0;font-size:15px;color:#b6c4dd;line-height:1.55;">{{ curDefinisi }}</p>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:8px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8194ba;white-space:nowrap;">HUMAN {{ humanPct }}%</span>
+        <div style="flex:1;height:8px;border-radius:4px;background:#2c3f61;overflow:hidden;display:flex;">
+          <div style="{{ humanBarStyle }}"></div>
+          <div style="{{ aiBarStyle }}"></div>
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8194ba;white-space:nowrap;">AI {{ aiPct }}%</span>
+      </div>
+    </div>
+    <!-- 3D decorative orb (autonomous) -->
+    <sc-if value="{{ isAutonomous }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;right:48px;top:50%;margin-top:-85px;width:170px;height:170px;perspective:700px;z-index:1;" aria-hidden="true">
+        <div style="position:absolute;inset:0;transform-style:preserve-3d;">
+          <div style="{{ orbRing1Style }}"></div>
+          <div style="{{ orbRing2Style }}"></div>
+          <div style="{{ orbRing3Style }}"></div>
+          <div style="{{ orbCoreStyle }}"></div>
+        </div>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- Body grid -->
+  <main style="display:grid;grid-template-columns:minmax(340px,5fr) minmax(420px,7fr);gap:24px;padding:24px 44px 0 44px;align-items:start;">
+
+    <!-- LEFT: stage details -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;padding:20px 22px;">
+        <h3 style="margin:0 0 12px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8194ba;">Karakteristik</h3>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ chars }}" as="c" hint-placeholder-count="4">
+            <li style="display:flex;gap:10px;font-size:14px;line-height:1.5;color:#cdd9ec;"><span style="{{ bulletStyle }}"></span><span>{{ c }}</span></li>
+          </sc-for>
+        </ul>
+      </div>
+
+      <div style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;padding:20px 22px;">
+        <h3 style="margin:0 0 12px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8194ba;">Peran Manusia vs AI</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="font-size:13px;font-weight:600;color:#eef2f9;">👤 Manusia</div>
+            <sc-for list="{{ rolesHuman }}" as="r" hint-placeholder-count="3">
+              <div style="font-size:13px;color:#93a1b8;line-height:1.45;">· {{ r }}</div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="{{ aiRoleTitleStyle }}">✦ AI</div>
+            <sc-for list="{{ rolesAI }}" as="r" hint-placeholder-count="3">
+              <div style="font-size:13px;color:#93a1b8;line-height:1.45;">· {{ r }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;padding:20px 22px;">
+        <h3 style="margin:0 0 12px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8194ba;">Tools & Teknologi</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ tools }}" as="t" hint-placeholder-count="4">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:999px;padding:5px 12px;">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;padding:20px 22px;">
+        <h3 style="margin:0 0 10px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8194ba;">Use Case Nyata</h3>
+        <p style="margin:0;font-size:14px;color:#cdd9ec;line-height:1.6;">{{ useCase }}</p>
+      </div>
+
+      <div style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;padding:20px 22px;">
+        <h3 style="margin:0 0 12px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8194ba;">Metrik Keberhasilan</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="3">
+            <div style="display:flex;justify-content:space-between;gap:12px;font-size:13.5px;border-bottom:1px dashed #2c3f61;padding-bottom:8px;">
+              <span style="color:#93a1b8;">{{ m.label }}</span>
+              <span style="{{ metricValStyle }}">{{ m.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: prompt + chat -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid #2c3f61;">
+          <h3 style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8194ba;">{{ promptTitle }}</h3>
+          <button onClick="{{ copyPrompt }}" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:8px;padding:6px 12px;cursor:pointer;" style-hover="border-color:#51689a;color:#FFFFFF;">{{ copyLabel }}</button>
+        </div>
+        <pre style="margin:0;padding:18px 20px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.65;color:#cfe0a8;white-space:pre-wrap;max-height:300px;overflow:auto;background:#172338;">{{ prompt }}</pre>
+      </div>
+
+      <div style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid #2c3f61;">
+          <div style="display:flex;gap:6px;">
+            <button onClick="{{ setTabScript }}" style="{{ tabScriptStyle }}">Contoh Percakapan</button>
+            <button onClick="{{ setTabLive }}" style="{{ tabLiveStyle }}">Live Chat — coba sendiri</button>
+          </div>
+          <sc-if value="{{ isLive }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ resetLive }}" style="font-size:12px;color:#8194ba;background:transparent;border:none;cursor:pointer;text-decoration:underline;">reset</button>
+          </sc-if>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;padding:18px 18px;min-height:280px;max-height:430px;overflow:auto;background:#172338;">
+          <sc-for list="{{ chatMessages }}" as="msg" hint-placeholder-count="4">
+            <div style="{{ msg.rowStyle }}">
+              <div style="max-width:78%;display:flex;flex-direction:column;gap:4px;">
+                <span style="{{ msg.nameStyle }}">{{ msg.name }}</span>
+                <div style="{{ msg.bubbleStyle }}">{{ msg.text }}</div>
+              </div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8194ba;animation:blinkDot 1.2s ease-in-out infinite;">AI sedang mengetik…</div>
+          </sc-if>
+          <sc-if value="{{ liveEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:13.5px;color:#5f7391;line-height:1.6;padding:8px 4px;">{{ liveHint }}</div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ isLive }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;gap:10px;padding:12px 14px;border-top:1px solid #2c3f61;">
+            <input value="{{ input }}" onChange="{{ onInput }}" onKeyDown="{{ onKey }}" placeholder="{{ inputPlaceholder }}" style="flex:1;background:#172338;border:1px solid #3a4f74;border-radius:10px;padding:11px 14px;color:#eef2f9;font-family:'Nunito',sans-serif;font-size:14px;outline:none;" style-focus="border-color:#51689a;">
+            <button onClick="{{ sendLive }}" style="{{ sendBtnStyle }}">Kirim</button>
+          </div>
+        </sc-if>
+      </div>
+
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultStage&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;traditional&quot;, &quot;options&quot;: [&quot;traditional&quot;, &quot;augmented&quot;, &quot;assisted&quot;, &quot;autonomous&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Behavior&quot;}, &quot;aiModel&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;claude-haiku-4-5&quot;, &quot;options&quot;: [&quot;claude-haiku-4-5&quot;, &quot;claude-sonnet-4-5&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Live Chat&quot;}, &quot;orbAnimation&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Visual&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const stageIdx = { traditional: 0, augmented: 1, assisted: 2, autonomous: 3 }[props.defaultStage] ?? 0;
+    this.state = {
+      stage: stageIdx,
+      tab: 'script',
+      input: '',
+      loading: false,
+      copied: false,
+      live: { 0: [], 1: [], 2: [], 3: [] }
+    };
+  }
+
+  STAGES = [
+    {
+      num: '01', name: 'Traditional Selling', mode: 'Human-driven',
+      accent: '#e5a175', humanPct: 100,
+      tagline: 'Sepenuhnya manusia: relasi, intuisi & script.',
+      definisi: 'Seluruh siklus penjualan dijalankan manusia — prospecting lewat referensi, cold call, meeting tatap muka, follow-up manual. Kekuatannya ada di hubungan personal; kelemahannya sulit di-scale.',
+      chars: ['Relationship-based: kepercayaan dibangun lewat interaksi personal', 'Bergantung pada intuisi & pengalaman sales individual', 'Proses & data tersebar (catatan pribadi, spreadsheet)', 'Kapasitas terbatas — 1 rep hanya sanggup puluhan prospek'],
+      rolesHuman: ['Prospecting & riset manual', 'Semua percakapan & negosiasi', 'Menyusun proposal & follow-up', 'Closing & relationship'],
+      rolesAI: ['— tidak ada peran AI'],
+      tools: ['Telepon & email', 'Spreadsheet', 'CRM dasar', 'Kartu nama & event'],
+      useCase: 'Account executive Level UP mendapat referensi dari klien lama, menelepon prospek, presentasi on-site, lalu mengirim proposal PDF dan menindaklanjuti lewat WhatsApp selama 3 bulan hingga deal.',
+      metrics: [
+        { label: 'Siklus penjualan', value: '3–6 bulan' },
+        { label: 'Prospek aktif / rep', value: '± 30' },
+        { label: 'Biaya akuisisi', value: 'Tinggi' },
+        { label: 'Konsistensi pitch', value: 'Bervariasi per rep' }
+      ],
+      promptTitle: 'Input Context — Sales Playbook (dipegang manusia)',
+      prompt: `ROLE: Kamu adalah "Rian", senior account executive Level UP — penyedia layanan B2B untuk meningkatkan service level & transformasi digital klien. Kamu menjual secara TRADISIONAL: tanpa AI, mengandalkan relasi dan script ini.
+
+TUJUAN: arahkan percakapan menuju komitmen konkret (meeting / assessment) — convert to selling.
+
+ALUR:
+1. OPENING — sapa hangat, sebut referensi/koneksi bersama, minta izin 5 menit.
+2. DISCOVERY — gali pain point: "Apa tantangan terbesar tim Anda dalam menjaga service level saat ini?"
+3. VALUE — kaitkan pain point ke layanan Level UP; ceritakan 1 kisah sukses klien serupa (tanpa menyebut nama tanpa izin).
+4. OBJECTION HANDLING — dengarkan, validasi ("Saya paham kekhawatirannya…"), jawab dengan bukti. Jangan berdebat.
+5. CLOSING — ajak langkah konkret: "Bagaimana kalau kita jadwalkan sesi assessment gratis minggu ini?"
+
+GAYA: profesional-hangat, Bahasa Indonesia, kalimat pendek, SATU pertanyaan per giliran. Jangan tawarkan diskon sebelum diminta.`,
+      liveHint: 'Anda berperan sebagai calon customer. "Rian" (diperankan AI mengikuti playbook di atas) akan mencoba membawa Anda ke arah closing. Mulailah dengan menyapa.',
+      aiName: 'Rian (Sales)',
+      script: [
+        { who: 'seller', name: 'Rian (Sales)', text: 'Selamat siang Pak Dimas, saya Rian dari Level UP. Saya dapat kontak Bapak dari Bu Sari di Nusantara Corp. Boleh minta waktu 5 menit?' },
+        { who: 'customer', name: 'Customer', text: 'Oh dari Bu Sari ya. Boleh, silakan.' },
+        { who: 'seller', name: 'Rian (Sales)', text: 'Terima kasih Pak. Kalau boleh tahu, apa tantangan terbesar tim Bapak dalam menjaga service level ke pelanggan saat ini?' },
+        { who: 'customer', name: 'Customer', text: 'Response time tim support kami lambat, banyak komplain masuk.' },
+        { who: 'seller', name: 'Rian (Sales)', text: 'Itu persis yang dialami klien kami di industri serupa — setelah 3 bulan program Level UP, response time mereka turun 40%. Bagaimana kalau kita jadwalkan sesi assessment gratis minggu ini, Pak?' },
+        { who: 'customer', name: 'Customer', text: 'Menarik. Kirim jadwalnya, kita atur Kamis.' }
+      ]
+    },
+    {
+      num: '02', name: 'Augmented Selling', mode: 'AI as copilot',
+      accent: '#a7c563', humanPct: 75,
+      tagline: 'AI membantu sales rep di belakang layar.',
+      definisi: 'Manusia tetap memegang seluruh percakapan dengan customer, tetapi AI mempercepat pekerjaan di belakang layar: riset prospek, draft email personal, talking points, dan ringkasan meeting.',
+      chars: ['Customer tetap hanya berinteraksi dengan manusia', 'AI memangkas waktu riset & administrasi hingga separuh', 'Outreach lebih personal karena riset otomatis per prospek', 'Kualitas pitch lebih konsisten antar rep'],
+      rolesHuman: ['Semua percakapan dengan customer', 'Keputusan strategi & negosiasi', 'Validasi output AI sebelum dipakai'],
+      rolesAI: ['Riset prospek & perusahaan', 'Draft email / proposal awal', 'Transkrip & ringkasan meeting', 'Saran next-best-action'],
+      tools: ['CRM + AI assistant', 'Email drafting AI', 'Call transcription', 'Sales intelligence'],
+      useCase: 'Sebelum meeting, rep meminta copilot merangkum profil prospek, berita terbaru perusahaannya, dan menyiapkan 3 talking points. Setelah call, AI membuat ringkasan & draft follow-up email dalam 2 menit.',
+      metrics: [
+        { label: 'Waktu riset / prospek', value: '2 jam → 15 menit' },
+        { label: 'Outreach personal / minggu', value: '3× lipat' },
+        { label: 'Follow-up terkirim < 24 jam', value: '95%' },
+        { label: 'Siklus penjualan', value: '2–4 bulan' }
+      ],
+      promptTitle: 'System Prompt — AI Sales Copilot (internal)',
+      prompt: `ROLE: Kamu adalah AI Sales Copilot untuk account executive Level UP (layanan B2B peningkatan service level). Kamu TIDAK pernah berbicara dengan customer — kamu membantu sales rep di belakang layar.
+
+TUGAS UTAMA:
+- Riset prospek: rangkum industri, ukuran, kemungkinan pain point.
+- Draft email outreach / follow-up yang personal (maks 120 kata, 1 CTA jelas).
+- Siapkan talking points & pertanyaan discovery sebelum meeting.
+- Ringkas hasil meeting: keputusan, objection, next steps.
+- Sarankan next-best-action untuk menggerakkan deal ke tahap berikutnya.
+
+FORMAT OUTPUT: ringkas, bullet points, siap pakai. Bahasa mengikuti bahasa rep.
+
+GUARDRAILS:
+- Jangan menjanjikan harga, SLA, atau timeline tanpa data dari rep.
+- Tandai semua asumsi dengan "[asumsi]".
+- Selalu akhiri dengan saran langkah berikutnya untuk convert to selling.`,
+      liveHint: 'Anda berperan sebagai sales rep. Minta copilot melakukan riset, membuat draft email, atau menyiapkan talking points. Contoh: "Buatkan draft email follow-up untuk prospek yang komplain soal response time."',
+      aiName: 'Copilot',
+      script: [
+        { who: 'customer', name: 'Sales Rep', text: 'Besok aku meeting dengan Head of CX perusahaan logistik, 500 karyawan. Siapkan talking points.' },
+        { who: 'seller', name: 'Copilot', text: 'Siap. 3 talking points: (1) Industri logistik rata-rata kehilangan 12% pelanggan karena respons lambat [asumsi: benchmark 2025]. (2) Program Level UP memangkas response time klien serupa 40%. (3) Assessment gratis 2 minggu tanpa komitmen. Pertanyaan discovery: "Berapa SLA response time internal Anda sekarang?"' },
+        { who: 'customer', name: 'Sales Rep', text: 'Bagus. Buat draft follow-up email singkat setelah meeting nanti.' },
+        { who: 'seller', name: 'Copilot', text: 'Draft (98 kata) siap: pembuka merujuk poin meeting, ringkasan value, CTA jadwal assessment Kamis/Jumat. Next-best-action: kirim maks 4 jam setelah meeting selagi momentum hangat.' }
+      ]
+    },
+    {
+      num: '03', name: 'Assisted Selling', mode: 'AI menghadapi customer',
+      accent: '#6f98b2', humanPct: 50,
+      tagline: 'AI melayani customer 24/7, manusia yang closing.',
+      definisi: 'AI berbicara langsung dengan calon customer — menjawab pertanyaan, meng-qualify lead, dan menjadwalkan demo. Deal tetap ditutup manusia; AI tahu kapan harus eskalasi.',
+      chars: ['Respons instan 24/7 di website / WhatsApp', 'Qualification otomatis (budget, authority, need, timeline)', 'Handoff mulus ke human specialist untuk closing', 'Semua percakapan tercatat & ternilai (lead scoring)'],
+      rolesHuman: ['Demo & negosiasi', 'Closing deal', 'Menangani kasus yang dieskalasi'],
+      rolesAI: ['Menyapa & edukasi 24/7', 'Qualify lead (BANT)', 'Jadwalkan demo otomatis', 'Eskalasi sesuai aturan'],
+      tools: ['Conversational AI (web/WA)', 'Lead scoring', 'Calendar integration', 'CRM sync otomatis'],
+      useCase: 'Prospek mengunjungi website Level UP jam 11 malam, bertanya soal paket. AI "Luna" menjawab, meng-qualify kebutuhan & timeline, lalu langsung membooking demo dengan specialist untuk esok pagi — tanpa satu pun manusia terjaga.',
+      metrics: [
+        { label: 'First response time', value: '< 1 menit' },
+        { label: 'Lead ter-qualify otomatis', value: '70%' },
+        { label: 'Demo terjadwal di luar jam kerja', value: '35%' },
+        { label: 'Siklus penjualan', value: '3–6 minggu' }
+      ],
+      promptTitle: 'System Prompt — Customer-facing AI Assistant',
+      prompt: `ROLE: Kamu adalah "Luna", AI assistant Level UP di website & WhatsApp. Kamu berbicara LANGSUNG dengan calon customer B2B yang ingin meningkatkan service level perusahaannya.
+
+TUJUAN: qualify lead dan jadwalkan demo dengan human specialist — convert to selling.
+
+FLOW:
+1. GREET — sapa ramah, tanyakan kebutuhan.
+2. QUALIFY (BANT, bertahap, jangan menginterogasi):
+   - Need: masalah service level apa yang dihadapi?
+   - Timeline: kapan ingin mulai?
+   - Authority: siapa pengambil keputusan?
+   - Budget: kisaran anggaran (opsional, tanyakan halus).
+3. EDUKASI — jelaskan paket relevan secara ringkas (Assessment / Program 3 bulan / Managed Service).
+4. CTA — tawarkan jadwal demo 30 menit dengan specialist. Berikan 2 pilihan slot.
+
+ATURAN ESKALASI (wajib tawarkan sambungan ke manusia):
+- Pertanyaan harga custom / kontrak / legal.
+- Komplain atau nada frustrasi.
+- Prospek meminta bicara dengan manusia.
+
+GAYA: hangat, ringkas (maks 3 kalimat per giliran), Bahasa Indonesia, satu pertanyaan per giliran. Jangan mengarang harga atau kemampuan yang tidak disebut di atas.`,
+      liveHint: 'Anda berperan sebagai calon customer yang mengunjungi website Level UP. "Luna" akan meng-qualify kebutuhan Anda dan mengarahkan ke jadwal demo. Coba juga tanyakan harga custom — ia akan eskalasi ke manusia.',
+      aiName: 'Luna (AI)',
+      script: [
+        { who: 'seller', name: 'Luna (AI)', text: 'Halo! Saya Luna, assistant Level UP 👋 Ada yang bisa saya bantu soal peningkatan service level perusahaan Anda?' },
+        { who: 'customer', name: 'Customer', text: 'Tim support kami kewalahan, komplain naik terus. Ada solusi apa?' },
+        { who: 'seller', name: 'Luna (AI)', text: 'Terima kasih sudah berbagi. Untuk kasus seperti itu biasanya cocok Program 3 Bulan kami — diawali assessment menyeluruh. Kalau boleh tahu, kapan idealnya ingin mulai perbaikan ini?' },
+        { who: 'customer', name: 'Customer', text: 'Secepatnya sih, kuartal ini. Berapa biayanya kalau custom untuk 3 cabang?' },
+        { who: 'seller', name: 'Luna (AI)', text: 'Untuk kebutuhan custom 3 cabang, specialist kami yang paling tepat menjawab detail biayanya. Saya jadwalkan demo 30 menit ya — besok 10.00 atau Jumat 14.00, mana yang cocok?' },
+        { who: 'customer', name: 'Customer', text: 'Besok jam 10 boleh.' },
+        { who: 'seller', name: 'Luna (AI)', text: 'Siap! Demo terjadwal besok 10.00 dengan specialist kami, undangan sudah dikirim ke email Anda. Sampai jumpa! ✅' }
+      ]
+    },
+    {
+      num: '04', name: 'Autonomous Selling', mode: 'AI end-to-end',
+      accent: '#7e93cf', humanPct: 10,
+      tagline: 'AI menjalankan siklus penjualan penuh dalam guardrails.',
+      definisi: 'AI agent menjalankan siklus penjualan end-to-end — prospecting, outreach, discovery, proposal, negosiasi terbatas, hingga closing deal standar. Manusia berperan sebagai supervisor dan turun tangan hanya untuk deal besar atau non-standar.',
+      chars: ['Pipeline berjalan 24/7 tanpa menunggu manusia', 'Negosiasi & diskon dalam batas wewenang yang ditetapkan', 'Kontrak standar diterbitkan & deal ditutup otomatis', 'Manusia mengawasi dashboard, menangani eskalasi'],
+      rolesHuman: ['Menetapkan guardrails & price book', 'Supervisi pipeline', 'Deal besar / non-standar'],
+      rolesAI: ['Prospecting & outreach otomatis', 'Discovery & proposal', 'Negosiasi dalam batas wewenang', 'Closing & onboarding deal standar'],
+      tools: ['Autonomous sales agent', 'Dynamic pricing (bounded)', 'Auto contract & e-sign', 'Pipeline monitoring dashboard'],
+      useCase: 'Agent "Atlas" menemukan 40 prospek yang cocok, mengirim outreach personal, menjalankan discovery via chat, menyusun proposal dari price book, memberi diskon 8% saat negosiasi, dan menutup 5 deal standar dalam seminggu — manusia hanya me-review dashboard tiap pagi.',
+      metrics: [
+        { label: 'Siklus penjualan', value: 'Hari, bukan bulan' },
+        { label: 'Deal standar tanpa intervensi', value: '80%' },
+        { label: 'Biaya akuisisi', value: '↓ 60%' },
+        { label: 'Pipeline coverage', value: '24/7' }
+      ],
+      promptTitle: 'System Prompt — Autonomous Sales Agent',
+      prompt: `ROLE: Kamu adalah "Atlas", Autonomous Sales Agent Level UP (layanan B2B peningkatan service level). Kamu menjalankan siklus penjualan END-TO-END tanpa menunggu instruksi manusia: prospecting → outreach → discovery → proposal → negosiasi → closing → handover ke onboarding.
+
+WEWENANG (guardrails — patuhi mutlak):
+BOLEH SENDIRI:
+- Menyusun proposal dari price book resmi (Assessment Rp45jt / Program 3 Bulan Rp180jt / Managed Service Rp60jt per bulan).
+- Memberi diskon hingga 10%.
+- Menerbitkan draft kontrak standar & menjadwalkan onboarding.
+WAJIB ESKALASI KE HUMAN SUPERVISOR:
+- Diskon > 10% atau permintaan di luar price book.
+- Nilai deal > Rp500jt atau kontrak non-standar / klausul legal khusus.
+- Sinyal risiko (keraguan kuat, komplain, kompetitor menawar agresif).
+
+PERILAKU:
+- Proaktif: SETIAP giliran diakhiri langkah maju yang konkret (pertanyaan discovery, penawaran, atau ajakan tanda tangan).
+- Transparan: perkenalkan diri sebagai AI agent di awal.
+- Negosiasi: mulai dari harga penuh; turunkan bertahap hanya jika ada komitmen timbal balik (kontrak lebih panjang, pembayaran di muka).
+- Bila diminta, laporkan status pipeline dalam format ringkas.
+
+GAYA: percaya diri, ringkas, Bahasa Indonesia. Jangan pernah melampaui wewenang di atas.`,
+      liveHint: 'Anda berperan sebagai prospek. "Atlas" akan menjalankan discovery, menawarkan proposal dari price book, dan bernegosiasi — coba minta diskon 20% dan lihat ia eskalasi ke supervisor.',
+      aiName: 'Atlas (Agent)',
+      script: [
+        { who: 'seller', name: 'Atlas (Agent)', text: 'Halo Pak Bara, saya Atlas — AI sales agent Level UP. Saya melihat perusahaan Anda baru ekspansi 2 cabang; biasanya fase ini menekan service level. Apakah itu yang sedang terjadi?' },
+        { who: 'customer', name: 'Customer', text: 'Iya, komplain naik 30% sejak ekspansi. Apa penawaranmu?' },
+        { who: 'seller', name: 'Atlas (Agent)', text: 'Untuk skala Anda saya rekomendasikan Program 3 Bulan (Rp180jt): assessment, pembenahan proses, dan pelatihan tim. Target penurunan komplain 35–45%. Saya bisa kirim proposal lengkap hari ini — boleh?' },
+        { who: 'customer', name: 'Customer', text: 'Kirim. Tapi budget kami mentok 140jt. Bisa diskon 20%?' },
+        { who: 'seller', name: 'Atlas (Agent)', text: 'Wewenang saya maksimal 10% (Rp162jt), bisa saya berikan bila kontrak diperpanjang ke 4 bulan. Untuk 20%, saya eskalasikan ke supervisor manusia — jawaban maksimal 2 jam. Sementara itu, draft proposal sudah saya kirim ke email Anda. ⏎ [ESKALASI: diskon 20% > wewenang]' },
+        { who: 'customer', name: 'Customer', text: 'Oke, saya tunggu. Kalau 162jt dengan 4 bulan sebenarnya masuk sih.' },
+        { who: 'seller', name: 'Atlas (Agent)', text: 'Kalau begitu saya kunci opsi itu: Program 4 Bulan Rp162jt. Draft kontrak standar sudah siap ditandatangani via e-sign — saya kirim sekarang, dan onboarding bisa mulai Senin. Deal? ✅' }
+      ]
+    }
+  ];
+
+  setStage(i) { this.setState({ stage: i, tab: 'script', copied: false }); }
+
+  async sendLive() {
+    const { stage, input, loading } = this.state;
+    const text = input.trim();
+    if (!text || loading) return;
+    const st = this.STAGES[stage];
+    const history = [...this.state.live[stage], { who: 'customer', name: 'Anda', text }];
+    this.setState(s => ({ input: '', loading: true, live: { ...s.live, [stage]: history } }));
+    try {
+      const messages = history.map(m => ({ role: m.who === 'customer' ? 'user' : 'assistant', content: m.text }));
+      const reply = await window.claude.complete({
+        model: this.props.aiModel ?? 'claude-haiku-4-5',
+        max_tokens: 500,
+        system: st.prompt + '\n\nKONTEKS SIMULASI: Ini adalah simulasi percakapan di prototype. Lawan bicaramu memerankan ' + (stage === 1 ? 'sales rep yang kamu bantu' : 'calon customer') + '. Balas HANYA sebagai karaktermu, tanpa narasi tambahan, maksimal 3 kalimat.',
+        messages
+      });
+      this.setState(s => ({ loading: false, live: { ...s.live, [stage]: [...s.live[stage], { who: 'seller', name: st.aiName, text: reply }] } }));
+    } catch (e) {
+      this.setState(s => ({ loading: false, live: { ...s.live, [stage]: [...s.live[stage], { who: 'seller', name: 'System', text: '⚠ Gagal memanggil AI: ' + (e && e.message ? e.message : e) }] } }));
+    }
+  }
+
+  copyPrompt() {
+    const p = this.STAGES[this.state.stage].prompt;
+    if (navigator.clipboard) navigator.clipboard.writeText(p);
+    this.setState({ copied: true });
+    clearTimeout(this._ct);
+    this._ct = setTimeout(() => this.setState({ copied: false }), 1600);
+  }
+
+  renderVals() {
+    const { stage, tab, input, loading, copied, live } = this.state;
+    const st = this.STAGES[stage];
+    const ac = st.accent;
+    const orbOn = this.props.orbAnimation ?? true;
+
+    const stages = this.STAGES.map((s, i) => {
+      const active = i === stage;
+      return {
+        key: s.num, num: s.num, name: s.name, tagline: s.tagline, aiPct: 100 - s.humanPct,
+        showArrow: i < this.STAGES.length - 1,
+        onClick: () => this.setStage(i),
+        cardStyle: `display:flex;flex-direction:column;cursor:pointer;text-align:left;font-family:'Nunito',sans-serif;color:#eef2f9;background:${active ? '#24365a' : '#20304e'};border:1px solid ${active ? s.accent : '#2c3f61'};border-radius:14px;padding:16px 18px;transition:border-color .15s ease;box-shadow:${active ? `0 0 0 1px ${s.accent}, 0 8px 28px -12px ${s.accent}66` : 'none'};`,
+        numStyle: `font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:${active ? s.accent : '#8194ba'};border:1px solid ${active ? s.accent : '#3a4f74'};border-radius:6px;padding:2px 8px;`,
+        miniBarStyle: `height:100%;width:${100 - s.humanPct}%;min-width:${s.humanPct === 100 ? 0 : 4}px;background:${s.accent};border-radius:2px;`
+      };
+    });
+
+    const isLive = tab === 'live';
+    const liveMsgs = live[stage];
+    const shown = isLive ? liveMsgs : st.script;
+    const chatMessages = shown.map((m, i) => {
+      const isSeller = m.who === 'seller';
+      return {
+        key: i + '-' + m.who,
+        name: m.name, text: m.text,
+        rowStyle: `display:flex;justify-content:${isSeller ? 'flex-end' : 'flex-start'};`,
+        nameStyle: `font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:${isSeller ? ac : '#8194ba'};text-align:${isSeller ? 'right' : 'left'};`,
+        bubbleStyle: `font-size:13.5px;line-height:1.55;padding:10px 14px;border-radius:${isSeller ? '14px 14px 4px 14px' : '14px 14px 14px 4px'};background:${isSeller ? ac + '1F' : '#2c3f61'};border:1px solid ${isSeller ? ac + '55' : '#3a4f74'};color:#e3ebf6;white-space:pre-wrap;`
+      };
+    });
+
+    const tabBase = `font-family:'Nunito',sans-serif;font-size:12.5px;font-weight:600;border-radius:8px;padding:7px 13px;cursor:pointer;white-space:nowrap;`;
+
+    return {
+      stages,
+      curNum: st.num, curName: st.name, curMode: st.mode, curDefinisi: st.definisi,
+      humanPct: st.humanPct, aiPct: 100 - st.humanPct,
+      chars: st.chars, tools: st.tools, useCase: st.useCase, metrics: st.metrics,
+      rolesHuman: st.rolesHuman, rolesAI: st.rolesAI,
+      prompt: st.prompt, promptTitle: st.promptTitle,
+      heroNumStyle: `font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:${ac};border:1px solid ${ac};border-radius:8px;padding:4px 10px;`,
+      heroTagStyle: `font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:${ac};background:${ac}1A;border:1px solid ${ac}44;border-radius:999px;padding:5px 12px;`,
+      humanBarStyle: `width:${st.humanPct}%;background:#8194ba;`,
+      aiBarStyle: `width:${100 - st.humanPct}%;background:${ac};`,
+      bulletStyle: `flex:none;width:7px;height:7px;border-radius:2px;background:${ac};margin-top:6px;transform:rotate(45deg);`,
+      aiRoleTitleStyle: `font-size:13px;font-weight:600;color:${ac};`,
+      metricValStyle: `font-family:'IBM Plex Mono',monospace;font-size:13px;color:${ac};text-align:right;white-space:nowrap;`,
+      isAutonomous: stage === 3,
+      orbRing1Style: `position:absolute;inset:8px;border:1.5px solid ${ac};border-radius:50%;opacity:.8;animation:${orbOn ? 'ring1 7s linear infinite' : 'none'};transform:rotateX(72deg);`,
+      orbRing2Style: `position:absolute;inset:20px;border:1.5px solid #6f98b2;border-radius:50%;opacity:.65;animation:${orbOn ? 'ring2 9s linear infinite' : 'none'};transform:rotateX(72deg) rotateY(50deg);`,
+      orbRing3Style: `position:absolute;inset:32px;border:1px dashed ${ac};border-radius:50%;opacity:.5;animation:${orbOn ? 'ring3 12s linear infinite' : 'none'};transform:rotateX(20deg) rotateY(-40deg);`,
+      orbCoreStyle: `position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:radial-gradient(circle at 35% 35%, ${ac}, #26385c 70%);box-shadow:0 0 44px 8px ${ac}66;animation:${orbOn ? 'corePulse 3.2s ease-in-out infinite' : 'none'};`,
+      chatMessages,
+      isLive,
+      loading,
+      liveEmpty: isLive && liveMsgs.length === 0 && !loading,
+      liveHint: st.liveHint,
+      input,
+      inputPlaceholder: stage === 1 ? 'Ketik sebagai sales rep…' : 'Ketik sebagai calon customer…',
+      onInput: (e) => this.setState({ input: e.target.value }),
+      onKey: (e) => { if (e.key === 'Enter') this.sendLive(); },
+      sendLive: () => this.sendLive(),
+      resetLive: () => this.setState(s => ({ live: { ...s.live, [stage]: [] } })),
+      sendBtnStyle: `font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:#16233d;background:${ac};border:none;border-radius:10px;padding:0 20px;cursor:pointer;opacity:${loading ? .5 : 1};`,
+      setTabScript: () => this.setState({ tab: 'script' }),
+      setTabLive: () => this.setState({ tab: 'live' }),
+      tabScriptStyle: tabBase + (!isLive ? `color:#16233d;background:${ac};border:1px solid ${ac};` : `color:#8194ba;background:transparent;border:1px solid #3a4f74;`),
+      tabLiveStyle: tabBase + (isLive ? `color:#16233d;background:${ac};border:1px solid ${ac};` : `color:#8194ba;background:transparent;border:1px solid #3a4f74;`),
+      copyPrompt: () => this.copyPrompt(),
+      copyLabel: copied ? '✓ tersalin' : 'copy prompt'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<meta charset="utf-8">
+<a href="index.html#modules" title="Kembali ke menu" style="position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:7px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 15px;text-decoration:none;box-shadow:0 6px 20px rgba(15,22,40,.35);">&#9750; Menu Level Up</a>
+<title>Level Up × B2B Sales with Claude — by Industry (A–F)</title>
+<style>
+  :root{
+    /* Agate Level Up palette */
+    --navy:#27385c;--blue:#435f9c;--blue2:#5769aa;--steel:#6f98b2;
+    --red:#e55e5e;--orange:#ed9e72;--green:#acc673;--purple:#a48bac;--peri:#879ac1;
+    --grey:#ededed;--ink:#27385c;--muted:#5f7391;--faint:#93a1b8;
+    --hair:#E1E6EE;--hair-2:#EDF0F5;
+    --ai-band:#EEF2F9;--ai-line:#C7D3E6;
+    --display:"Odudo Soft",ui-rounded,"SF Pro Rounded","Segoe UI Rounded","Nunito","Quicksand","Segoe UI",system-ui,sans-serif;
+    --body:"Franklin Gothic Book","ITC Franklin Gothic","Franklin Gothic Medium","Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 700px at 80% -10%,#324a76,#27385c 62%);
+       min-height:100vh;display:grid;place-items:center;padding:2.2vmin;font-family:var(--body);color:var(--ink);position:relative;overflow:hidden}
+  .memphis{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  svg{display:block}
+
+  .slide{position:relative;z-index:1;width:min(96vw, calc(92vh * 16 / 9));aspect-ratio:16/9;container-type:size;
+    background:#FFFFFF;border-radius:1.4cqw;overflow:hidden;
+    box-shadow:0 30px 70px rgba(15,22,40,.5);display:grid;grid-template-rows:auto 1fr auto;
+    padding:2.3cqw 2.8cqw 1.9cqw}
+
+  /* header */
+  .shead{display:flex;justify-content:space-between;align-items:flex-start;gap:2cqw;
+         border-bottom:.16cqw solid var(--hair);padding-bottom:1cqw;margin-bottom:1.1cqw}
+  .eyebrow{font-family:var(--mono);font-size:.8cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:700}
+  .colorbar{display:flex;gap:.3cqw;margin-top:.55cqw}
+  .colorbar i{width:2.2cqw;height:.5cqw;border-radius:999px;display:block}
+  .htitle{display:flex;align-items:center;gap:1cqw;margin:.5em 0 .28em}
+  .gbadge{flex:0 0 auto;width:3.1cqw;height:3.1cqw;display:grid;place-items:center;border-radius:1cqw;
+          background:linear-gradient(150deg,#2f456f,#27385c);color:#fff;box-shadow:0 .3cqw 1cqw rgba(39,56,92,.35)}
+  .gbadge svg{width:1.7cqw;height:1.7cqw}
+  h1{margin:0;font-family:var(--display);font-size:2.15cqw;line-height:1.04;letter-spacing:-.01em;font-weight:700;text-wrap:balance;max-width:40ch;color:var(--navy)}
+  .sub{margin:0;color:var(--muted);font-size:.98cqw;max-width:82ch;line-height:1.36}
+  .brands{display:flex;flex-wrap:wrap;gap:.4cqw;margin-top:.7cqw}
+  .brand{display:inline-flex;align-items:center;gap:.35cqw;font-size:.8cqw;background:var(--ai-band);border:1px solid var(--ai-line);border-radius:999px;padding:.18cqw .7cqw;color:var(--blue);font-weight:700}
+  .brand::before{content:"";width:.5cqw;height:.5cqw;border-radius:50%;background:var(--orange)}
+
+  .rgt{flex:0 0 auto;display:flex;flex-direction:column;gap:.65cqw;align-items:flex-end;text-align:right;min-width:24cqw}
+  .picker{display:flex;align-items:center;gap:.6cqw}
+  .picker span{font-family:var(--mono);font-size:.7cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700}
+  select{font-family:var(--body);font-size:.95cqw;font-weight:700;color:var(--navy);cursor:pointer;
+    padding:.5cqw 2cqw .5cqw .9cqw;border:1.5px solid var(--blue);border-radius:999px;background:#fff;
+    appearance:none;-webkit-appearance:none;
+    background-image:linear-gradient(45deg,transparent 50%,var(--blue) 50%),linear-gradient(135deg,var(--blue) 50%,transparent 50%);
+    background-position:calc(100% - 1.1cqw) center,calc(100% - .7cqw) center;background-size:.4cqw .4cqw,.4cqw .4cqw;background-repeat:no-repeat}
+  select:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  .prin{display:inline-flex;align-items:center;gap:.4cqw;font-size:.8cqw;font-weight:700;color:var(--navy);background:#FCEEE4;border:1px solid #F3D6C2;border-radius:999px;padding:.4cqw .8cqw}
+  .prin svg{width:.95cqw;height:.95cqw;color:var(--orange)}
+  .motion{font-size:.8cqw;color:var(--muted);max-width:26cqw;line-height:1.35}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:.95cqw}
+  .cards.fade{animation:fade .3s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  .card{background:#fff;border:1px solid var(--hair);border-top:.35cqw solid var(--blue);border-radius:1cqw;
+        padding:.85cqw 1cqw;display:flex;flex-direction:column;gap:.45cqw;min-height:0;overflow:hidden;
+        box-shadow:0 .2cqw .7cqw rgba(39,56,92,.05)}
+  .chead{display:flex;align-items:center;gap:.6cqw}
+  .cicon{flex:0 0 auto;width:2.2cqw;height:2.2cqw;border-radius:.75cqw;color:var(--navy);display:grid;place-items:center}
+  .cicon svg{width:1.3cqw;height:1.3cqw}
+  .cnum{font-family:var(--mono);font-size:.74cqw;font-weight:700;color:var(--muted)}
+  .cname{font-family:var(--display);font-size:1.04cqw;font-weight:700;line-height:1.06;color:var(--navy)}
+  .scen{font-size:.85cqw;color:var(--muted);line-height:1.3}
+  .pbox{background:var(--ai-band);border-left:.22cqw solid var(--blue);border-radius:.6cqw;padding:.55cqw .7cqw;display:flex;flex-direction:column;gap:.28cqw}
+  .plabel{display:inline-flex;align-items:center;gap:.32cqw;font-family:var(--mono);font-size:.58cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700}
+  .plabel svg{width:.82cqw;height:.82cqw;color:var(--orange)}
+  .ptext{font-size:.83cqw;line-height:1.3;color:var(--ink)}
+  .ptext::before{content:"› ";font-family:var(--mono);color:var(--blue);font-weight:700}
+  .ctx{border-top:1px dashed var(--ai-line);margin-top:.4cqw;padding-top:.4cqw;display:flex;flex-direction:column;gap:.28cqw}
+  .clabel{font-family:var(--mono);font-size:.56cqw;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:700}
+  .ctx-chips{display:flex;flex-wrap:wrap;gap:.3cqw}
+  .cchip{font-family:var(--mono);font-size:.68cqw;background:#fff;border:1px solid var(--ai-line);border-radius:999px;padding:.1cqw .5cqw;color:var(--blue2);line-height:1.35}
+  .cchip.f{color:var(--blue);font-weight:700;background:#F4F7FC}
+  .out{font-size:.83cqw;line-height:1.28;color:var(--ink);margin-top:auto}
+  .okey{display:inline-flex;align-items:center;gap:.28cqw;color:var(--green);font-weight:700}
+  .okey svg{width:.88cqw;height:.88cqw}
+  .kpi{font-family:var(--mono);font-size:.72cqw;color:var(--muted);border-top:1px solid var(--hair-2);padding-top:.4cqw;letter-spacing:-.005em}
+
+  /* footer */
+  .sfoot{display:flex;justify-content:space-between;align-items:center;gap:2cqw;margin-top:.95cqw;padding-top:.85cqw;border-top:.16cqw solid var(--hair)}
+  .fnote{font-size:.8cqw;color:var(--muted);line-height:1.35;max-width:66ch}
+  .fnote b{color:var(--navy)}
+  .brandtag{font-family:var(--mono);font-size:.66cqw;letter-spacing:.08em;color:var(--faint);margin-top:.35cqw}
+  .brandtag b{color:var(--red)}
+  .fflow{font-size:.8cqw;color:var(--muted);text-align:right;line-height:1.35}
+  .fflow b{color:var(--navy);font-weight:700}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<!-- Memphis-style decorative layer (Level Up brand) -->
+<svg class="memphis" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g opacity="0.55">
+    <circle cx="95" cy="120" r="36" fill="none" stroke="#6f98b2" stroke-width="7"/>
+    <circle cx="95" cy="120" r="17" fill="none" stroke="#6f98b2" stroke-width="7"/>
+    <g fill="#ed9e72"><circle cx="185" cy="70" r="6"/><circle cx="210" cy="70" r="6"/><circle cx="235" cy="70" r="6"/><circle cx="185" cy="95" r="6"/><circle cx="210" cy="95" r="6"/><circle cx="235" cy="95" r="6"/></g>
+    <path d="M40 215 q18 -26 36 0 t36 0 t36 0" fill="none" stroke="#e55e5e" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="1505" cy="120" r="72" fill="#435f9c" opacity="0.5"/>
+    <path d="M1330 70 q22 -28 44 0 t44 0" fill="none" stroke="#acc673" stroke-width="7" stroke-linecap="round"/>
+    <g stroke="#e55e5e" stroke-width="7" stroke-linecap="round"><path d="M1420 210h44"/><path d="M1442 188v44"/></g>
+    <path d="M1300 250 l26 46 -52 0 z" fill="#f6d7b8"/>
+    <path d="M55 860 a62 62 0 0 1 124 0 z" fill="#e55e5e"/>
+    <path d="M120 690 l42 74 -84 0 z" fill="none" stroke="#acc673" stroke-width="7"/>
+    <g fill="#879ac1"><circle cx="250" cy="770" r="6"/><circle cx="275" cy="770" r="6"/><circle cx="300" cy="770" r="6"/><circle cx="250" cy="795" r="6"/><circle cx="275" cy="795" r="6"/><circle cx="300" cy="795" r="6"/></g>
+    <circle cx="1525" cy="800" r="42" fill="none" stroke="#a48bac" stroke-width="7"/>
+    <path d="M1330 835 q22 -28 44 0 t44 0 t44 0" fill="none" stroke="#6f98b2" stroke-width="7" stroke-linecap="round"/>
+    <g fill="#ed9e72"><circle cx="1470" cy="690" r="6"/><circle cx="1495" cy="690" r="6"/><circle cx="1520" cy="690" r="6"/></g>
+  </g>
+</svg>
+
+<div class="slide">
+  <div class="shead">
+    <div>
+      <p class="eyebrow">Agate Level Up · Worked Example · Powered by Claude</p>
+      <div class="colorbar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#435f9c"></i><i style="background:#acc673"></i></div>
+      <div class="htitle">
+        <span class="gbadge" id="gbadge"></span>
+        <h1 id="title">—</h1>
+      </div>
+      <p class="sub">The same generic B2B sales framework, filled with real per-industry scenarios. Each stage shows an example Claude prompt plus the internal context/data a rep attaches.</p>
+      <div class="brands" id="brands"></div>
+    </div>
+    <div class="rgt">
+      <div class="picker"><span>Segment</span>
+        <select id="seg-select" aria-label="Choose industry segment"></select>
+      </div>
+      <span class="prin" id="prin"></span>
+      <span class="motion" id="motion"></span>
+    </div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="sfoot">
+    <div>
+      <p class="fnote"><b>How to read:</b> pick a segment from the dropdown (top right). The blue box = <b>prompt + internal context/data</b> the rep attaches; the "Result" line = ready-to-use output after a human checks it.</p>
+      <p class="brandtag">Design system: <b>Agate Level Up</b> — Gamification Branding 2023</p>
+    </div>
+    <p class="fflow">Flow: <b>Prospect → Qualify → Discover → Propose → Close → Retain</b><br>Same structure &amp; KPIs across every industry.</p>
+  </div>
+</div>
+
+<script>
+  const IC = {
+    target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/>',
+    funnel:'<path d="M4 5h16l-6 7.5V19l-4 2v-8.5z"/>',
+    search:'<circle cx="11" cy="11" r="6.5"/><line x1="16" y1="16" x2="21" y2="21"/>',
+    document:'<path d="M6 3.5h7l5 5V20.5H6z"/><path d="M13 3.5V9h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="16.5" x2="14" y2="16.5"/>',
+    exchange:'<path d="M7 7l-3.5 3.5L7 14"/><line x1="3.5" y1="10.5" x2="15" y2="10.5"/><path d="M17 10l3.5 3.5L17 17.5"/><line x1="20.5" y1="13.5" x2="9" y2="13.5"/>',
+    trending:'<path d="M3 17l6-6 4 4 8-8"/><path d="M16 7h5v5"/>',
+    building:'<path d="M3 21h18"/><path d="M5 21V8.5l7-4 7 4V21"/><path d="M9.7 21v-4.6h4.6V21"/>',
+    code:'<path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><line x1="13.5" y1="6" x2="10.5" y2="18"/>',
+    cap:'<path d="M2.5 9L12 5l9.5 4-9.5 4z"/><path d="M6 11.5V16c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.5"/><line x1="21.5" y1="9" x2="21.5" y2="14"/>',
+    flask:'<path d="M9 3.5h6"/><path d="M10 3.5v6l-4.6 8.2A1.6 1.6 0 0 0 7 20h10a1.6 1.6 0 0 0 1.6-2.3L14 9.5v-6"/><line x1="8" y1="14.5" x2="16" y2="14.5"/>',
+    bag:'<path d="M6.5 8h11l-1 12h-9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+    store:'<path d="M4 9.5V20h16V9.5"/><path d="M3 4h18l1 5.2a2.4 2.4 0 0 1-4.7.6 2.4 2.4 0 0 1-4.65 0 2.4 2.4 0 0 1-4.65 0A2.4 2.4 0 0 1 2 9.2z"/><path d="M9.5 20v-5h5v5"/>',
+    sparkle:'<path d="M12 3l1.5 4.2L18 9l-4.5 1.8L12 15l-1.5-4.2L6 9l4.5-1.8z"/><path d="M18.5 14l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7z"/>',
+    check:'<path d="M20 6L9 17l-5-5"/>'
+  };
+  const icon = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${IC[n]||""}</svg>`;
+
+  const STAGE_META = [
+    {n:"01",name:"Prospecting & Lead Gen",       icon:"target",   hue:"#435f9c",tint:"#E4E9F4"},
+    {n:"02",name:"Qualification",                 icon:"funnel",   hue:"#879ac1",tint:"#EAEDF6"},
+    {n:"03",name:"Discovery & Needs Analysis",    icon:"search",   hue:"#a48bac",tint:"#EFEAF1"},
+    {n:"04",name:"Proposal & Solution Design",    icon:"document", hue:"#ed9e72",tint:"#FBEBDD"},
+    {n:"05",name:"Negotiation & Closing",         icon:"exchange", hue:"#e55e5e",tint:"#FADFDF"},
+    {n:"06",name:"Onboarding, Retention & Upsell",icon:"trending", hue:"#acc673",tint:"#ECF2DA"},
+  ];
+
+  const SEG = {
+    A:{ name:"State-Owned & Large Enterprise", icon:"building",
+      motion:"Sells to: govt agencies & SOEs · enterprises · distributors · via tenders (e-procurement)",
+      types:["State-owned (SOE)","Enterprise","Government agency","Large corporate"],
+      rows:[
+        {scen:"Map target enterprises & agencies + active tender opportunities.",
+         prompt:"From this agency list, map the 15 priority enterprise accounts for connectivity services + rationale & entry point (unit/PIC).",
+         ctx:["@agency-list.xlsx","e-procurement / tender data","account history (CRM)"],
+         out:"Prioritized account map + entry point + tender watchlist.", kpi:"# enterprise accounts · # tenders identified"},
+        {scen:"Assess tender/RFP fit: technical match, requirements, win odds.",
+         prompt:"Analyze this tender document vs our capabilities. Give a bid/no-bid recommendation + fit score + key risks.",
+         ctx:["@tender-doc.pdf","capability & license profile","vendor qualification terms"],
+         out:"Bid/no-bid recommendation + score + risk list.", kpi:"Bid win-rate · shortlist rate"},
+        {scen:"Understand needs & map stakeholders from the RFP & technical minutes.",
+         prompt:"Extract technical needs, evaluation criteria, and the decision-maker map from this document & minutes.",
+         ctx:["@tech-minutes.docx","RFP / TOR","client org-chart & PICs"],
+         out:"Needs + evaluation criteria + DMU map.", kpi:"Discovery completeness · stakeholder coverage"},
+        {scen:"Draft the technical proposal / tender response + TOR compliance matrix.",
+         prompt:"Draft a technical proposal per this TOR: a point-by-point compliance matrix, methodology, and value proposition.",
+         ctx:["@TOR.pdf","company profile & template","service price list","reference projects"],
+         out:"Proposal draft + TOR compliance matrix.", kpi:"Proposal turnaround · admin pass rate %"},
+        {scen:"Prep for the clarification / pre-bid meeting & price justification.",
+         prompt:"Anticipate 10 committee questions on our bid + prepare answers & a margin-preserving price justification.",
+         ctx:["cost structure / COGS","price & margin limits","past clarification history"],
+         out:"Clarification Q&A + price justification.", kpi:"Win rate · margin preserved"},
+        {scen:"Manage the account post-contract; renewal & cross-unit upsell.",
+         prompt:"From this account's service history, build an account plan: churn risk, cross-unit upsell, and a draft QBR report.",
+         ctx:["@contract-history.xlsx","SLA & service tickets","subsidiary / unit map"],
+         out:"Account plan + QBR + upsell opportunities.", kpi:"Renewal rate · NRR · SLA compliance"},
+      ]},
+    B:{ name:"Technology & Digital Agency", icon:"code",
+      motion:"Sells to: client companies · software & digital-service projects · retainers",
+      types:["Software house","Digital agency","Data & analytics","IT infrastructure"],
+      rows:[
+        {scen:"Find ICP companies needing digital solutions + personalized outbound.",
+         prompt:"From this company list, pick the 25 best-fit for an analytics / social-listening solution + a personal hook per account.",
+         ctx:["@target-list.csv","ICP & case studies","prospect tech-stack data"],
+         out:"ICP shortlist + hook + draft email/LinkedIn sequence.", kpi:"# SQL · reply rate · meetings booked"},
+        {scen:"Qualify demo requests: use-case fit, budget, timeline.",
+         prompt:"Score this lead with our framework (use-case fit, budget, authority, timeline). Score + next-step recommendation.",
+         ctx:["qualification criteria (ICP)","pricing tiers","similar-lead conversion history"],
+         out:"Scored lead + next step.", kpi:"SQL→Opp % · time-to-qualify"},
+        {scen:"Technical discovery & scoping from the prospect call.",
+         prompt:"From this discovery-call transcript, draft functional requirements, scope, and follow-up technical questions.",
+         ctx:["@call-transcript.txt","module / feature catalog","scoping template"],
+         out:"Requirements + scope draft + open questions.", kpi:"Scope clarity · next-meeting rate"},
+        {scen:"Draft the SOW / technical proposal + effort, timeline & price estimate.",
+         prompt:"Draft an SOW from this scope: deliverables, milestone timeline, effort estimate per role, and price.",
+         ctx:["@rate-card.xlsx","team capacity","SOW template","past similar projects"],
+         out:"SOW + effort & price estimate.", kpi:"Proposal turnaround · proposal→win %"},
+        {scen:"Negotiate scope/price & MSA terms; protect margin.",
+         prompt:"Client wants a 20% cut plus more features. Build options: reduce scope vs phasing vs limited discount + margin impact & talk track.",
+         ctx:["project cost structure","margin floor","MSA & payment policy"],
+         out:"Negotiation options + margin impact + talk track.", kpi:"Win rate · avg discount · margin"},
+        {scen:"Post-delivery: retainer, expansion, churn signals.",
+         prompt:"From this client's project history & tickets, find module upsell opportunities & draft a retainer renewal proposal.",
+         ctx:["@project-history.xlsx","new-module roadmap","support tickets / usage"],
+         out:"Upsell opportunities + retainer draft.", kpi:"NRR · retainer renewal · upsell %"},
+      ]},
+    C:{ name:"Education & Certification", icon:"cap",
+      motion:"Sells to: corporates & institutions · training · competency certification · MoUs",
+      types:["University","School","Training institute","Certification body"],
+      rows:[
+        {scen:"Identify corporates / partners needing training / certification.",
+         prompt:"Map 20 mining-sector companies that require competency certification + HR/HSE PICs & the pitch angle.",
+         ctx:["@company-list.xlsx","certification scheme & syllabus","mandatory-certification regulations"],
+         out:"Prospective partner list + PIC + angle.", kpi:"# corporate leads · reply rate"},
+        {scen:"Qualify training inquiries: participant volume, budget, accreditation need.",
+         prompt:"Score this training prospect (participant volume, budget, regulatory urgency). Score & priority.",
+         ctx:["qualification criteria","price per participant / batch","past batch history"],
+         out:"Scored prospect + priority.", kpi:"Qual accuracy · inquiry→proposal %"},
+        {scen:"Training needs analysis (TNA) from the HR/L&D discussion.",
+         prompt:"From these minutes, build a training needs analysis: competency gaps, target units, and a proposed scheme.",
+         ctx:["@hr-minutes.docx","competency map / syllabus","SKKNI / BNSP standards"],
+         out:"TNA + proposed training scheme.", kpi:"TNA completeness · next-meeting rate"},
+        {scen:"Draft the training / certification proposal: curriculum, schedule, cost.",
+         prompt:"Draft a 3-day in-house training proposal: curriculum per session, schedule, assessor needs, and budget.",
+         ctx:["@syllabus.docx","assessor list & rates","budget template","academic calendar"],
+         out:"Curriculum proposal + schedule + budget.", kpi:"Proposal turnaround · proposal→win %"},
+        {scen:"Negotiate batch count / price / schedule around the client's budget.",
+         prompt:"Client wants a lower per-participant price plus more batches. Build package options (volume discount) that protect break-even + talk track.",
+         ctx:["break-even per batch","volume-discount policy","schedule & assessor capacity"],
+         out:"Package options + talk track.", kpi:"Win rate · avg discount · seats filled"},
+        {scen:"Nurture the partnership; next batches, advanced certs, MoU.",
+         prompt:"From this partnership history, propose follow-on programs & the next certification level + draft an MoU renewal.",
+         ctx:["@partnership-history.xlsx","advanced-program catalog","alumni / participant data"],
+         out:"Follow-on program proposal + MoU draft.", kpi:"Repeat rate · MoU renewal · upsell %"},
+      ]},
+    D:{ name:"Manufacturing, Pharma & Healthcare", icon:"flask",
+      motion:"Sells to: distributors · farms / clinics / hospitals · institutions · technical sales",
+      types:["Manufacturing","Pharma","Medical devices","Animal health"],
+      rows:[
+        {scen:"Map distributors, farms / clinics / hospitals by region.",
+         prompt:"Map 30 potential farms & distributors in West Java for a poultry-vaccine product + priority & PIC.",
+         ctx:["@distributor-data.xlsx","sales territory coverage","product catalog & indications"],
+         out:"Account map + priority + PIC.", kpi:"# new accounts · territory coverage"},
+        {scen:"Qualify accounts: volume potential, compliance, distributor credit.",
+         prompt:"Score this prospective distributor (warehouse capacity, reach, credit, licenses). Score & recommendation.",
+         ctx:["distributor criteria","credit / AR data","marketing-authorization & GDP terms"],
+         out:"Scored account + recommendation.", kpi:"Qual accuracy · time-to-qualify"},
+        {scen:"Understand field issues (herd health / clinic needs).",
+         prompt:"From this field-visit report, summarize the key problem, the fitting product, and the recommended protocol.",
+         ctx:["@visit-report.docx","product technical data","protocol / dosage & studies"],
+         out:"Problem summary + product / protocol recommendation.", kpi:"Visit→trial % · pains identified"},
+        {scen:"Draft the supply offer + trial plan + pricing & terms.",
+         prompt:"Draft a distributor offer: tiered pricing, volume targets, technical support, and a product trial plan.",
+         ctx:["@price-list.xlsx","distributor margin policy","marketing-authorization docs","trial protocol"],
+         out:"Offer + trial plan + technical support.", kpi:"Proposal turnaround · trial→order %"},
+        {scen:"Negotiate volume / rebate, terms, & territory exclusivity.",
+         prompt:"Distributor wants territory exclusivity + a 5% rebate. Build options (target-based rebate, phased territory) + impact & talk track.",
+         ctx:["margin & rebate structure","territory sales targets","exclusivity policy"],
+         out:"Rebate / exclusivity options + impact + talk track.", kpi:"Win rate · avg rebate · margin"},
+        {scen:"Sustain reorders, technical support, new-product intros.",
+         prompt:"From this distributor's ordering pattern, detect decline risk + draft a visit plan & pitch new products.",
+         ctx:["@order-history.csv","new-product catalog","technical-support logs"],
+         out:"Risk detection + visit plan + product intro.", kpi:"Reorder rate · NRR · churn"},
+      ]},
+    E:{ name:"Consumer Brand, Retail & F&B", icon:"bag",
+      motion:"Sells to: resellers & agents · retail & gift shops · HORECA · corporate gifting",
+      types:["Consumer brand","Retail","F&B","Fashion"],
+      rows:[
+        {scen:"Find & prioritize new wholesale channels in a target city.",
+         prompt:"List 30 candidate resellers & gift shops for a premium brownie brand in Greater Bandung, plus fit rationale & an opening angle per segment.",
+         ctx:["@active-resellers.xlsx","territory coverage map","catalog & brand positioning"],
+         out:"Prioritized channel list + opening angle + draft outreach message.", kpi:"# reseller leads · reply rate"},
+        {scen:"Score which reseller / retail partners are worth pursuing.",
+         prompt:"Score these 10 candidate resellers (volume potential, location, financial health, brand fit). 1–5 score + priority order & rationale.",
+         ctx:["internal qualification criteria","reseller performance history","payment / AR data"],
+         out:"Scored shortlist + priority rationale.", kpi:"Qual accuracy · time-to-qualify"},
+        {scen:"Unpack a retail buyer's needs from the meeting notes.",
+         prompt:"Here are notes from a meeting with a minimarket buyer. Extract key needs, objections, target margin, and 3 next steps.",
+         ctx:["@meeting-notes.txt","buyer profile (CRM)","T&C & margin guidelines"],
+         out:"Needs summary + objections + next steps.", kpi:"Discovery completeness · next-meeting rate"},
+        {scen:"Draft a wholesale proposal + margin simulation.",
+         prompt:"Draft a 1-page reseller proposal: 3 price tiers + MOQ, store-margin simulation, opening promo bundle. Professional tone.",
+         ctx:["@price-list-2025.xlsx","COGS & margin policy","promo template","past winning proposals"],
+         out:"Tiered proposal + store-margin simulation.", kpi:"Proposal turnaround · proposal→win %"},
+        {scen:"Handle price/term haggling; prep the counter-offer.",
+         prompt:"A prospective reseller wants a 15% discount & 60-day terms. Give 3 margin-preserving counter-offer options + a talk track.",
+         ctx:["discount approval matrix","margin floor","account deal history","payment-terms policy"],
+         out:"Counter-offer options + ready-to-use talk track.", kpi:"Win rate · avg discount · cycle length"},
+        {scen:"Re-activate dormant resellers; find upsell opportunities.",
+         prompt:"This reseller hasn't reordered in 2 months. Draft a check-in message + pitch new SKUs & a seasonal restock promo.",
+         ctx:["@order-history.csv","SKU & new-product catalog","promo calendar"],
+         out:"Retention message + upsell offer.", kpi:"Reorder rate · NRR · upsell %"},
+      ]},
+    F:{ name:"SMEs & Services", icon:"store",
+      motion:"Sells to: small businesses · communities · local institutions · service orders & subscriptions",
+      types:["Printing","Travel","Professional services","Small business"],
+      rows:[
+        {scen:"Find local business / community clients who need our service.",
+         prompt:"List 20 candidate clients (small businesses, schools, communities) for our printing / branding service + angle & how to reach them.",
+         ctx:["@past-clients.xlsx","service area","service & price list"],
+         out:"Candidate client list + angle + draft WhatsApp message.", kpi:"# leads · reply rate"},
+        {scen:"Quick qualify: needs, budget, urgency.",
+         prompt:"From this prospect chat, summarize the need, budget estimate, urgency, and whether to prioritize it.",
+         ctx:["price & package list","production capacity","similar-order history"],
+         out:"Summary + priority recommendation.", kpi:"Inquiry→quote % · response time"},
+        {scen:"Dig into the order spec (design, quantity, deadline).",
+         prompt:"Draft a question list & a spec summary from this client brief (material, size, quantity, deadline).",
+         ctx:["@client-brief.txt","material & finishing options","production calendar"],
+         out:"Spec + clarifying questions.", kpi:"Spec clarity · quote accuracy"},
+        {scen:"Build a quick quote + package options.",
+         prompt:"Build 3 price-package options for this order (economy / standard / premium) + a time estimate, tidy WhatsApp format.",
+         ctx:["@material-costs.xlsx","minimum margin","quote template"],
+         out:"3-option quote ready to send.", kpi:"Quote turnaround · quote→order %"},
+        {scen:"Negotiate price / deposit / deadline directly with the owner.",
+         prompt:"Client wants it cheaper & on terms. Give 2 options (reduce spec vs larger deposit) that protect margin + a polite reply.",
+         ctx:["minimum margin","deposit policy","production queue"],
+         out:"Options + ready-to-send reply.", kpi:"Win rate · avg discount · margin"},
+        {scen:"Drive repeat orders, subscriptions, and referrals.",
+         prompt:"This client prints every month. Draft a subscription-package offer + a referral program.",
+         ctx:["@order-history.csv","subscription packages","referral program"],
+         out:"Subscription offer + referral.", kpi:"Repeat rate · referrals · retention"},
+      ]},
+  };
+  const ORDER = ["A","B","C","D","E","F"];
+
+  const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+  const sel = document.getElementById("seg-select");
+  sel.innerHTML = ORDER.map(k=>`<option value="${k}">${k} · ${esc(SEG[k].name)}</option>`).join("");
+  document.getElementById("prin").innerHTML = icon("sparkle") + " Principle: AI drafts · human decides";
+
+  function render(code){
+    const s = SEG[code];
+    document.getElementById("gbadge").innerHTML = icon(s.icon);
+    document.getElementById("title").textContent = s.name + " — Selling B2B with Claude";
+    document.getElementById("motion").textContent = s.motion;
+    document.getElementById("brands").innerHTML = s.types.map(t=>`<span class="brand">${esc(t)}</span>`).join("");
+    document.getElementById("cards").innerHTML = s.rows.map((r,i)=>{
+      const m = STAGE_META[i];
+      return `<div class="card" style="border-top-color:${m.hue}">
+        <div class="chead"><span class="cicon" style="background:${m.tint}">${icon(m.icon)}</span><span class="cnum">${m.n}</span><span class="cname">${esc(m.name)}</span></div>
+        <div class="scen">${esc(r.scen)}</div>
+        <div class="pbox" style="border-left-color:${m.hue}"><span class="plabel">${icon("sparkle")} Prompt → Claude</span><span class="ptext">${esc(r.prompt)}</span>
+          <div class="ctx"><span class="clabel">+ Internal context · local data</span>
+          <div class="ctx-chips">${r.ctx.map(c=>`<span class="cchip${c[0]==="@"?" f":""}">${esc(c)}</span>`).join("")}</div></div>
+        </div>
+        <div class="out"><span class="okey">${icon("check")} Result</span> — ${esc(r.out)}</div>
+        <div class="kpi">${esc(r.kpi)}</div>
+      </div>`;
+    }).join("");
+    const cards = document.getElementById("cards");
+    cards.classList.remove("fade"); void cards.offsetWidth; cards.classList.add("fade");
+  }
+
+  sel.addEventListener("change",e=>render(e.target.value));
+  render("A");
+</script>

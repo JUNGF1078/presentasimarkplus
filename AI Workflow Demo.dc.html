@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<button id="lu-fs" title="Full screen" style="position:fixed;right:16px;bottom:16px;z-index:99999;display:inline-flex;align-items:center;gap:6px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,22,40,.35);">⛶ Full screen</button>
+<script>(function(){var b=document.getElementById("lu-fs");if(!b)return;function u(){b.textContent=document.fullscreenElement?"⤢ Exit full screen":"⛶ Full screen";}b.addEventListener("click",function(){if(document.fullscreenElement){document.exitFullscreen();}else{(document.documentElement.requestFullscreen()||Promise.resolve()).catch&&document.documentElement.requestFullscreen().catch(function(){});}});document.addEventListener("fullscreenchange",u);u();})();</script>
+
+
+<a href="index.html#modules" title="Kembali ke menu" style="position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:7px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 15px;text-decoration:none;box-shadow:0 6px 20px rgba(15,22,40,.35);">&#9750; Menu Level Up</a>
+<svg class="lu-memphis" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.15;"><g><circle cx="95" cy="120" r="36" fill="none" stroke="#6f98b2" stroke-width="7"/><circle cx="95" cy="120" r="17" fill="none" stroke="#6f98b2" stroke-width="7"/><g fill="#ed9e72"><circle cx="185" cy="70" r="6"/><circle cx="210" cy="70" r="6"/><circle cx="235" cy="70" r="6"/><circle cx="185" cy="95" r="6"/><circle cx="210" cy="95" r="6"/><circle cx="235" cy="95" r="6"/></g><path d="M40 215 q18 -26 36 0 t36 0 t36 0" fill="none" stroke="#e55e5e" stroke-width="7" stroke-linecap="round"/><circle cx="1505" cy="120" r="72" fill="#435f9c"/><path d="M1330 70 q22 -28 44 0 t44 0" fill="none" stroke="#acc673" stroke-width="7" stroke-linecap="round"/><g stroke="#e55e5e" stroke-width="7" stroke-linecap="round"><path d="M1420 210h44"/><path d="M1442 188v44"/></g><path d="M1300 250 l26 46 -52 0 z" fill="#f6d7b8"/><path d="M55 860 a62 62 0 0 1 124 0 z" fill="#e55e5e"/><path d="M120 690 l42 74 -84 0 z" fill="none" stroke="#acc673" stroke-width="7"/><g fill="#879ac1"><circle cx="250" cy="770" r="6"/><circle cx="275" cy="770" r="6"/><circle cx="300" cy="770" r="6"/><circle cx="250" cy="795" r="6"/><circle cx="275" cy="795" r="6"/><circle cx="300" cy="795" r="6"/></g><circle cx="1525" cy="800" r="42" fill="none" stroke="#a48bac" stroke-width="7"/><path d="M1330 835 q22 -28 44 0 t44 0 t44 0" fill="none" stroke="#6f98b2" stroke-width="7" stroke-linecap="round"/><g fill="#ed9e72"><circle cx="1470" cy="690" r="6"/><circle cx="1495" cy="690" r="6"/><circle cx="1520" cy="690" r="6"/></g></g></svg>
+
+<x-dc>
+<helmet>
+  <title>Demo — AI Workflow untuk B2B Sales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;padding:0;background:#16233d;}
+    *{box-sizing:border-box;}
+    ::selection{background:rgba(126,147,207,.35);}
+    @keyframes blinkDot{0%,100%{opacity:.25;}50%{opacity:1;}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+    ::-webkit-scrollbar{width:8px;height:8px;}
+    ::-webkit-scrollbar-thumb{background:#3a4f74;border-radius:6px;}
+    ::-webkit-scrollbar-track{background:transparent;}
+  body{background:radial-gradient(1200px 820px at 82% -12%,#33507f,#22314f 62%) fixed #22314f;min-height:100vh;}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:transparent;position:relative;z-index:1;color:#eef2f9;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;padding:28px 40px 32px 40px;gap:18px;">
+
+  <!-- Header -->
+  <header style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;">
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#8194ba;">Demo · Strategi 3 — Workflow Architecture</div>
+      <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.01em;">B2B Sales × AI Tools — Proposal Workflow</h1>
+      <p style="margin:0;font-size:14px;color:#8194ba;max-width:720px;">Simulasi bagaimana seorang Sales/AM menyiapkan workspace, memberi konteks, dan beriterasi dengan AI sampai proposal siap kirim. Klik tahapan di bawah, atau file di explorer.</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8194ba;white-space:nowrap;">
+      <span style="width:8px;height:8px;border-radius:50%;background:#a7c563;display:inline-block;animation:blinkDot 2.4s ease-in-out infinite;"></span>
+      simulated demo
+    </div>
+  </header>
+
+  <!-- Step bar -->
+  <nav style="display:flex;align-items:stretch;gap:10px;" data-screen-label="step-bar">
+    <sc-for list="{{ steps }}" as="st" hint-placeholder-count="5">
+      <button onClick="{{ st.onClick }}" style="{{ st.pillStyle }}" style-hover="border-color:#51689a;">
+        <span style="{{ st.numStyle }}">{{ st.num }}</span>
+        <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
+          <span style="font-size:13.5px;font-weight:600;line-height:1.2;">{{ st.label }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8194ba;">{{ st.who }}</span>
+        </span>
+      </button>
+    </sc-for>
+    <div style="display:flex;gap:8px;margin-left:auto;">
+      <button onClick="{{ prev }}" style="{{ prevBtnStyle }}" style-hover="border-color:#51689a;">←</button>
+      <button onClick="{{ next }}" style="{{ nextBtnStyle }}" style-hover="filter:brightness(1.15);">{{ nextLabel }}</button>
+    </div>
+  </nav>
+
+  <!-- Caption -->
+  <div style="display:flex;align-items:center;gap:14px;border:1px solid #2c3f61;border-left:none;border-right:none;padding:10px 2px;">
+    <span style="{{ capBadgeStyle }}">{{ capWho }}</span>
+    <p style="margin:0;font-size:14px;color:#cdd9ec;line-height:1.5;">{{ capText }}</p>
+  </div>
+
+  <!-- VS Code window -->
+  <div style="flex:1;display:flex;flex-direction:column;border:1px solid #3a4f74;border-radius:12px;overflow:hidden;background:#1b2942;box-shadow:0 24px 60px rgba(0,0,0,.5);min-height:560px;" data-screen-label="vscode-window">
+
+    <!-- Title bar -->
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#1f2e4a;border-bottom:1px solid #2c3f61;">
+      <div style="display:flex;gap:7px;">
+        <span style="width:11px;height:11px;border-radius:50%;background:#e55e5e;"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#edc07a;"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#a7c563;"></span>
+      </div>
+      <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8194ba;">agate-sales-workspace — AI Assistant</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#a7c563;">● connected</div>
+    </div>
+
+    <div style="flex:1;display:grid;grid-template-columns:250px minmax(0,1fr) 360px;min-height:0;">
+
+      <!-- Explorer -->
+      <div style="border-right:1px solid #2c3f61;background:#1b2942;display:flex;flex-direction:column;min-height:0;">
+        <div style="padding:10px 14px 8px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#8194ba;">EXPLORER · WORKSPACE</div>
+        <div style="flex:1;overflow-y:auto;padding:0 6px 12px 6px;">
+          <sc-for list="{{ tree }}" as="row" hint-placeholder-count="12">
+            <button onClick="{{ row.onClick }}" style="{{ row.style }}" style-hover="background:#26385c;">
+              <span style="{{ row.iconStyle }}">{{ row.icon }}</span>
+              <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ row.name }}</span>
+              <sc-if value="{{ row.isNew }}" hint-placeholder-val="{{ false }}">
+                <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#a7c563;border:1px solid rgba(167,197,99,.4);border-radius:4px;padding:1px 4px;">NEW</span>
+              </sc-if>
+            </button>
+          </sc-for>
+        </div>
+        <div style="padding:10px 14px;border-top:1px solid #2c3f61;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5f7391;line-height:1.6;">Knowledge base = context.<br>Sekali disusun, dipakai semua deal.</div>
+      </div>
+
+      <!-- Editor -->
+      <div style="display:flex;flex-direction:column;min-width:0;min-height:0;background:#172338;">
+        <div style="display:flex;align-items:center;background:#1b2942;border-bottom:1px solid #2c3f61;">
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-right:1px solid #2c3f61;background:#172338;border-top:2px solid {{ accent }};font-family:'IBM Plex Mono',monospace;font-size:12px;color:#eef2f9;">
+            <span style="color:#7e93cf;">◆</span> {{ openFileName }}
+          </div>
+          <div style="margin-left:auto;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5f7391;">{{ openFileMeta }}</div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:14px 0;">
+          <sc-for list="{{ editorLines }}" as="ln" hint-placeholder-count="14">
+            <div style="display:flex;gap:16px;padding:1px 18px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.75;">
+              <span style="width:22px;text-align:right;color:#51689a;flex:none;user-select:none;">{{ ln.n }}</span>
+              <span style="{{ ln.style }}">{{ ln.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:6px 16px;border-top:1px solid #2c3f61;background:#1f2e4a;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5f7391;">
+          <span>markdown</span><span>UTF-8</span>
+          <span style="margin-left:auto;color:{{ accent }};">{{ statusHint }}</span>
+        </div>
+      </div>
+
+      <!-- AI chat -->
+      <div style="border-left:1px solid #2c3f61;background:#1b2942;display:flex;flex-direction:column;min-height:0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #2c3f61;">
+          <span style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#7e93cf,#a7c563);display:flex;align-items:center;justify-content:center;font-size:12px;">✦</span>
+          <span style="font-size:13px;font-weight:600;">AI Assistant</span>
+          <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8194ba;">context: CLAUDE.md ✓</span>
+        </div>
+        <div sc-ref="chatScroll" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;">
+          <sc-for list="{{ chat }}" as="m" hint-placeholder-count="4">
+            <div style="{{ m.wrapStyle }}">
+              <div style="{{ m.labelStyle }}">{{ m.roleLabel }}</div>
+              <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:12px 14px;border-top:1px solid #2c3f61;">
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #3a4f74;border-radius:10px;padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5f7391;background:#172338;">
+            <span style="flex:1;">{{ inputHint }}</span>
+            <span style="color:{{ accent }};">▸</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer takeaway -->
+  <footer style="display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:999px;padding:5px 12px;">AI drafts · human decides</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:999px;padding:5px 12px;">Angka & harga selalu dari knowledge base</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;background:#2c3f61;border:1px solid #3a4f74;border-radius:999px;padding:5px 12px;">SLA proposal: 8 hari → ~4 hari</span>
+    </div>
+    <div style="font-size:12px;color:#5f7391;white-space:nowrap;">Agate · Level Up — internal training demo</div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1600, &quot;height&quot;: 1000},
+  &quot;clientName&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;PT Nusantara Retail&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Demo&quot;},
+  &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#7e93cf&quot;, &quot;options&quot;: [&quot;#7e93cf&quot;, &quot;#a7c563&quot;, &quot;#e5a175&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Demo&quot;}
+}">
+class Component extends DCLogic {
+  state = { step: 0, openPath: 'CLAUDE.md', userPicked: false };
+
+  componentDidUpdate() {
+    const el = this.refs && this.refs.chatScroll;
+    if (el) el.scrollTop = el.scrollHeight;
+  }
+
+  get accent() { return this.props.accent ?? '#7e93cf'; }
+  get client() { return this.props.clientName ?? 'PT Nusantara Retail'; }
+  get clientSlug() {
+    return this.client.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  // ---------- data ----------
+  getSteps() {
+    const C = this.client;
+    return [
+      { label: 'Setup Workspace', who: 'HUMAN · 1× setup', open: 'CLAUDE.md',
+        cap: 'Sales menyusun knowledge base internal (profil, pricing, case study, template) + CLAUDE.md sebagai aturan main AI. Ini modal sekali pakai untuk semua deal.',
+        hint: 'context ready — 7 docs indexed' },
+      { label: 'Input Konteks Klien', who: 'HUMAN → AI', open: 'meeting-notes.md',
+        cap: 'Hasil meeting & RFP dimasukkan sebagai file. Sales minta AI merangkum kebutuhan, batasan, dan red flags — bukan langsung minta proposal.',
+        hint: 'client context loaded' },
+      { label: 'Generate Draft', who: 'AI drafts', open: 'proposal-v1.md',
+        cap: 'AI menyusun draft v1 dari template + pricing + case study. Perhatikan: prompt menyebut sumber angka secara eksplisit, dan AI menandai bagian yang perlu dicek manusia.',
+        hint: 'draft v1 generated · 09:41' },
+      { label: 'Review & Iterasi', who: 'HUMAN reviews', open: 'review-notes.md',
+        cap: 'Sales me-review dengan judgment bisnis: fase budget, relevansi case study, risiko integrasi. Feedback spesifik → revisi cepat. Di sinilah nilai manusia.',
+        hint: '3 changes requested' },
+      { label: 'Finalize & Kirim', who: 'HUMAN decides', open: 'proposal-v2.md',
+        cap: 'AI menjalankan final check (konsistensi angka, nama, struktur) lalu menyiapkan versi kirim. Keputusan mengirim tetap 100% di manusia.',
+        hint: 'final check passed ✓' },
+      ].map((s, i) => ({ ...s, cap: s.cap.split('PT Nusantara Retail').join(C) }));
+  }
+
+  getFiles() {
+    const C = this.client;
+    const H = { c: '#e5a175', w: 600 };   // heading
+    const S = { c: '#8194ba' };            // dim
+    const N = { c: '#cdd9ec' };            // normal
+    const A = { c: '#a7c563' };            // accent teal
+    const P = { c: '#7e93cf' };            // purple
+    const R = { c: '#e55e5e' };            // red-ish
+    const L = (t, s) => ({ text: t || ' ', ...(s || N) });
+    return {
+      'CLAUDE.md': { meta: 'workspace context · dibaca AI di setiap sesi', lines: [
+        L('# CLAUDE.md — Sales Workspace Context', H), L(),
+        L('## Siapa kami', H),
+        L('- Agate Level Up — B2B gamification & learning services'),
+        L('- Tone proposal: profesional, solutif, data-driven'), L(),
+        L('## Aturan kerja AI', H),
+        L('- Struktur wajib ikut 01_knowledge/proposal-template.md'),
+        L('- Harga & paket: rujuk pricing-rates.md — JANGAN mengarang angka', R),
+        L('- Case study: maksimal 2, pilih yang paling relevan industri klien'),
+        L('- Semua output = draft. Keputusan akhir selalu di manusia.', A), L(),
+        L('## Output', H),
+        L('- Bahasa Indonesia formal · simpan ke 03_proposals/<klien>/', S),
+      ]},
+      'company-profile.md': { meta: '01_knowledge', lines: [
+        L('# Company Profile — Agate Level Up', H), L(),
+        L('- 20+ tahun industri game, 250+ talenta'),
+        L('- Layanan: gamified learning, serious games, engagement design'),
+        L('- Klien: banking, FMCG, telco, retail, pemerintah', S),
+      ]},
+      'pricing-rates.md': { meta: '01_knowledge · single source of truth angka', lines: [
+        L('# Pricing & Packages (2026)', H), L(),
+        L('| Paket   | Cakupan              | Investasi     |', A),
+        L('| Pilot   | ≤ 300 learner, 1 modul | Rp 380–450jt |'),
+        L('| Scale   | ≤ 1.500 learner, LMS   | Rp 950jt–1,2M |'),
+        L('| Custom  | enterprise, multi-thn  | by scoping    |'), L(),
+        L('Catatan: diskon fase / multi-year → approval director', S),
+      ]},
+      'case-retail-academy.md': { meta: '01_knowledge/case-studies', lines: [
+        L('# Case Study — Retail Frontliner Academy', H), L(),
+        L('- Klien: national retail chain, 900 frontliner'),
+        L('- Hasil: completion 34% → 87%, onboarding -40% waktu', A),
+        L('- Format: mobile microlearning + leaderboard antar-toko'),
+      ]},
+      'proposal-template.md': { meta: '01_knowledge', lines: [
+        L('# Template Proposal — Level Up', H), L(),
+        L('1. Executive Summary'), L('2. Pemahaman Kebutuhan'),
+        L('3. Solusi & Learning Journey'), L('4. Timeline & Tim'),
+        L('5. Investasi'), L('6. Case Study Relevan'), L('7. Next Steps'),
+      ]},
+      'meeting-notes.md': { meta: '02_clients/' + this.clientSlug, lines: [
+        L('# Meeting Notes — ' + C, H),
+        L('26 Jun 2026 · PIC: Ibu Sari (Head of L&D)', S), L(),
+        L('## Kebutuhan', H),
+        L('- Training 1.200 frontliner di 40 toko'),
+        L('- E-learning existing: completion cuma 31%', R),
+        L('- Target: onboarding lebih cepat + product knowledge naik'), L(),
+        L('## Batasan', H),
+        L('- Budget indikatif: Rp 900jt – 1,2M'),
+        L('- Go-live: Q4 2026 · LMS existing: Moodle (wajib integrasi)'),
+      ]},
+      'rfp-summary.md': { meta: '02_clients/' + this.clientSlug, lines: [
+        L('# RFP Summary — ' + C, H), L(),
+        L('- Scope: gamified learning platform + konten produk'),
+        L('- Kriteria: pengalaman retail, integrasi LMS, ukuran hasil'),
+        L('- Deadline proposal: 10 Jul 2026', R),
+      ]},
+      'proposal-v1.md': { meta: '03_proposals · generated by AI · 09:41', lines: [
+        L('# Proposal: Gamified Frontliner Academy', H),
+        L(C + ' · Draft v1 (AI-generated)', S), L(),
+        L('## Executive Summary', H),
+        L('Program pembelajaran gamified 12 minggu untuk 1.200 frontliner'),
+        L('di 40 toko, menaikkan completion & mempercepat onboarding.'), L(),
+        L('## Solusi', H),
+        L('1. Mobile microlearning journey — 12 minggu'),
+        L('2. Leaderboard & tantangan antar-toko'),
+        L('3. Integrasi Moodle via LTI 1.3'), L(),
+        L('## Investasi', H),
+        L('Paket Scale — Rp 1,05M  [sumber: pricing-rates.md]', A), L(),
+        L('## Case Study', H),
+        L('- Retail Frontliner Academy (completion 34% → 87%)'), L(),
+        L('⚠ Perlu cek manusia: asumsi 40 toko serentak · pilihan paket', P),
+      ]},
+      'review-notes.md': { meta: '03_proposals · catatan review manusia', lines: [
+        L('# Review Draft v1 — catatan AM', H), L(),
+        L('[ ] Investasi: pecah 2 fase — budget klien cair bertahap', R),
+        L('[ ] Tambah bagian Risiko & Mitigasi integrasi Moodle', R),
+        L('[ ] Timeline: pilot dulu 8 toko sebelum rollout 40', R),
+        L('[x] Struktur, tone, case study — sudah oke', A), L(),
+        L('Feedback spesifik = revisi 1 iterasi. Feedback vague = bolak-balik.', S),
+      ]},
+      'proposal-v2.md': { meta: '03_proposals · v2 FINAL · reviewed by AM', lines: [
+        L('# Proposal: Gamified Frontliner Academy', H),
+        L(C + ' · v2 — FINAL', S), L(),
+        L('## Investasi (2 Fase)', H),
+        L('Fase 1 · Q4 2026: Pilot 8 toko — Rp 420jt', A),
+        L('Fase 2 · Q1 2027: Rollout 40 toko — Rp 680jt', A), L(),
+        L('## Risiko & Mitigasi', H),
+        L('- Integrasi Moodle: sandbox test di minggu ke-2'),
+        L('- Adopsi frontliner: champion program per area'), L(),
+        L('## Final check (AI)', H),
+        L('✓ angka konsisten dgn pricing-rates.md  ✓ nama klien  ✓ struktur', A), L(),
+        L('→ Export: PDF + draft email pengantar. Keputusan kirim: manusia.', P),
+      ]},
+    };
+  }
+
+  getTree() {
+    const slug = this.clientSlug;
+    return [
+      { i: 0, icon: '▾', name: 'AGATE-SALES-WORKSPACE', folder: true },
+      { i: 1, icon: '◆', name: 'CLAUDE.md', path: 'CLAUDE.md' },
+      { i: 1, icon: '▾', name: '01_knowledge', folder: true },
+      { i: 2, icon: '≡', name: 'company-profile.md', path: 'company-profile.md' },
+      { i: 2, icon: '≡', name: 'pricing-rates.md', path: 'pricing-rates.md' },
+      { i: 2, icon: '≡', name: 'proposal-template.md', path: 'proposal-template.md' },
+      { i: 2, icon: '▾', name: 'case-studies', folder: true },
+      { i: 3, icon: '≡', name: 'case-retail-academy.md', path: 'case-retail-academy.md' },
+      { i: 1, icon: '▾', name: '02_clients / ' + slug, folder: true, from: 1 },
+      { i: 2, icon: '≡', name: 'meeting-notes.md', path: 'meeting-notes.md', from: 1 },
+      { i: 2, icon: '≡', name: 'rfp-summary.md', path: 'rfp-summary.md', from: 1 },
+      { i: 1, icon: '▾', name: '03_proposals / ' + slug, folder: true, from: 2 },
+      { i: 2, icon: '≡', name: 'proposal-v1.md', path: 'proposal-v1.md', from: 2 },
+      { i: 2, icon: '≡', name: 'review-notes.md', path: 'review-notes.md', from: 3 },
+      { i: 2, icon: '≡', name: 'proposal-v2.md', path: 'proposal-v2.md', from: 4 },
+    ];
+  }
+
+  getChatByStep() {
+    const C = this.client;
+    return [
+      [ { r: 'sys', t: 'Workspace loaded. CLAUDE.md terbaca — 7 dokumen knowledge terindeks sebagai context.' } ],
+      [ { r: 'user', t: 'Baca folder 02_clients/' + this.clientSlug + '/ lalu rangkum: kebutuhan utama, batasan, dan red flags. Jangan buat proposal dulu.' },
+        { r: 'ai', t: 'Rangkuman ' + C + ':\n• Kebutuhan: training 1.200 frontliner / 40 toko, completion existing 31%\n• Batasan: budget Rp 900jt–1,2M, go-live Q4, wajib integrasi Moodle\n• Red flags: budget mepet batas bawah paket Scale; versi Moodle belum dikonfirmasi — perlu ditanyakan ke klien.' } ],
+      [ { r: 'user', t: 'Buat draft proposal pakai proposal-template.md. Case study maksimal 2 yang relevan retail. Semua angka wajib dari pricing-rates.md — kalau tidak ada, tandai, jangan mengarang.' },
+        { r: 'sys', t: '+ 03_proposals/' + this.clientSlug + '/proposal-v1.md created' },
+        { r: 'ai', t: 'Draft v1 selesai (7 bagian sesuai template). Saya pakai paket Scale Rp 1,05M dan case study Retail Frontliner Academy.\n\nYang perlu kamu cek: asumsi rollout 40 toko serentak, dan apakah paket Scale tepat untuk fase budget klien.' } ],
+      [ { r: 'user', t: 'Revisi: (1) investasi pecah 2 fase — pilot 8 toko dulu, (2) tambah bagian Risiko & Mitigasi integrasi Moodle, (3) timeline sesuaikan fase.' },
+        { r: 'sys', t: '± proposal-v1.md → proposal-v2.md · 3 sections changed' },
+        { r: 'ai', t: 'Revisi diterapkan:\n• Investasi → Fase 1 Rp 420jt + Fase 2 Rp 680jt (total tetap dalam range budget)\n• + bagian Risiko & Mitigasi (Moodle sandbox test, champion program)\n• Timeline → pilot Q4 2026, rollout Q1 2027' } ],
+      [ { r: 'user', t: 'Final check: konsistensi angka vs pricing-rates.md, nama klien, struktur template. Lalu siapkan versi kirim.' },
+        { r: 'ai', t: '3/3 pengecekan lolos. Siap: proposal-v2.pdf + draft email pengantar ke Ibu Sari.\n\nCatatan: keputusan mengirim dan komitmen harga tetap di kamu / approval director.' },
+        { r: 'sys', t: '✓ export ready · SLA: hari ke-4 (sebelumnya rata-rata 8 hari)' } ],
+    ];
+  }
+
+  // ---------- render ----------
+  renderVals() {
+    const accent = this.accent;
+    const step = this.state.step;
+    const steps = this.getSteps();
+    const files = this.getFiles();
+    const cur = steps[step];
+    const openPath = this.state.userPicked && files[this.state.openPath] ? this.state.openPath : cur.open;
+    const file = files[openPath];
+
+    const stepPills = steps.map((s, i) => ({
+      num: '0' + (i + 1),
+      label: s.label,
+      who: s.who,
+      onClick: () => this.setState({ step: i, userPicked: false }),
+      pillStyle: 'display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:12px;cursor:pointer;text-align:left;font-family:inherit;color:#eef2f9;background:' + (i === step ? '#26385c' : '#20304e') + ';border:1px solid ' + (i === step ? accent : '#2c3f61') + ';' + (i < step ? 'opacity:.75;' : ''),
+      numStyle: 'font-family:IBM Plex Mono,monospace;font-size:12px;font-weight:600;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;' + (i <= step ? 'background:' + accent + '22;color:' + accent + ';border:1px solid ' + accent + '55;' : 'background:#2c3f61;color:#8194ba;border:1px solid #3a4f74;'),
+    }));
+
+    const tree = this.getTree()
+      .filter(r => (r.from ?? 0) <= step)
+      .map(r => {
+        const active = r.path === openPath;
+        const justNew = (r.from ?? 0) === step && !r.folder;
+        return {
+          icon: r.icon,
+          name: r.name,
+          isNew: justNew,
+          onClick: r.path ? (() => this.setState({ openPath: r.path, userPicked: true })) : (() => {}),
+          style: 'display:flex;align-items:center;gap:8px;width:100%;padding:4px 8px 4px ' + (8 + r.i * 14) + 'px;border:none;border-radius:6px;cursor:' + (r.path ? 'pointer' : 'default') + ';font-family:IBM Plex Mono,monospace;font-size:12px;text-align:left;background:' + (active ? '#2c3f61' : 'transparent') + ';color:' + (r.folder ? '#8194ba' : active ? '#eef2f9' : '#b6c4dd') + ';' + (justNew ? 'animation:fadeUp .4s ease both;' : ''),
+          iconStyle: 'flex:none;font-size:10px;color:' + (r.name === 'CLAUDE.md' ? '#7e93cf' : r.folder ? '#5f7391' : '#a7c563') + ';',
+        };
+      });
+
+    const editorLines = file.lines.map((ln, i) => ({
+      n: i + 1,
+      text: ln.text,
+      style: 'white-space:pre-wrap;color:' + (ln.c || '#cdd9ec') + ';' + (ln.w ? 'font-weight:' + ln.w + ';' : ''),
+    }));
+
+    const chat = [];
+    this.getChatByStep().slice(0, step + 1).forEach((msgs, si) => {
+      msgs.forEach(m => {
+        const isUser = m.r === 'user', isSys = m.r === 'sys';
+        chat.push({
+          roleLabel: isUser ? 'SALES / AM' : isSys ? 'SYSTEM' : 'AI ASSISTANT',
+          text: m.t,
+          wrapStyle: 'display:flex;flex-direction:column;gap:4px;' + (si === step ? 'animation:fadeUp .45s ease both;' : 'opacity:.55;'),
+          labelStyle: 'font-family:IBM Plex Mono,monospace;font-size:9px;letter-spacing:.15em;color:' + (isUser ? '#e5a175' : isSys ? '#5f7391' : accent) + ';' + (isUser ? 'text-align:right;' : ''),
+          bubbleStyle: 'font-size:12.5px;line-height:1.55;white-space:pre-line;border-radius:10px;padding:9px 12px;max-width:95%;' + (isUser
+            ? 'background:#2c3f61;color:#eef2f9;align-self:flex-end;border:1px solid #3a4f74;'
+            : isSys
+              ? 'background:transparent;color:#5f7391;font-family:IBM Plex Mono,monospace;font-size:11px;border:1px dashed #3a4f74;'
+              : 'background:' + accent + '14;color:#e3ebf6;border:1px solid ' + accent + '3a;'),
+        });
+      });
+    });
+
+    const who = cur.who.startsWith('AI') ? 'AI' : 'HUMAN';
+    return {
+      accent,
+      steps: stepPills,
+      prev: () => this.setState(s => ({ step: Math.max(0, s.step - 1), userPicked: false })),
+      next: () => this.setState(s => ({ step: Math.min(4, s.step + 1), userPicked: false })),
+      nextLabel: step >= 4 ? 'Selesai ✓' : 'Lanjut →',
+      prevBtnStyle: 'padding:10px 16px;border-radius:12px;background:#20304e;border:1px solid #2c3f61;color:#8194ba;cursor:pointer;font-family:inherit;font-size:14px;',
+      nextBtnStyle: 'padding:10px 20px;border-radius:12px;background:' + (step >= 4 ? '#2c3f61' : accent) + ';border:1px solid ' + (step >= 4 ? '#3a4f74' : accent) + ';color:' + (step >= 4 ? '#8194ba' : '#16233d') + ';cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;',
+      capWho: who,
+      capBadgeStyle: 'flex:none;font-family:IBM Plex Mono,monospace;font-size:11px;font-weight:600;letter-spacing:.1em;padding:4px 10px;border-radius:6px;' + (who === 'AI' ? 'color:' + accent + ';background:' + accent + '18;border:1px solid ' + accent + '44;' : 'color:#e5a175;background:rgba(229,161,117,.1);border:1px solid rgba(229,161,117,.35);'),
+      capText: cur.cap,
+      tree,
+      openFileName: openPath,
+      openFileMeta: file.meta,
+      editorLines,
+      statusHint: cur.hint,
+      chat,
+      inputHint: step >= 4 ? 'workflow selesai — coba di deal kamu sendiri' : 'Tulis instruksi berikutnya…',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

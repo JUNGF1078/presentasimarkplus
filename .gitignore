@@ -1,0 +1,5 @@
+_orig_backup/
+*.thumbnail
+.thumbnail
+*.pdf
+*.zip

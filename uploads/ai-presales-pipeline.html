@@ -1,0 +1,725 @@
+<!-- CONFIDENTIAL — INTERNAL USE ONLY. Proprietary to Agate. © 2026 Agate. -->
+<title>AI-Augmented B2B Pre-Sales & Marketing — Level Up powered by Agaté</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D1B4B; --deep:#060E2A; --mid:#132157; --card:#182860;
+    --orange:#F5903C; --yellow:#F5C842; --coral:#F4856A; --purple:#7B4FBF; --blue:#4A90D9;
+    --ink:#FFFFFF; --text:#C3CEEC; --muted:#93A3CE; --faint:#5E6FA3;
+    --ok:#4CAF7A; --warn:#F5C842; --bad:#FF6B6B;
+    --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.06);
+    --r:16px;
+    --sans:"Poppins","Montserrat",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SF Mono,Consolas,monospace;
+    --dots:radial-gradient(rgba(255,255,255,.085) 1px,transparent 1.5px);
+    --sheen:inset 0 1px 0 rgba(255,255,255,.06);
+    --lift:0 22px 48px -26px rgba(0,0,0,.75);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--deep);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
+
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .deck::-webkit-scrollbar{width:0}
+  .slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(32px,4.4vw,70px) clamp(22px,6vw,100px) clamp(44px,5vw,74px);position:relative;overflow:hidden;
+    background:var(--dots),
+      radial-gradient(1150px 560px at 50% -22%,rgba(245,144,60,.10),transparent 60%),
+      radial-gradient(920px 520px at 3% 118%,rgba(123,79,191,.13),transparent 62%),
+      linear-gradient(180deg,#0e1c50,#0a1642);
+    background-size:24px 24px,auto,auto,auto}
+  .inner{max-width:1280px;margin:0 auto;width:100%;position:relative;z-index:2}
+  /* refined theatrical drapes */
+  .slide>.drape{position:absolute;top:0;width:230px;height:190px;pointer-events:none;z-index:1;opacity:.5}
+  .slide>.drape.l{left:0;background:radial-gradient(200px 180px at -6% -12%,#20348a,transparent 66%)}
+  .slide>.drape.r{right:0;background:radial-gradient(200px 180px at 106% -12%,#20348a,transparent 66%)}
+
+  /* type */
+  .eyebrow{font-weight:600;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);margin:0 0 14px}
+  h1{font-weight:800;font-size:clamp(2.1rem,5.2vw,3.9rem);line-height:1.02;letter-spacing:-.03em;margin:0 0 20px;text-wrap:balance}
+  h2{font-weight:800;font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.08;letter-spacing:-.025em;margin:0 0 8px;text-wrap:balance}
+  .lead{color:var(--text);font-weight:400;font-size:clamp(1rem,1.42vw,1.14rem);max-width:74ch;line-height:1.6;margin:0}
+  p{margin:0}
+  .hl{background:linear-gradient(180deg,#F7A254,var(--orange));color:#20130a;border-radius:5px;padding:1px 9px;font-weight:700;white-space:nowrap;box-shadow:0 2px 10px rgba(245,144,60,.4)}
+  .y{color:var(--yellow);font-weight:600} .o{color:var(--orange);font-weight:600} .b{color:var(--blue);font-weight:600}
+  .w{color:#fff;font-weight:600} .mono{font-family:var(--mono)}
+  .small{font-size:.84rem;color:var(--muted);line-height:1.55}
+
+  /* chrome */
+  .brandbar{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;
+    padding:13px clamp(18px,4vw,40px);font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);pointer-events:none;
+    background:linear-gradient(180deg,rgba(6,14,42,.85),transparent)}
+  .brandbar b{color:var(--muted)}
+  .dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:11px}
+  .dots a{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:.25s}
+  .dots a.on{background:var(--orange);height:20px;box-shadow:0 0 12px rgba(245,144,60,.7)}
+  .pageno{position:fixed;bottom:15px;left:clamp(18px,4vw,40px);z-index:40;font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.1em}
+  .hint{position:fixed;bottom:15px;right:clamp(18px,4vw,40px);z-index:40;font-family:var(--mono);font-size:.62rem;color:var(--faint)}
+
+  /* logo lockup */
+  .lock{display:inline-flex;align-items:center;gap:9px}
+  .lt{display:flex;flex-direction:column;line-height:1}
+  .lt b{font-weight:700;font-size:.9rem;color:#fff;letter-spacing:-.01em}
+  .lt i{font-style:normal;font-weight:400;font-size:.58rem;color:var(--muted);letter-spacing:.02em;margin-top:3px}
+  .coral{height:5px;border-radius:3px;background:linear-gradient(90deg,var(--coral),var(--orange));box-shadow:0 2px 16px rgba(244,133,106,.45)}
+
+  /* pills */
+  .pill{display:inline-flex;align-items:center;gap:6px;border-radius:100px;padding:6px 15px;font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+  .pill.orange{background:linear-gradient(180deg,#F7A254,var(--orange));color:#20130a;box-shadow:0 4px 16px rgba(245,144,60,.35)}
+  .pill.purple{background:var(--purple);color:#fff}
+  .pill.blue{background:rgba(74,144,217,.16);color:#9CC4EE;border:1px solid rgba(74,144,217,.4)}
+  .pill.ghost{background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--line)}
+
+  /* cards */
+  .grid{display:grid;gap:14px}
+  .card{background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--sheen),var(--lift)}
+  .card h3{margin:0 0 8px;font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
+  .card p{color:var(--muted);font-size:.9rem;line-height:1.55}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .split.wide{grid-template-columns:.9fr 1.1fr}
+
+  /* funnel */
+  .funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:8px;position:relative}
+  .fstage{border-radius:var(--r);padding:18px 18px 20px;border:1px solid var(--line);position:relative;background:linear-gradient(180deg,var(--mid),var(--card));box-shadow:var(--sheen),var(--lift)}
+  .fstage::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;border-radius:3px}
+  .fstage:not(:last-child)::after{content:"→";position:absolute;right:-19px;top:50%;transform:translateY(-50%);color:var(--faint);font-family:var(--mono);font-size:1rem;z-index:3}
+  .fstage .n{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;font-weight:600}
+  .fstage h3{margin:7px 0 5px;font-size:1.14rem;font-weight:800;letter-spacing:-.02em}
+  .fstage .sub{font-size:.81rem;color:var(--muted);line-height:1.5}
+  .fstage .ai{margin-top:12px;font-size:.76rem;color:var(--text);border-top:1px dashed var(--line);padding-top:10px}
+  .fstage .ai b{color:#fff}
+  .s-leads::before{background:var(--blue)} .s-leads .n{color:#7FB4EE}
+  .s-quality::before{background:var(--ok)} .s-quality .n{color:#6FC89B}
+  .s-opp::before{background:var(--orange)} .s-opp .n{color:var(--orange)}
+  .s-deal::before{background:var(--yellow)} .s-deal .n{color:var(--yellow)}
+
+  /* framework strip */
+  .fwstrip{display:flex;align-items:stretch;gap:10px;margin-top:20px;flex-wrap:wrap}
+  .fwlabel{display:flex;align-items:center;font-weight:700;font-size:.82rem;padding:0 4px;color:#fff}
+  .fwchip{flex:1;min-width:150px;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:11px;padding:11px 14px;display:flex;align-items:center;gap:9px}
+  .fwchip .num{font-family:var(--mono);font-weight:600;color:var(--orange);font-size:.78rem}
+  .fwchip .nm{font-size:.8rem;font-weight:600;color:var(--text)}
+
+  /* flow chips */
+  .flowline{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:6px}
+  .step{background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-size:.82rem;font-weight:600;white-space:nowrap;box-shadow:var(--sheen)}
+  .step.dec{background:rgba(245,144,60,.14);border-color:rgba(245,144,60,.45);color:#FFD9B0}
+  .arrow{color:var(--faint);font-family:var(--mono)}
+
+  /* ===== SWIMLANE ===== */
+  .swimwrap{border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--lift);background:linear-gradient(180deg,#0c1846,#0a1338)}
+  .swimtop{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .swimtop .ttl{font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:10px}
+  .swimtop .sla{font-family:var(--mono);font-size:.68rem;font-weight:600;padding:5px 12px;border-radius:100px}
+  .sla.bad{background:rgba(255,107,107,.14);color:#FF9E9E;border:1px solid rgba(255,107,107,.4)}
+  .sla.good{background:rgba(76,175,122,.16);color:#7FDCAC;border:1px solid rgba(76,175,122,.45)}
+  .ruler{display:grid;grid-template-columns:174px repeat(var(--cols),1fr);border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.015)}
+  .ruler .rc{padding:7px 10px;font-family:var(--mono);font-size:.62rem;color:var(--faint);letter-spacing:.06em}
+  .ruler .rc.day{border-left:1px dashed var(--line-2)}
+  .lane{display:grid;grid-template-columns:174px 1fr;border-top:1px solid var(--line-2);min-height:58px}
+  .lane .lbl{padding:9px 13px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(255,255,255,.018)}
+  .lane .lbl b{font-size:.78rem;font-weight:700;line-height:1.15}
+  .lane .lbl span{font-size:.56rem;color:var(--faint);font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .track{display:grid;grid-template-columns:repeat(var(--cols),1fr);align-items:center;position:relative;padding:8px 0}
+  .track::before{content:"";position:absolute;left:2px;right:2px;top:50%;height:1px;background:repeating-linear-gradient(90deg,var(--line-2) 0 5px,transparent 5px 11px)}
+  .node{position:relative;z-index:2;margin:0 6px;border-radius:10px;padding:8px 9px;font-size:.72rem;font-weight:600;line-height:1.2;text-align:center;border:1px solid var(--line);background:linear-gradient(180deg,#1a2a63,#152052);box-shadow:var(--sheen)}
+  .node small{display:block;font-weight:500;font-size:.56rem;color:var(--muted);margin-top:2px;letter-spacing:.03em}
+  .node.b{border-color:rgba(74,144,217,.5)} .node.p{border-color:rgba(123,79,191,.5)}
+  .node.o{border-color:rgba(245,144,60,.55)} .node.yl{border-color:rgba(245,200,66,.5)} .node.c{border-color:rgba(244,133,106,.55)}
+  .node.dec{background:rgba(245,144,60,.14);border-color:rgba(245,144,60,.5);color:#FFD9B0;font-size:.68rem}
+  .node.ai{background:linear-gradient(180deg,rgba(245,144,60,.22),#152052);border-color:var(--orange)}
+  .node .ait{position:absolute;top:-8px;right:-6px;background:var(--orange);color:#20130a;font-family:var(--mono);font-size:.52rem;font-weight:700;padding:1px 5px;border-radius:6px;box-shadow:0 2px 8px rgba(245,144,60,.5)}
+  .node.gate{background:rgba(76,175,122,.16);border-color:rgba(76,175,122,.55);color:#9FE6C2}
+  .node.muted{opacity:.72;filter:saturate(.6)}
+
+  /* delta band */
+  .delta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  .dcard{background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--sheen)}
+  .dcard .from{font-size:.74rem;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,107,107,.6)}
+  .dcard .to{font-size:1.02rem;font-weight:800;color:#fff;margin-top:3px;letter-spacing:-.01em}
+  .dcard .to .o{color:var(--orange)}
+  .dcard .cap{font-size:.68rem;color:var(--faint);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+
+  /* table */
+  .tbl{width:100%;border-collapse:collapse;font-size:.85rem}
+  .tbl th{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:left;font-weight:500;padding:0 12px 10px;border-bottom:1px solid var(--line)}
+  .tbl td{padding:11px 12px;border-bottom:1px solid var(--line-2);vertical-align:top;line-height:1.45}
+  .tbl tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl .asset{font-family:var(--mono);font-size:.72rem;color:#7FB4EE}
+  .dotk{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:middle}
+
+  /* ladder */
+  .ladder{display:grid;grid-template-columns:132px 1fr;gap:10px 16px;margin-top:10px}
+  .rung{display:contents}
+  .lstage{border-radius:12px;padding:12px 14px;font-weight:800;display:flex;flex-direction:column;justify-content:center;font-size:.92rem;box-shadow:var(--sheen)}
+  .lstage small{display:block;font-weight:500;font-size:.66rem;color:var(--muted);margin-top:3px;letter-spacing:.04em}
+  .l-tofu{background:rgba(74,144,217,.16);border:1px solid rgba(74,144,217,.4)}
+  .l-mofu{background:rgba(123,79,191,.16);border:1px solid rgba(123,79,191,.4)}
+  .l-bofu{background:rgba(245,144,60,.16);border:1px solid rgba(245,144,60,.45)}
+  .lbody{background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:12px;padding:12px 15px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;box-shadow:var(--sheen)}
+  .lbody .a{font-size:.85rem;font-weight:600} .lbody .sig{font-size:.73rem;color:var(--muted);font-family:var(--mono)}
+  .lbody .ai{font-size:.72rem;color:#6FC89B;font-family:var(--mono);margin-left:auto}
+
+  /* quadrant */
+  .quad{display:grid;grid-template-columns:22px 1fr 1fr;grid-template-rows:1fr 1fr 22px;gap:8px;aspect-ratio:1.4/1;max-width:520px}
+  .qcell{border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:5px;border:1px solid var(--line);box-shadow:var(--sheen)}
+  .qcell .qt{font-weight:800;font-size:.92rem} .qcell .qd{font-size:.72rem;color:var(--muted);line-height:1.45}
+  .q1{background:rgba(245,144,60,.2);border-color:rgba(245,144,60,.55)} .q1 .qt{color:var(--orange)}
+  .q2{background:rgba(74,144,217,.14)} .q2 .qt{color:#8BBEEC}
+  .q3{background:rgba(123,79,191,.14)} .q3 .qt{color:#B79BE8}
+  .q4{background:rgba(255,255,255,.035)} .q4 .qt{color:var(--muted)}
+  .axisY{grid-row:1/3;grid-column:1;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--faint);align-self:center}
+  .axisX{grid-column:2/4;grid-row:3;text-align:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--faint)}
+
+  /* P.L.A.Y. */
+  .play{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .pl{background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:var(--sheen),var(--lift)}
+  .pl .big{font-weight:900;font-size:2.2rem;line-height:1;color:var(--orange);text-shadow:0 4px 20px rgba(245,144,60,.5)}
+  .pl h4{margin:8px 0 4px;font-size:.92rem;font-weight:700} .pl p{font-size:.76rem;color:var(--muted);line-height:1.45}
+
+  /* proof ladder */
+  .proof{display:flex;gap:10px;align-items:flex-end;margin-top:8px}
+  .prung{flex:1;border-radius:12px 12px 0 0;border:1px solid var(--line);border-bottom:none;padding:12px 13px;background:linear-gradient(180deg,var(--mid),var(--card));box-shadow:var(--sheen)}
+  .prung .pn{font-family:var(--mono);font-size:.6rem;color:var(--faint)}
+  .prung h4{margin:4px 0 3px;font-size:.9rem;font-weight:700} .prung p{font-size:.72rem;color:var(--muted);line-height:1.4}
+  .prung.on{background:linear-gradient(180deg,rgba(245,144,60,.26),var(--card));border-color:var(--orange);box-shadow:0 -10px 30px -10px rgba(245,144,60,.5)}
+  .prung.on h4{color:var(--orange)}
+
+  /* 50% rule */
+  .fifty{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  .fbox{border-radius:14px;padding:15px 17px;border:1px solid var(--line);box-shadow:var(--sheen)}
+  .fbox.live{background:rgba(76,175,122,.1);border-color:rgba(76,175,122,.4)}
+  .fbox.after{background:rgba(255,255,255,.03)}
+  .fbox h4{margin:0 0 9px;font-size:.9rem;font-weight:700;display:flex;align-items:center;gap:8px}
+  .fbox ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .fbox li{font-size:.82rem;color:var(--muted);padding-left:20px;position:relative;line-height:1.45}
+  .fbox.live li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+  .fbox.after li::before{content:"→";position:absolute;left:0;color:var(--faint);font-family:var(--mono)}
+
+  /* mockups */
+  .frame{background:var(--deep);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.7)}
+  .browserbar{display:flex;align-items:center;gap:7px;padding:9px 13px;background:#0a1230;border-bottom:1px solid var(--line)}
+  .browserbar i{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .urlpill{margin-left:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted);background:#0f1940;border:1px solid var(--line);border-radius:100px;padding:3px 12px}
+  .mocklabel{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 8px}
+
+  .ebook{position:relative;background:var(--dots),radial-gradient(400px 300px at 80% 0,rgba(245,144,60,.22),transparent 60%),var(--navy);background-size:18px 18px,auto,auto;padding:22px 22px 0;aspect-ratio:3/4;display:flex;flex-direction:column}
+  .ebook .curt{position:absolute;top:0;width:80px;height:88px;opacity:.55}
+  .ebook .curt.l{left:0;background:radial-gradient(80px 88px at 0 0,#20348a,transparent 72%)}
+  .ebook .curt.r{right:0;background:radial-gradient(80px 88px at 100% 0,#20348a,transparent 72%)}
+  .ebook h3{font-weight:900;font-size:1.5rem;line-height:1.04;letter-spacing:-.02em;margin:14px 0 8px}
+  .ebook .es{font-size:.76rem;color:var(--muted);line-height:1.5}
+  .ebook .art{margin:auto 0;align-self:center;width:118px;height:118px;border-radius:22px;background:conic-gradient(from 200deg,var(--coral),var(--orange),var(--yellow),var(--blue),var(--coral));display:grid;place-items:center;font-size:2.6rem;box-shadow:0 16px 40px rgba(245,144,60,.45)}
+  .ebook .foot{display:flex;justify-content:space-between;align-items:center;padding:12px 0 10px}
+
+  .email .hdr{display:flex;gap:11px;align-items:center;padding:12px 15px;background:#0a1230;border-bottom:1px solid var(--line)}
+  .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--coral));display:grid;place-items:center;font-weight:800;color:var(--navy);flex:0 0 auto}
+  .email .meta{font-size:.76rem;line-height:1.4;min-width:0} .email .meta .fr{font-weight:700} .email .meta .fr span{color:var(--muted);font-weight:400}
+  .email .subj{font-weight:600;color:#fff} .email .meta .to{color:var(--faint);font-size:.66rem;font-family:var(--mono)}
+  .email .body{padding:20px 22px;background:var(--navy);background-image:var(--dots);background-size:20px 20px}
+  .email .body h4{font-weight:900;font-size:1.26rem;line-height:1.12;margin:12px 0 10px}
+  .email .body p{font-size:.86rem;color:#D7DEF3;line-height:1.65;margin-bottom:11px}
+  .token{background:rgba(74,144,217,.22);color:#Bcd4f5;border-radius:4px;padding:1px 6px;font-family:var(--mono);font-size:.78rem}
+  .btn{display:inline-block;background:linear-gradient(180deg,#F7A254,var(--orange));color:#20130a;font-weight:800;font-size:.86rem;padding:11px 20px;border-radius:9px;text-decoration:none;box-shadow:0 8px 22px rgba(245,144,60,.4)}
+  .email .efoot{padding:12px 22px 16px;background:var(--navy);font-size:.64rem;color:var(--faint);font-family:var(--mono)}
+
+  .proto .hud{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:#0a1230;border-bottom:1px solid var(--line)}
+  .proto .hud .r{display:flex;gap:13px;align-items:center;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+  .proto .timer{color:var(--yellow);font-weight:600}
+  .proto .stage-body{display:grid;grid-template-columns:1.55fr .9fr}
+  .proto .scene{padding:20px 22px;background:var(--dots),var(--navy);background-size:20px 20px}
+  .proto .tagrow{display:flex;gap:8px;margin-bottom:12px}
+  .proto .scene .q{font-weight:800;font-size:1.1rem;line-height:1.32;margin-bottom:16px;letter-spacing:-.01em}
+  .proto .scene .q b{background:var(--orange);color:#20130a;border-radius:4px;padding:1px 6px}
+  .choice{display:flex;gap:11px;align-items:center;background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:9px}
+  .choice .k{width:26px;height:26px;flex:0 0 auto;border-radius:7px;background:#0a1230;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:.8rem;color:var(--muted)}
+  .choice.sel{border-color:var(--orange);background:rgba(245,144,60,.13);box-shadow:0 6px 20px -8px rgba(245,144,60,.6)} .choice.sel .k{background:var(--orange);color:#20130a;border-color:var(--orange)}
+  .choice span.t{font-size:.84rem;font-weight:500}
+  .proto .rail{padding:20px 18px;background:#0b1533;border-left:1px solid var(--line)}
+  .proto .rail .rl{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  .sig{margin-bottom:13px}
+  .sig .sl{display:flex;justify-content:space-between;font-size:.74rem;margin-bottom:5px} .sig .sl b{font-weight:600} .sig .sl i{font-style:normal;color:var(--muted);font-family:var(--mono)}
+  .trk{height:7px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden} .trk i{display:block;height:100%;border-radius:4px}
+
+  /* policy */
+  .rules{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+  .rule{background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:12px;padding:11px 12px;box-shadow:var(--sheen)}
+  .rule .rn{font-family:var(--mono);font-size:.64rem;color:var(--orange);font-weight:600}
+  .rule h4{margin:5px 0 3px;font-size:.85rem;font-weight:700} .rule p{font-size:.72rem;color:var(--muted);line-height:1.4}
+  .tiers{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .tier{border-radius:9px;padding:9px 12px;font-size:.76rem;border:1px solid var(--line);flex:1;min-width:120px;line-height:1.4}
+  .tier b{display:block;font-size:.68rem;font-family:var(--mono);letter-spacing:.06em;margin-bottom:3px}
+  .t-pub{background:rgba(76,175,122,.1);border-color:rgba(76,175,122,.35)} .t-pub b{color:#7FDCAC}
+  .t-int{background:rgba(74,144,217,.1);border-color:rgba(74,144,217,.35)} .t-int b{color:#8BBEEC}
+  .t-con{background:rgba(245,144,60,.1);border-color:rgba(245,144,60,.4)} .t-con b{color:var(--orange)}
+  .t-res{background:rgba(255,107,107,.1);border-color:rgba(255,107,107,.4)} .t-res b{color:#FF9E9E}
+  .nevers{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .never{font-size:.75rem;background:rgba(255,107,107,.09);border:1px solid rgba(255,107,107,.3);color:#FFC2C2;border-radius:8px;padding:6px 10px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+  .stat{background:linear-gradient(180deg,var(--mid),var(--card));border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--sheen),var(--lift)}
+  .stat .big{font-weight:900;font-size:clamp(1.5rem,3vw,2.3rem);letter-spacing:-.03em;color:#fff;line-height:1}
+  .stat .big.o{color:var(--orange)}
+  .stat .cap{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.45}
+
+  .foot-lock{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:16px}
+  .conf{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;color:var(--faint);line-height:1.7}
+
+  @media(max-width:960px){
+    .split,.split.wide,.fifty{grid-template-columns:1fr}
+    .funnel,.rules,.play,.delta{grid-template-columns:1fr 1fr}
+    .funnel{gap:14px} .fstage:not(:last-child)::after{display:none}
+    .stats{grid-template-columns:1fr 1fr}
+    .proto .stage-body{grid-template-columns:1fr}
+    .proto .rail{border-left:none;border-top:1px solid var(--line)}
+    .ladder{grid-template-columns:100px 1fr}
+    .dots{display:none}
+    .swimwrap{overflow-x:auto}
+    .ruler,.lane{min-width:660px}
+  }
+</style>
+
+<div class="brandbar">
+  <span><b>Level Up</b> powered by Agaté · GF Division</span>
+  <span>AI-Augmented Pre-Sales &amp; Marketing</span>
+</div>
+<nav class="dots" id="dots"></nav>
+<div class="pageno" id="pageno">01</div>
+<div class="hint">↓ / → to advance</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">Process Map · Marketing → Sales</span>
+      <h1 style="margin-top:18px">AI-Augmented B2B<br>Pre-Sales &amp; Marketing</h1>
+      <p class="lead">From a stranger reading an e-book, to a scored lead, to a <span class="hl">live prototype in the proposal</span>. Five frameworks, one funnel, a before/after of the real pre-sales process — and three brand mockups.</p>
+      <div class="flowline" style="margin-top:28px">
+        <span class="step" style="border-color:rgba(74,144,217,.6)">Leads</span><span class="arrow">→</span>
+        <span class="step" style="border-color:rgba(76,175,122,.6)">Quality Leads</span><span class="arrow">→</span>
+        <span class="step" style="border-color:rgba(245,144,60,.6)">Opportunity</span><span class="arrow">→</span>
+        <span class="step" style="border-color:rgba(245,200,66,.6)">Deal</span>
+      </div>
+      <div class="foot-lock">
+        <span class="lock">
+          <svg width="34" height="34" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="30" rx="10" fill="#142260" stroke="#4A90D9" stroke-width="2.5"/><path d="M13 21.5h3.5V18h3.5v3.5H23.5V25H20v3.5h-3.5V25H13z" fill="#F5C842"/><circle cx="30" cy="27" r="2.3" fill="#F4856A"/><circle cx="34.5" cy="22.5" r="2.3" fill="#F5903C"/><circle cx="39" cy="18" r="2.3" fill="#F5C842"/></svg>
+          <span class="lt"><b>Level Up</b><i>powered by Agaté.</i></span>
+        </span>
+        <span class="mono" style="font-size:.64rem;color:var(--faint)">GF DIVISION · gf.ai@agate.id</span>
+      </div>
+      <div class="coral" style="margin-top:14px"></div>
+    </div>
+  </section>
+
+  <!-- 2 · BIG PICTURE -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <p class="eyebrow">The Big Picture</p>
+      <h2>Marketing feeds the funnel. AI moves it down faster.</h2>
+      <p class="lead" style="margin-bottom:16px">Left = the AI content engine (already live) that manufactures demand &amp; captures leads. Right = the pre-sales funnel where AI ranks, personalizes, proposes, and <span class="o">prototypes</span>.</p>
+      <div class="funnel">
+        <div class="fstage s-leads"><div class="n">STAGE 01</div><h3>Leads</h3><div class="sub">Anyone who raised a hand — e-book, LP form, event.</div><div class="ai"><b>AI:</b> Apollo enrichment + scraping → one list</div></div>
+        <div class="fstage s-quality"><div class="n">STAGE 02</div><h3>Quality Leads</h3><div class="sub">Ranked, segmented, ICP-fit — worth a human's time.</div><div class="ai"><b>AI:</b> Claude MCP scoring → segment router</div></div>
+        <div class="fstage s-opp"><div class="n">STAGE 03</div><h3>Opportunity</h3><div class="sub">A real need. Brief → proposal → estimate → mockup.</div><div class="ai"><b>AI:</b> Proposal + quote + <b>50% prototype</b></div></div>
+        <div class="fstage s-deal"><div class="n">STAGE 04</div><h3>Deal</h3><div class="sub">Signed. The mockup becomes the product base.</div><div class="ai"><b>AI:</b> Requirement spec + technical scope</div></div>
+      </div>
+      <div class="fwstrip">
+        <span class="fwlabel">5 frameworks in this deck</span>
+        <span class="fwchip"><span class="num">01</span><span class="nm">Curtain-to-Contract</span></span>
+        <span class="fwchip"><span class="num">02</span><span class="nm">Spotlight Quadrant</span></span>
+        <span class="fwchip"><span class="num">03</span><span class="nm">P.L.A.Y. + Router</span></span>
+        <span class="fwchip"><span class="num">04</span><span class="nm">Proof Ladder</span></span>
+        <span class="fwchip"><span class="num">05</span><span class="nm">Human-Gate</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · FRAMEWORK 1 : CURTAIN-TO-CONTRACT -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill purple">Framework 01 · Marketing</span>
+      <h2 style="margin-top:14px">The <span class="hl">Curtain-to-Contract</span> content ladder</h2>
+      <p class="lead" style="margin-bottom:14px">The AI content engine mapped to funnel depth: each stage has an <b class="w">asset</b>, an <b class="w">AI step</b>, and a <b class="w">signal</b> that graduates the contact to the next rung.</p>
+      <div class="ladder">
+        <div class="rung">
+          <div class="lstage l-tofu">TOFU<small>Awareness · raise the curtain</small></div>
+          <div class="lbody"><span class="a">IG carousels · Reels · LinkedIn thought-leadership</span><span class="sig">signal: reach / saves</span><span class="ai">↳ gf-trending-intel + gf-content-brief</span></div>
+        </div>
+        <div class="rung">
+          <div class="lstage l-mofu">MOFU<small>Consideration · the offer</small></div>
+          <div class="lbody"><span class="a">E-book lead magnet · webinar · mini case study</span><span class="sig">signal: download / register</span><span class="ai">↳ e-book cuan engine</span></div>
+        </div>
+        <div class="rung">
+          <div class="lstage l-bofu">BOFU<small>Decision · take the seat</small></div>
+          <div class="lbody"><span class="a">GBA demo landing page · nurture email · pricing case</span><span class="sig">signal: demo request</span><span class="ai">↳ LP-01-GBA-DEMO · EB-01 nurture</span></div>
+        </div>
+      </div>
+      <div class="split" style="margin-top:18px">
+        <div class="card"><h3>Two quality gates on everything</h3><p class="small"><span class="mono b">Fact-Check</span> (WebSearch/OSINT — every stat verified) → <span class="mono" style="color:#6FC89B">Anti-AI</span> (avoid-ai-writing v3.3.1 — every line de-robotized). Nothing publishes without both.</p></div>
+        <div class="card"><h3>Products it markets</h3><p class="small"><b class="w">GBA</b> game-based assessment · <b class="w">Potentia</b> platform · <b class="w">Level Up RCD</b> L&amp;D · <b class="w">GrindBlox</b> Roblox activation — each with its own series &amp; tone.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · BEFORE (swimlane from PNG) -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill blue">Before · As-Is</span>
+      <h2 style="margin-top:14px">Today's pre-sales process — <span style="color:#FF9E9E">8 days, all-manual</span></h2>
+      <p class="lead" style="margin-bottom:16px">The real swimlane from <span class="mono">BUSINESS PROCESS PRE-SALES</span>. Five roles, sequential hand-offs, mockup only "if needed."</p>
+      <div class="swimwrap" style="--cols:8">
+        <div class="swimtop">
+          <span class="ttl">🗂️ Pre-Sales · current flow</span>
+          <span class="sla bad">SLA 8 DAYS · medium &amp; strategic</span>
+        </div>
+        <div class="ruler"><span class="rc">ROLE / LANE</span><span class="rc day">Day 1</span><span class="rc day">2</span><span class="rc day">3</span><span class="rc day">4</span><span class="rc day">5</span><span class="rc day">6</span><span class="rc day">7</span><span class="rc day">8</span></div>
+        <div class="lane"><div class="lbl"><b>Business Dev</b><span>Head of GF</span></div>
+          <div class="track"><div class="node b muted" style="grid-column:1">Brief of Opportunity</div><div class="node b muted" style="grid-column:7">Final Check</div><div class="node b muted" style="grid-column:8">Send to Client</div></div></div>
+        <div class="lane"><div class="lbl"><b>Designer</b><span>Dir. Designer</span></div>
+          <div class="track"><div class="node p muted" style="grid-column:2/4">Proposal Ideation</div></div></div>
+        <div class="lane"><div class="lbl"><b>Solution</b><span>Solution Manager</span></div>
+          <div class="track"><div class="node o muted" style="grid-column:2/4">Proposal Ideation</div><div class="node o muted" style="grid-column:5">Draft Proposal</div><div class="node o muted" style="grid-column:6">Estimation</div><div class="node o muted" style="grid-column:7">Final Proposal</div></div></div>
+        <div class="lane"><div class="lbl"><b>Leadership</b><span>Group of Director</span></div>
+          <div class="track"><div class="node yl muted" style="grid-column:6">Scope · Technical · Manpower</div></div></div>
+        <div class="lane"><div class="lbl"><b>Art</b><span>Dir. Art</span></div>
+          <div class="track"><div class="node dec muted" style="grid-column:3">◇ Need Mockup?</div><div class="node c muted" style="grid-column:4/6">Mockup Creation <small>only IF yes</small></div></div></div>
+      </div>
+      <p class="small" style="margin-top:12px"><b class="w">Pain:</b> lead qualification is gut-feel · outreach barely personalized · proposal &amp; estimate written from scratch · mockup optional &amp; waits on Art · momentum lost over 8 days. <span class="mono" style="color:var(--faint)">Source: BUSINESS PROCESS PRE-SALES.png</span></p>
+    </div>
+  </section>
+
+  <!-- 5 · AFTER (AI swimlane + delta) -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">After · AI-Augmented</span>
+      <h2 style="margin-top:14px">Same roles, <span class="hl">~4 days</span> — AI drafts, humans decide</h2>
+      <p class="lead" style="margin-bottom:16px">Work runs in parallel from day 0. The mockup is no longer optional — it starts immediately and ships with the proposal. <span class="mono o">✦ = AI copilot, human-approved.</span></p>
+      <div class="swimwrap" style="--cols:6">
+        <div class="swimtop">
+          <span class="ttl">⚡ Pre-Sales · AI-augmented flow</span>
+          <span class="sla good">SLA ~4 DAYS · −50%</span>
+        </div>
+        <div class="ruler"><span class="rc">ROLE / LANE</span><span class="rc day">Day 0–1</span><span class="rc day">1</span><span class="rc day">2</span><span class="rc day">3</span><span class="rc day">4</span><span class="rc day">Ship</span></div>
+        <div class="lane"><div class="lbl"><b>Business Dev</b><span>Head of GF</span></div>
+          <div class="track"><div class="node ai" style="grid-column:1"><span class="ait">✦AI</span>Brief of Opportunity</div><div class="node gate" style="grid-column:5">Final Check <small>HUMAN GATE</small></div><div class="node b" style="grid-column:6">Send</div></div></div>
+        <div class="lane"><div class="lbl"><b>Designer</b><span>Dir. Designer</span></div>
+          <div class="track"><div class="node ai" style="grid-column:1/3"><span class="ait">✦AI</span>Ideation</div></div></div>
+        <div class="lane"><div class="lbl"><b>Solution</b><span>Solution Manager</span></div>
+          <div class="track"><div class="node ai" style="grid-column:1/3"><span class="ait">✦AI</span>Ideation</div><div class="node ai" style="grid-column:3"><span class="ait">✦AI</span>Draft</div><div class="node ai" style="grid-column:4"><span class="ait">✦AI</span>Final Proposal</div></div></div>
+        <div class="lane"><div class="lbl"><b>Leadership</b><span>Group of Director</span></div>
+          <div class="track"><div class="node ai" style="grid-column:3"><span class="ait">✦AI</span>Estimation · Scope</div><div class="node gate" style="grid-column:5">Sign-off</div></div></div>
+        <div class="lane"><div class="lbl"><b>Art / Build</b><span>Dir. Art · MCP</span></div>
+          <div class="track"><div class="node ai o" style="grid-column:1/5;background:linear-gradient(90deg,rgba(245,144,60,.28),rgba(244,133,106,.16));border-color:var(--orange)"><span class="ait">✦AI</span>Playable Mockup — ALWAYS, in parallel from Day 0 (~50% product-ready)</div></div></div>
+      </div>
+      <div class="delta">
+        <div class="dcard"><div class="from">8 days</div><div class="to"><span class="o">~4 days</span></div><div class="cap">SLA · −50%</div></div>
+        <div class="dcard"><div class="from">Mockup optional</div><div class="to">Playable, default</div><div class="cap">ships with proposal</div></div>
+        <div class="dcard"><div class="from">Written from scratch</div><div class="to">AI-drafted</div><div class="cap">human-approved</div></div>
+        <div class="dcard"><div class="from">Sequential</div><div class="to">Parallel</div><div class="cap">build starts Day 0</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · FRAMEWORK 2 : SPOTLIGHT QUADRANT -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">Framework 02 · Scoring</span>
+      <h2 style="margin-top:14px">The <span class="hl">Spotlight Quadrant</span> — Fit × Intent</h2>
+      <p class="lead" style="margin-bottom:16px">Claude MCP scores every lead on <b class="w">ICP fit</b> (segment, size, budget signal) and <b class="w">intent</b> (downloads, demo request, repeat visits). Where they land decides the motion.</p>
+      <div class="split wide">
+        <div class="quad">
+          <div class="axisY">INTENT →</div>
+          <div class="qcell q2"><span class="qt">Warm the stage</span><span class="qd">High fit, low intent → nurture w/ personalized content until a signal fires.</span></div>
+          <div class="qcell q1"><span class="qt">◎ Spotlight</span><span class="qd">High fit, high intent → senior AE now. (Bio Farma, Telkom)</span></div>
+          <div class="qcell q4"><span class="qt">Park</span><span class="qd">Low fit, low intent → automated nurture or disqualify.</span></div>
+          <div class="qcell q3"><span class="qt">Educate</span><span class="qd">Low fit, high intent → light-touch / self-serve.</span></div>
+          <div class="axisX">FIT →</div>
+        </div>
+        <div class="grid" style="gap:12px">
+          <div class="card"><h3>How the score is built</h3><p class="small"><span class="mono b">Fit</span> = firmographics from Apollo + 6-segment classifier. <span class="mono o">Intent</span> = behavioral trail (e-book, LP form, opens, pricing views). Weighted 0–100.</p></div>
+          <div class="card"><h3>Why it matters</h3><p class="small">Human attention is the scarce resource. Route it top-right; automation holds the rest warm — no AE burns a day on a Park lead.</p></div>
+          <div class="card" style="border-color:rgba(245,144,60,.4)"><h3 style="color:var(--orange)">Output</h3><p class="small">A ranked board: each lead tagged Spotlight / Warm / Educate / Park, with the next best action attached.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · FRAMEWORK 3 : P.L.A.Y. + ROUTER -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">Framework 03 · Qualification</span>
+      <h2 style="margin-top:14px"><span class="hl">P.L.A.Y.</span> qualification + the 6-Segment Router</h2>
+      <p class="lead" style="margin-bottom:16px">A Spotlight lead becomes an <b class="w">Opportunity</b> only when it clears P.L.A.Y. — a game-native BANT. Score each 0–2; <b class="w">≥6 advances</b>.</p>
+      <div class="play">
+        <div class="pl"><div class="big">P</div><h4>Pain proven</h4><p>A real, named problem surfaced in discovery — not a vague "interested".</p></div>
+        <div class="pl"><div class="big">L</div><h4>Level of authority</h4><p>Budget line exists &amp; the DMU is mapped (who signs, who blocks).</p></div>
+        <div class="pl"><div class="big">A</div><h4>Access</h4><p>We can reach the decision unit through a champion or entry point.</p></div>
+        <div class="pl"><div class="big">Y</div><h4>Yes-by date</h4><p>A trigger or deadline — tender, academic calendar, campaign, fiscal year.</p></div>
+      </div>
+      <div class="card" style="margin-top:16px"><h3>Then route by segment — each has its own entry point &amp; motion</h3>
+        <div style="overflow-x:auto;margin-top:8px"><table class="tbl">
+          <thead><tr><th>Segment</th><th>Cycle</th><th>Enter via</th><th>Motion</th></tr></thead>
+          <tbody>
+            <tr><td class="w">A · BUMN / Korporat</td><td>3–12 mo</td><td>User dept → help write the TOR</td><td>Relationship + tender</td></tr>
+            <tr><td class="w">B · Tech / Agency</td><td>2–8 wk</td><td>Founder / CTO → demo + trial</td><td>Product-led + partnership</td></tr>
+            <tr><td class="w">D · Manufaktur / Farmasi</td><td>3–9 mo</td><td>R&amp;D / QA → sample + validation</td><td>Technical selling + compliance</td></tr>
+            <tr><td class="w">E · Consumer / Ritel</td><td>2–6 wk</td><td>Owner / marketing → ROI pilot</td><td>ROI / quick pilot</td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" style="margin-top:8px;color:var(--faint)">Full 6 segments (incl. C · Education, F · UKM) in proses-bisnis-b2b.html.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · STAGE 2 MAPPING TABLE -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill blue">The AI Pipeline · Detail</span>
+      <h2 style="margin-top:14px">Existing step → AI augmentation → real asset</h2>
+      <div style="overflow-x:auto;margin-top:12px"><table class="tbl">
+        <thead><tr><th>Stage</th><th>Existing step</th><th>AI augmentation</th><th>Output</th><th>Proof in repo</th></tr></thead>
+        <tbody>
+          <tr><td class="w"><span class="dotk" style="background:var(--blue)"></span>Leads</td><td>Manual list building</td><td>Apollo enrichment + scraping; auto-ingest inbound form-fills</td><td>Deduped list w/ firmographics</td><td class="asset">INDOTRADING · Scraping</td></tr>
+          <tr><td class="w"><span class="dotk" style="background:var(--ok)"></span>Quality</td><td>Gut-feel qualification</td><td>Claude MCP scoring → Spotlight Quadrant → segment router</td><td>Ranked, ICP-scored board</td><td class="asset">proses-bisnis-b2b.html · Cek Capability</td></tr>
+          <tr><td class="w"><span class="dotk" style="background:var(--ok)"></span>Personalize</td><td>Generic outreach</td><td>Segment-aware talk-track + AE meeting-prep brief</td><td>Personalized email/deck</td><td class="asset">segment entry-points map</td></tr>
+          <tr><td class="w"><span class="dotk" style="background:var(--orange)"></span>Opportunity</td><td>Brief · Draft Proposal</td><td>Auto-draft Brief of Opportunity + proposal from context</td><td>Draft proposal in brand template</td><td class="asset">Cek Proposal · Leverage Talent AI</td></tr>
+          <tr><td class="w"><span class="dotk" style="background:var(--orange)"></span>Opportunity</td><td>Estimation</td><td>Scope / manpower / pricing model auto-generated</td><td>Quotation + investment model</td><td class="asset">Quotation (Arkiv retainer)</td></tr>
+          <tr><td class="w"><span class="dotk" style="background:var(--orange)"></span>Opportunity</td><td>Mockup Creation</td><td>Playable prototype via game/MCP stack — <b>~50% product-ready</b></td><td>Live demo link, not an image</td><td class="asset">weppy Roblox · Coplay/Unity · Blender · Higgsfield</td></tr>
+          <tr><td class="w"><span class="dotk" style="background:var(--yellow)"></span>Deal</td><td>Post-win handoff</td><td>Generate requirement spec + technical scope + CMS scaffold</td><td>Production docs &amp; backlog</td><td class="asset">CMS LEVEL UP · CMS NEXTCHAPTER · REQUIREMENT</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small" style="margin-top:12px">Every AI step keeps its human gate (Framework ⑤): client-facing output is signed by Project Lead + Division Head before it leaves.</p>
+    </div>
+  </section>
+
+  <!-- 9 · FRAMEWORK 4 : PROOF LADDER + 50% -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">Framework 04 · Prototype-Led Selling</span>
+      <h2 style="margin-top:14px">The <span class="hl">Proof Ladder</span> &amp; the 50% Rule</h2>
+      <p class="lead" style="margin-bottom:14px">Every rung up makes the sale more real. Level Up sells from <b class="w">rung 3 by default</b> — a playable prototype ships <i>with</i> the proposal.</p>
+      <div class="proof">
+        <div class="prung"><div class="pn">RUNG 1</div><h4>Deck</h4><p>Claims &amp; logos. "Trust us."</p></div>
+        <div class="prung"><div class="pn">RUNG 2</div><h4>Static mockup</h4><p>Looks real. A picture.</p></div>
+        <div class="prung on" style="padding-top:22px"><div class="pn">RUNG 3 · DEFAULT</div><h4>◎ Playable prototype</h4><p>Feels real. 50% product-ready, brand-skinned, one live scenario.</p></div>
+        <div class="prung" style="padding-top:34px"><div class="pn">RUNG 4</div><h4>Pilot</h4><p>Proven. Post-signing.</p></div>
+      </div>
+      <div class="fifty">
+        <div class="fbox live"><h4>✓ In the 50% shipped with the proposal</h4><ul>
+          <li>Core game loop playable end-to-end</li>
+          <li>Brand-skinned in the client's colors &amp; logo</li>
+          <li>One real scenario from their context</li>
+          <li>A live link they can open &amp; play</li>
+        </ul></div>
+        <div class="fbox after"><h4 style="color:var(--muted)">The other 50% — after signing</h4><ul>
+          <li>Full scenario / content library</li>
+          <li>Scoring model calibration &amp; norming</li>
+          <li>Integrations (ATS / LMS / SSO) &amp; data</li>
+          <li>Security, QA, scale — production hardening</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · USE CASE TIMELINE -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill purple">One End-to-End Use Case</span>
+      <h2 style="margin-top:14px">E-book → Lead → Meeting → Need → <span class="hl">Prototype</span></h2>
+      <p class="lead" style="margin-bottom:10px">An HR Director at a 2,000-person pharma manufacturer, cold to a live prototype. The next slides show the actual <b class="w">e-book</b>, <b class="w">email</b> &amp; <b class="w">prototype</b> she sees.</p>
+      <div style="overflow-x:auto"><table class="tbl" style="min-width:820px">
+        <thead><tr><th>Day</th><th>Moment</th><th>What happens</th><th>AI / asset</th></tr></thead>
+        <tbody>
+          <tr><td class="o">0</td><td class="w">Discover</td><td>Sees a fact-checked LinkedIn carousel, downloads the "GBA 101" e-book.</td><td class="asset">→ Mockup A</td></tr>
+          <tr><td class="o">0</td><td class="w">Capture</td><td>Lands on LP-01-GBA-DEMO, fills the form. Becomes a <b>Lead</b>. Nurture fires.</td><td class="asset">→ Mockup B</td></tr>
+          <tr><td class="o">1</td><td class="w">Rank</td><td>Apollo enriches; MCP tags <b>Segment D · "hot"</b>. Clears the Spotlight Quadrant → <b>Quality Lead</b>.</td><td class="asset">MCP + classifier</td></tr>
+          <tr><td class="o">1</td><td class="w">Personalize</td><td>AI drafts Segment-D outreach (enter via R&amp;D/QA, compliance angle) + AE brief. She books.</td><td class="asset">personalize step</td></tr>
+          <tr><td class="o">2</td><td class="w">Need</td><td>Discovery call: "cut mis-hires for plant supervisors; screening must be defensible." Clears P.L.A.Y. → <b>Opportunity</b>.</td><td class="asset">Brief auto-drafted</td></tr>
+          <tr><td class="o">3–5</td><td class="w">Prototype</td><td>Proposal + quote <b>and</b> a playable GBA sim (~50%). Human final-check → sent.</td><td class="asset">→ Mockup C</td></tr>
+        </tbody>
+      </table></div>
+      <div class="stats" style="margin-top:14px">
+        <div class="stat"><div class="big o">~5 days</div><div class="cap">cold-to-proposal, vs 8-day SLA</div></div>
+        <div class="stat"><div class="big">Live demo</div><div class="cap">playable, not slides</div></div>
+        <div class="stat"><div class="big">Segment-D</div><div class="cap">outreach matched to DMU</div></div>
+        <div class="stat"><div class="big">0 rework</div><div class="cap">mockup → production base</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · MOCKUP A + B -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">Mockup A &amp; B · In the flow</span>
+      <h2 style="margin-top:14px">The e-book she downloads → the email she gets</h2>
+      <div class="split" style="margin-top:16px;grid-template-columns:.8fr 1.2fr">
+        <div>
+          <p class="mocklabel">Mockup A · Lead-magnet e-book cover</p>
+          <div class="frame ebook">
+            <span class="curt l"></span><span class="curt r"></span>
+            <span class="pill orange" style="align-self:flex-start;position:relative">Free Guide · GBA</span>
+            <h3>Game-Based<br>Assessment <span class="hl">101</span></h3>
+            <p class="es">Screen for culture-fit &amp; cognition — without a single questionnaire candidates can game.</p>
+            <div class="art">🎮</div>
+            <div class="foot">
+              <span class="lock"><svg width="26" height="26" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="30" rx="10" fill="#142260" stroke="#4A90D9" stroke-width="2.5"/><path d="M13 21.5h3.5V18h3.5v3.5H23.5V25H20v3.5h-3.5V25H13z" fill="#F5C842"/><circle cx="30" cy="27" r="2.3" fill="#F4856A"/><circle cx="34.5" cy="22.5" r="2.3" fill="#F5903C"/><circle cx="39" cy="18" r="2.3" fill="#F5C842"/></svg><span class="lt"><b style="font-size:.76rem">Level Up</b><i style="font-size:.5rem">powered by Agaté.</i></span></span>
+              <span class="mono" style="font-size:.62rem;color:var(--muted)">48 pages</span>
+            </div>
+            <div class="coral"></div>
+          </div>
+        </div>
+        <div>
+          <p class="mocklabel">Mockup B · Nurture email (EB-01), auto-personalized</p>
+          <div class="frame email">
+            <div class="hdr">
+              <span class="avatar">L</span>
+              <div class="meta">
+                <div class="fr">Level Up powered by Agaté <span>&lt;gf.ai@agate.id&gt;</span></div>
+                <div class="subj">Your GBA guide inside — plus a 12-min demo</div>
+                <div class="to">to: dara.w@medipharma.co.id · Segment D · Hot</div>
+              </div>
+            </div>
+            <div class="body">
+              <span class="lock"><svg width="24" height="24" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="30" rx="10" fill="#142260" stroke="#4A90D9" stroke-width="2.5"/><path d="M13 21.5h3.5V18h3.5v3.5H23.5V25H20v3.5h-3.5V25H13z" fill="#F5C842"/><circle cx="30" cy="27" r="2.3" fill="#F4856A"/><circle cx="34.5" cy="22.5" r="2.3" fill="#F5903C"/><circle cx="39" cy="18" r="2.3" fill="#F5C842"/></svg></span>
+              <h4>Hi <span class="token">{{First_Name}}</span>, your guide is ready 🎮</h4>
+              <p>Thanks for grabbing <b class="w">GBA 101</b>. Since <span class="token">{{Company}}</span> runs regulated production, here's the part most teams miss: game-based screening is <b class="w">defensible</b> — every decision is a logged behavioral signal, not a self-report a candidate can fake.</p>
+              <p>Want to see a <b class="w">plant-supervisor</b> scenario built on your context? 12 minutes, live.</p>
+              <a class="btn" href="#">Book my GBA demo →</a>
+              <p style="margin-top:14px;font-size:.78rem;color:var(--muted)">— Junialdi, Head of GF Division</p>
+            </div>
+            <div class="coral"></div>
+            <div class="efoot">Level Up powered by Agaté · Bandung, ID · agatelevelup.com/gba · unsubscribe</div>
+          </div>
+          <p class="small" style="margin-top:8px;color:var(--faint)"><span class="mono">{{tokens}}</span> filled from Apollo + MCP segment tag. Copy passed Fact-Check + Anti-AI gates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · MOCKUP C -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">Mockup C · In the flow</span>
+      <h2 style="margin-top:14px">The <span class="hl">50% product-ready</span> prototype in the proposal</h2>
+      <p class="lead" style="margin-bottom:14px">A playable GBA managerial-simulation, brand-skinned, built on <i>her</i> plant-supervisor scenario — shipped as a live link, not a screenshot.</p>
+      <div class="frame proto">
+        <div class="browserbar"><i style="background:#FF6B6B"></i><i style="background:#F5C842"></i><i style="background:#4CAF7A"></i><span class="urlpill">agatelevelup.com/play/gba-demo-pharma</span></div>
+        <div class="hud">
+          <span class="lock"><svg width="22" height="22" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="30" rx="10" fill="#142260" stroke="#4A90D9" stroke-width="2.5"/><path d="M13 21.5h3.5V18h3.5v3.5H23.5V25H20v3.5h-3.5V25H13z" fill="#F5C842"/><circle cx="30" cy="27" r="2.3" fill="#F4856A"/><circle cx="34.5" cy="22.5" r="2.3" fill="#F5903C"/><circle cx="39" cy="18" r="2.3" fill="#F5C842"/></svg><span class="lt"><b style="font-size:.76rem">Level Up</b></span></span>
+          <div class="r"><span>Scenario <b class="w">2 / 3</b></span><span>·</span><span>Managerial Sim</span><span>·</span><span class="timer">⏱ 04:12</span></div>
+        </div>
+        <div class="stage-body">
+          <div class="scene">
+            <div class="tagrow"><span class="pill ghost">Plant Supervisor</span><span class="pill ghost">Compliance</span></div>
+            <p class="q">A senior chemist flags a <b>batch deviation</b> two hours before a shipment worth Rp 1.4B. QA sign-off is pending. What do you do first?</p>
+            <div class="choice sel"><span class="k">A</span><span class="t">Hold the shipment &amp; open a deviation report — log it before anything moves.</span></div>
+            <div class="choice"><span class="k">B</span><span class="t">Call the client to renegotiate the delivery window, then investigate.</span></div>
+            <div class="choice"><span class="k">C</span><span class="t">Ask the chemist to re-test once; ship if the second result passes.</span></div>
+          </div>
+          <div class="rail">
+            <p class="rl">Behavioral signals · captured live</p>
+            <div class="sig"><div class="sl"><b>Compliance-first</b><i>0.86</i></div><div class="trk"><i style="width:86%;background:var(--ok)"></i></div></div>
+            <div class="sig"><div class="sl"><b>Decisiveness</b><i>0.74</i></div><div class="trk"><i style="width:74%;background:var(--blue)"></i></div></div>
+            <div class="sig"><div class="sl"><b>Risk appetite</b><i>0.32</i></div><div class="trk"><i style="width:32%;background:var(--orange)"></i></div></div>
+            <div class="sig"><div class="sl"><b>Stakeholder mgmt</b><i>0.61</i></div><div class="trk"><i style="width:61%;background:var(--purple)"></i></div></div>
+            <p class="small" style="margin-top:10px;color:var(--faint);font-family:var(--mono);font-size:.66rem">No questionnaire. Signals derive from choices + timing — not self-report.</p>
+          </div>
+        </div>
+        <div class="coral"></div>
+      </div>
+      <p class="small" style="margin-top:10px"><span class="o">Live now (the 50%):</span> the loop, brand skin, this one scenario. <span style="color:var(--faint)">After signing:</span> full scenario library, calibrated scoring, ATS integration, security &amp; scale. Built with <span class="mono b">Coplay/Unity · weppy Roblox · Blender · Higgsfield</span> MCP.</p>
+    </div>
+  </section>
+
+  <!-- 13 · FRAMEWORK 5 : POLICY -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <span class="pill orange">Framework 05 · Guardrails</span>
+      <h2 style="margin-top:14px"><span class="hl">AI drafts, human decides</span> — the Agate policy layer</h2>
+      <p class="lead" style="margin-bottom:16px">Prospect &amp; client data is <b class="o">Confidential at minimum</b>. Every step above runs inside these rules. The human reviewer is accountable — "the AI did it" is not a defense.</p>
+      <div class="split wide">
+        <div>
+          <p class="mono" style="font-size:.64rem;letter-spacing:.1em;color:var(--faint);margin-bottom:8px">CLASSIFY BEFORE YOU PASTE — 4 DATA TIERS</p>
+          <div class="tiers">
+            <div class="tier t-pub"><b>PUBLIC</b>Any approved tool</div>
+            <div class="tier t-int"><b>INTERNAL</b>Any approved tool</div>
+          </div>
+          <div class="tiers" style="margin-top:8px">
+            <div class="tier t-con"><b>CONFIDENTIAL</b>Enterprise-approved (DPA) · training OFF · client data, proposals, code</div>
+            <div class="tier t-res"><b>RESTRICTED</b>Internal AI Agent System only · never external</div>
+          </div>
+          <p class="mono" style="font-size:.64rem;letter-spacing:.1em;color:var(--faint);margin:16px 0 8px">HARD NEVERS</p>
+          <div class="nevers">
+            <span class="never">Client IP without written consent</span>
+            <span class="never">Personal AI accounts w/ Agate data</span>
+            <span class="never">Restricted data in external AI</span>
+            <span class="never">Style-mimicry of living artists</span>
+          </div>
+          <p class="small" style="margin-top:12px">Human gate on client-facing output = <b class="w">Project Lead + Division Head</b> sign-off. Follow the rules and <span class="o">Agate carries the risk, not you.</span></p>
+        </div>
+        <div>
+          <p class="mono" style="font-size:.64rem;letter-spacing:.1em;color:var(--faint);margin-bottom:8px">THE 7 RULES</p>
+          <div class="rules">
+            <div class="rule"><div class="rn">01</div><h4>Classify first</h4><p>Know the tier before you paste.</p></div>
+            <div class="rule"><div class="rn">02</div><h4>Configure right</h4><p>Training OFF · SSO · enterprise workspace.</p></div>
+            <div class="rule"><div class="rn">03</div><h4>Approved tools only</h4><p>Copilot · M365 · Firefly · Agent System.</p></div>
+            <div class="rule"><div class="rn">04</div><h4>Careful what you paste</h4><p>Redact PII · no full contracts · no secrets.</p></div>
+            <div class="rule"><div class="rn">05</div><h4>Review before it leaves</h4><p>Client-facing = Lead + Division Head.</p></div>
+            <div class="rule"><div class="rn">06</div><h4>Don't do the nevers</h4><p>No deepfakes, cloning, predatory design.</p></div>
+            <div class="rule"><div class="rn">07</div><h4>Report problems</h4><p>Good-faith reporting is never punished.</p></div>
+            <div class="rule" style="border-color:rgba(245,144,60,.4)"><div class="rn" style="color:var(--yellow)">★</div><h4>Consent &amp; delete</h4><p>Client consent before AI touches assets; delete at engagement end.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · CLOSE -->
+  <section class="slide"><span class="drape l"></span><span class="drape r"></span>
+    <div class="inner">
+      <p class="eyebrow">The Payoff</p>
+      <h2>From content to contract — <span class="hl">one AI-augmented line</span></h2>
+      <div class="stats">
+        <div class="stat"><div class="big o">8 → ~4</div><div class="cap">days pre-sales SLA, −50%</div></div>
+        <div class="stat"><div class="big">50%</div><div class="cap">product-ready mockup with every proposal</div></div>
+        <div class="stat"><div class="big">5</div><div class="cap">frameworks structuring the funnel</div></div>
+        <div class="stat"><div class="big">2</div><div class="cap">quality gates on all content</div></div>
+      </div>
+      <div class="split" style="margin-top:22px">
+        <div class="card"><h3 style="color:var(--orange)">What's already built</h3><p class="small">Marketing AI engine (Curtain-to-Contract ladder) · lead magnets &amp; landing pages · 6-segment buyer map · proposal/quotation assets · prototype MCP stack · CMS scaffolds. The pieces exist — this connects them into one funnel.</p></div>
+        <div class="card"><h3>Next step</h3><p class="small">Wire the hand-offs: inbound form → Apollo → MCP scoring (Spotlight Quadrant) → P.L.A.Y. + segment router → proposal + prototype generator → production docs. Keep every human gate.</p></div>
+      </div>
+      <div class="foot-lock">
+        <span class="lock"><svg width="30" height="30" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="30" rx="10" fill="#142260" stroke="#4A90D9" stroke-width="2.5"/><path d="M13 21.5h3.5V18h3.5v3.5H23.5V25H20v3.5h-3.5V25H13z" fill="#F5C842"/><circle cx="30" cy="27" r="2.3" fill="#F4856A"/><circle cx="34.5" cy="22.5" r="2.3" fill="#F5903C"/><circle cx="39" cy="18" r="2.3" fill="#F5C842"/></svg><span class="lt"><b>Level Up</b><i>powered by Agaté.</i></span></span>
+        <span class="mono" style="font-size:.6rem;color:var(--faint);text-align:right">CONFIDENTIAL — INTERNAL USE ONLY · Proprietary to Agate · © 2026 Agate.<br>All rights reserved. Do not distribute outside Agate without permission.</span>
+      </div>
+      <div class="coral" style="margin-top:14px"></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dots=document.getElementById('dots');
+  const pageno=document.getElementById('pageno');
+  slides.forEach((_,i)=>{const a=document.createElement('a');a.href='#';a.addEventListener('click',e=>{e.preventDefault();slides[i].scrollIntoView();});dots.appendChild(a);});
+  const dotEls=[...dots.children];
+  function sync(){
+    const i=Math.round(deck.scrollTop/window.innerHeight);
+    dotEls.forEach((d,j)=>d.classList.toggle('on',j===i));
+    pageno.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+  }
+  deck.addEventListener('scroll',sync,{passive:true});sync();
+  window.addEventListener('keydown',e=>{
+    const i=Math.round(deck.scrollTop/window.innerHeight);
+    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();slides[Math.min(i+1,slides.length-1)].scrollIntoView();}
+    if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();slides[Math.max(i-1,0)].scrollIntoView();}
+    if(e.key==='Home'){e.preventDefault();slides[0].scrollIntoView();}
+    if(e.key==='End'){e.preventDefault();slides[slides.length-1].scrollIntoView();}
+  });
+</script>

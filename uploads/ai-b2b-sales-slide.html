@@ -1,0 +1,203 @@
+<title>AI-Augmented B2B Sales Process — Generic Playbook</title>
+<style>
+  :root{
+    --ink:#141B24;
+    --muted:#57677A;
+    --faint:#8A98A6;
+    --hair:#D9DFE5;
+    --hair-2:#E9EDF1;
+    --accent:#1F3A54;
+    --accent-2:#2E6E8E;
+    --ai-band:#F0F6F8;
+    --ai-band-2:#E7F1F4;
+    --hot:#B94A34;
+    --warm:#CC8A2E;
+    --cool:#3E8E6F;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,"Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+      radial-gradient(1100px 600px at 20% -20%,#1a2836,#0E141B 60%);
+      min-height:100vh;display:grid;place-items:center;padding:2.2vmin;
+      font-family:var(--sans);color:var(--ink)}
+
+  .slide{
+    width:min(96vw, calc(92vh * 16 / 9));
+    aspect-ratio:16/9;
+    container-type:size;
+    background:#FCFDFE;border-radius:10px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.45),0 2px 0 rgba(255,255,255,.04);
+    display:grid;grid-template-rows:auto 1fr auto;
+    padding:2.6cqw 3cqw 2.2cqw;
+  }
+
+  /* ---------- header ---------- */
+  .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:2cqw;
+         border-bottom:0.18cqw solid var(--accent);padding-bottom:1.1cqw;margin-bottom:1.4cqw}
+  .eyebrow{font-family:var(--mono);font-size:.86cqw;letter-spacing:.22em;text-transform:uppercase;
+           color:var(--accent-2);font-weight:600}
+  h1{margin:.28em 0 .18em;font-size:2.55cqw;line-height:1.05;letter-spacing:-.01em;font-weight:800;
+     text-wrap:balance;max-width:34ch}
+  .sub{margin:0;color:var(--muted);font-size:1.12cqw;max-width:70ch;line-height:1.4}
+  .legend{flex:0 0 auto;display:flex;flex-direction:column;gap:.5cqw;align-items:flex-end;text-align:right}
+  .legkey{display:inline-flex;align-items:center;gap:.5cqw;font-size:.86cqw;color:var(--muted)}
+  .swatch{width:1.5cqw;height:1cqw;border-radius:.25cqw;background:var(--ai-band-2);border:1px solid #cfe0e6}
+  .prin{font-family:var(--mono);font-size:.82cqw;color:var(--accent);background:#EEF3F5;
+        border:1px solid #DCE6EA;border-radius:.5cqw;padding:.4cqw .7cqw}
+
+  /* ---------- matrix ---------- */
+  .matrix{display:grid;grid-template-columns:1.02fr 1.28fr 1.5fr 1.16fr 1.18fr 1.12fr;
+          border:1px solid var(--hair);border-radius:.7cqw;overflow:hidden;align-content:stretch}
+  .cell{padding:.62cqw .75cqw;border-bottom:1px solid var(--hair-2);border-right:1px solid var(--hair-2);
+        min-width:0;display:flex;flex-direction:column;gap:.35cqw;justify-content:center}
+  .cell.lastcol{border-right:none}
+  .matrix .r-last{border-bottom:none}
+
+  /* header row */
+  .mh{background:var(--accent);color:#fff;border-color:rgba(255,255,255,.12);
+      flex-direction:row;align-items:center;gap:.5cqw;justify-content:flex-start}
+  .mh .htxt{font-size:1.0cqw;font-weight:700;letter-spacing:.01em;line-height:1.1}
+  .mh.ai{background:#1c4a5e}
+  .aibadge{font-family:var(--mono);font-size:.68cqw;font-weight:700;letter-spacing:.08em;
+           background:var(--accent-2);color:#fff;border-radius:.35cqw;padding:.12cqw .4cqw}
+
+  /* body cells */
+  .ai{background:var(--ai-band)}
+  .stage{gap:.3cqw}
+  .stage .snum{font-family:var(--mono);font-size:.78cqw;font-weight:700;color:var(--accent-2);letter-spacing:.05em}
+  .stage .sname{font-size:1.12cqw;font-weight:700;line-height:1.12;color:var(--ink)}
+  .body{font-size:.95cqw;line-height:1.32;color:var(--ink)}
+  .body.dim{color:var(--muted)}
+  .tools{display:flex;flex-wrap:wrap;gap:.32cqw}
+  .tool{font-size:.82cqw;background:#fff;border:1px solid #cfe0e6;color:#23516a;border-radius:.4cqw;
+        padding:.14cqw .5cqw;line-height:1.25;font-weight:500}
+  .kpi{font-family:var(--mono);font-size:.86cqw;color:var(--ink);line-height:1.4;letter-spacing:-.005em}
+
+  /* ---------- footer ---------- */
+  .sfoot{display:grid;grid-template-columns:1.3fr 1.3fr auto;gap:2cqw;align-items:center;
+         margin-top:1.4cqw;padding-top:1.1cqw;border-top:1px solid var(--hair)}
+  .flabel{font-family:var(--mono);font-size:.72cqw;letter-spacing:.12em;text-transform:uppercase;
+          color:var(--faint);margin-bottom:.4cqw}
+  .fitems{display:flex;flex-wrap:wrap;gap:.4cqw}
+  .fchip{font-size:.84cqw;color:var(--ink);background:#F3F6F8;border:1px solid var(--hair-2);
+         border-radius:.4cqw;padding:.2cqw .55cqw}
+  .fchip.dot::before{content:"";display:inline-block;width:.55cqw;height:.55cqw;border-radius:50%;
+         background:var(--accent-2);margin-right:.45cqw;vertical-align:.05em}
+  .flow-note{text-align:right;font-size:.82cqw;color:var(--muted);line-height:1.4}
+  .flow-note b{color:var(--accent);font-weight:700}
+</style>
+
+<div class="slide" id="slide">
+  <div class="shead">
+    <div>
+      <p class="eyebrow">B2B Sales · AI Integration Blueprint · All Industries</p>
+      <h1>AI-Augmented B2B Sales Process</h1>
+      <p class="sub">A generic, industry-agnostic sales cycle mapping where AI plugs into each stage — the approach, the tools, the human skills it demands, and how to measure impact.</p>
+    </div>
+    <div class="legend">
+      <span class="legkey"><span class="swatch"></span> AI intervention layer</span>
+      <span class="prin">Principle: AI drafts · human decides</span>
+    </div>
+  </div>
+
+  <div class="matrix" id="matrix"></div>
+
+  <div class="sfoot">
+    <div>
+      <div class="flabel">Cross-cutting AI skills for every rep</div>
+      <div class="fitems">
+        <span class="fchip dot">Prompt engineering</span>
+        <span class="fchip dot">AI-assisted research</span>
+        <span class="fchip dot">Data literacy</span>
+        <span class="fchip dot">Human-in-the-loop review</span>
+        <span class="fchip dot">AI ethics &amp; data privacy</span>
+      </div>
+    </div>
+    <div>
+      <div class="flabel">How to evaluate the AI itself</div>
+      <div class="fitems">
+        <span class="fchip">Adoption / rep</span>
+        <span class="fchip">Time saved</span>
+        <span class="fchip">Output accuracy</span>
+        <span class="fchip">Hallucination review</span>
+        <span class="fchip">ROI of AI stack</span>
+      </div>
+    </div>
+    <div class="flow-note">Flow: <b>Prospect → Qualify → Discover → Propose → Close → Retain</b><br>AI accelerates every stage; judgment stays human.</div>
+  </div>
+</div>
+
+<script>
+  const COLS = [
+    {t:"Sales Stage"},
+    {t:"AI Opportunity", ai:true},
+    {t:"AI Approach", ai:true},
+    {t:"Tools", ai:true},
+    {t:"B2B Sales Skill · Using AI"},
+    {t:"Evaluation / KPI"}
+  ];
+  const ROWS = [
+    { n:"01", name:"Prospecting & Lead Gen",
+      opp:"Research target accounts; build the ICP; draft personalized outreach at scale.",
+      app:"Account & industry research · ICP definition · generative personalized messaging.",
+      tools:["Claude"],
+      skills:"Prompt Claude for account research · draft & refine outreach · fact-check before sending.",
+      kpi:"# SQLs · reply rate · personalization quality" },
+    { n:"02", name:"Qualification",
+      opp:"Qualify & prioritize leads against a scoring rubric; flag best-fit accounts.",
+      app:"BANT / MEDDIC scoring from notes · draft qualifying questions · summarize fit.",
+      tools:["Claude"],
+      skills:"Feed lead info to Claude · apply a consistent rubric · sanity-check the score.",
+      kpi:"Qual accuracy · SQL→Opp % · time-to-qualify" },
+    { n:"03", name:"Discovery & Needs Analysis",
+      opp:"Summarize calls & notes; extract pains; brief on each account.",
+      app:"Transcript / notes summarization · pain & requirement extraction · account research.",
+      tools:["Claude"],
+      skills:"Paste transcript / notes into Claude · prompt for pains & next steps · structure findings.",
+      kpi:"Discovery completeness · pains mapped · next-meeting rate" },
+    { n:"04", name:"Proposal & Solution Design",
+      opp:"Draft tailored proposals, decks & ROI business cases fast.",
+      app:"Generative proposal drafts · value framing · ROI narrative from your inputs.",
+      tools:["Claude"],
+      skills:"Give Claude the right context · prompt for drafts · edit &amp; fact-check output.",
+      kpi:"Proposal turnaround · proposal→win %" },
+    { n:"05", name:"Negotiation & Closing",
+      opp:"Prep objections & counter-offers; rehearse tough talks; suggest next step.",
+      app:"Objection-handling prep · negotiation role-play · draft counter-proposals from deal context.",
+      tools:["Claude"],
+      skills:"Give Claude full deal context · role-play objections · refine &amp; fact-check its drafts.",
+      kpi:"Win rate · avg discount · cycle length · objections resolved" },
+    { n:"06", name:"Onboarding, Retention & Upsell",
+      opp:"Draft QBRs; analyze accounts for risk & upsell; recommend next step.",
+      app:"Account-note analysis · QBR & check-in drafting · upsell / cross-sell ideation.",
+      tools:["Claude"],
+      skills:"Summarize account history in Claude · spot risk & upsell signals · draft follow-ups.",
+      kpi:"NRR · churn rate · upsell % · NPS / CSAT" },
+  ];
+
+  const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const m = document.getElementById("matrix");
+  let html = "";
+
+  // header row
+  COLS.forEach((c,i)=>{
+    const last = i===COLS.length-1?" lastcol":"";
+    html += `<div class="cell mh${c.ai?" ai":""}${last}">`+
+            `<span class="htxt">${esc(c.t)}</span>`+
+            (c.ai?`<span class="aibadge">AI</span>`:"")+`</div>`;
+  });
+
+  // data rows
+  ROWS.forEach((r,ri)=>{
+    const rl = ri===ROWS.length-1?" r-last":"";
+    html += `<div class="cell stage${rl}"><span class="snum">${r.n}</span><span class="sname">${esc(r.name)}</span></div>`;
+    html += `<div class="cell ai body dim${rl}">${esc(r.opp)}</div>`;
+    html += `<div class="cell ai body${rl}">${esc(r.app)}</div>`;
+    html += `<div class="cell ai${rl}"><div class="tools">${r.tools.map(t=>`<span class="tool">${esc(t)}</span>`).join("")}</div></div>`;
+    html += `<div class="cell body${rl}">${esc(r.skills)}</div>`;
+    html += `<div class="cell kpi lastcol${rl}">${esc(r.kpi)}</div>`;
+  });
+
+  m.innerHTML = html;
+</script>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section 0 — Skills & Roadmap: Selling B2B with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#27385c;--blue:#435f9c;--blue2:#5769aa;--steel:#6f98b2;
+    --red:#e55e5e;--orange:#ed9e72;--green:#acc673;--purple:#a48bac;--peri:#879ac1;
+    --ink:#eef2f9;--muted:#93a1b8;--faint:#7f8fb0;
+    --line:#2c3f61;--line2:#3a4f74;--card:#20304e;--card2:#26385c;
+    --display:"Nunito",ui-rounded,"Segoe UI Rounded",system-ui,sans-serif;
+    --body:"Nunito","Franklin Gothic Book","Segoe UI",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--body);color:var(--ink);min-height:100vh;position:relative;overflow-x:hidden;
+    background:radial-gradient(1300px 840px at 82% -12%,#33507f,#22314f 62%) fixed #22314f;}
+  .memphis{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.13}
+  .wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:34px 26px 80px}
+  a{color:inherit}
+
+  /* language toggle */
+  .langbar{display:flex;justify-content:flex-end;gap:6px;margin-bottom:8px}
+  .langbar button{font-family:var(--mono);font-size:12px;font-weight:700;color:#cdd9ec;cursor:pointer;
+    background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+  .langbar button.on{background:var(--orange);color:#22314f;border-color:var(--orange)}
+
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#cdd9ec;font-weight:600}
+  .colorbar{display:flex;gap:5px;margin:14px 0}
+  .colorbar i{width:34px;height:6px;border-radius:999px;display:block}
+  h1{font-family:var(--display);font-size:clamp(27px,4.2vw,42px);line-height:1.05;letter-spacing:-.01em;font-weight:900;margin:0;max-width:26ch;text-wrap:balance}
+  h1 .hl{color:#ed9e72}
+  .lede{margin:14px 0 0;font-size:clamp(15px,1.5vw,17px);line-height:1.55;color:#c5d1e6;max-width:76ch}
+  .srcnote{margin-top:14px;display:inline-flex;align-items:center;gap:9px;font-size:12.5px;color:#c5d1e6;
+    background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+  .srcnote b{color:#eef2f9}
+  .journeyline{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .journeyline .from{color:#e88f8f;font-weight:700}.journeyline .to{color:#c6d98a;font-weight:700}.journeyline .arw{color:var(--faint)}
+
+  .sec-h{display:flex;align-items:baseline;gap:12px;margin:48px 0 4px}
+  .sec-n{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--orange)}
+  .sec-t{font-family:var(--display);font-size:clamp(20px,2.6vw,26px);font-weight:800;margin:0;color:#fff}
+  .sec-s{margin:4px 0 20px;color:#c5d1e6;font-size:14px;max-width:84ch;line-height:1.55}
+
+  /* ladder */
+  .ranks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:760px){.ranks{grid-template-columns:repeat(2,1fr)}}
+  .rank{position:relative;text-align:left;cursor:pointer;font-family:inherit;color:var(--ink);
+    background:var(--card);border:1px solid var(--line);border-top:5px solid var(--rc);border-radius:15px;
+    padding:15px 16px 16px;transition:transform .15s ease,box-shadow .15s ease}
+  .rank:hover{transform:translateY(-3px)}
+  .rank[aria-selected="true"]{box-shadow:0 0 0 2px var(--rc),0 16px 34px -14px var(--rc);background:var(--card2)}
+  .rank .glyph{font-size:26px;line-height:1;color:var(--rc)}
+  .rank .rname{font-family:var(--display);font-weight:900;font-size:19px;margin-top:8px;color:var(--rc)}
+  .rank .role{font-size:12.5px;color:#cdd9ec;font-weight:700;margin-top:1px}
+  .rank .mult{font-family:var(--mono);font-size:22px;font-weight:700;color:#fff;margin-top:10px}
+  .rank .pop{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:2px}
+  .rank .rung{position:absolute;top:12px;right:14px;font-family:var(--mono);font-size:10px;font-weight:700;
+    color:var(--rc);border:1px solid var(--rc);border-radius:6px;padding:2px 7px;opacity:.85}
+
+  /* detail */
+  .detail{margin-top:14px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--dc);
+    border-radius:16px;padding:22px 24px;animation:fade .3s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .dhead{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .dglyph{width:52px;height:52px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:28px;color:#fff;background:var(--dc)}
+  .dtitle{font-family:var(--display);font-size:23px;font-weight:900;color:#fff;margin:0}
+  .drole{font-size:13px;color:var(--dc);font-weight:800}
+  .dmeta{margin-left:auto;text-align:right;font-family:var(--mono)}
+  .dmeta .m{font-size:24px;font-weight:700;color:#fff}.dmeta .p{font-size:11px;color:var(--muted)}
+  .quote{margin:14px 0 4px;font-size:15px;font-style:italic;color:#dbe4f2;border-left:2px solid var(--dc);padding-left:12px;line-height:1.5}
+
+  .cgt{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  @media(max-width:720px){.cgt{grid-template-columns:1fr}}
+  .box{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:13px;padding:15px 16px}
+  .box.gcur{border-top:3px solid var(--dc)}
+  .box.ggoal{border-top:3px solid #acc673}
+  .box.gtodo{grid-column:1/-1;border-top:3px solid #ed9e72}
+  .blabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .gcur .blabel{color:var(--dc)}.ggoal .blabel{color:#acc673}.gtodo .blabel{color:#ed9e72}
+  .li{display:flex;gap:9px;font-size:13.5px;line-height:1.5;color:#dbe4f2;margin-bottom:8px}
+  .li .b{flex:none;width:7px;height:7px;border-radius:2px;margin-top:6px;transform:rotate(45deg)}
+  .gcur .li .b{background:var(--dc)}.gtodo .li .b{background:#ed9e72}
+  .goaltext{font-size:15px;line-height:1.5;color:#eef2f9;font-weight:700}
+  .todo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+  @media(max-width:720px){.todo-grid{grid-template-columns:1fr}}
+  .practice{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .plink{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#eef2f9;text-decoration:none;
+    background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+  .plink:hover{border-color:var(--dc)}.plink .go{color:var(--dc)}
+  .levelup{margin-top:14px;font-size:13.5px;color:#c5d1e6;background:rgba(237,158,114,.1);border:1px solid rgba(237,158,114,.35);border-radius:12px;padding:11px 14px;line-height:1.5}
+  .levelup b{color:#ed9e72}
+
+  /* journey */
+  .jtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .jtab{display:flex;align-items:center;gap:9px;cursor:pointer;font-family:inherit;color:#cdd9ec;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 13px;font-size:13px;font-weight:700}
+  .jtab .num{font-family:var(--mono);font-size:11px;font-weight:700;width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:rgba(255,255,255,.06);color:var(--muted)}
+  .jtab[aria-selected="true"]{border-color:var(--orange);color:#fff;background:var(--card2)}
+  .jtab[aria-selected="true"] .num{background:var(--orange);color:#22314f}
+  .jpanel{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch;
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;animation:fade .3s ease both}
+  @media(max-width:820px){.jpanel{grid-template-columns:1fr}}
+  .jleft .jname{font-family:var(--display);font-size:20px;font-weight:900;color:#fff;display:flex;align-items:center;gap:10px}
+  .jleft .jstep{font-family:var(--mono);font-size:11px;color:var(--orange);font-weight:700}
+  .jblock{margin-top:16px}
+  .jblock .jl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+  .jblock.do .jl{color:var(--peri)}.jblock.get .jl{color:#acc673}
+  .jblock p{margin:0;font-size:14px;line-height:1.55;color:#dbe4f2}
+  .jarrows{display:flex;gap:10px;margin-top:20px}
+  .jbtn{font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;border-radius:10px;padding:9px 15px;border:1px solid var(--line2);background:rgba(255,255,255,.05);color:#eef2f9}
+  .jbtn.p{background:var(--orange);color:#22314f;border-color:var(--orange)}
+
+  /* mockups */
+  .jright{display:flex;align-items:center;justify-content:center}
+  .mk{width:100%;font-family:var(--mono);font-size:12px;border-radius:12px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 14px 34px rgba(10,16,30,.4)}
+  .mk-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#182338;border-bottom:1px solid var(--line)}
+  .mk-bar i{width:9px;height:9px;border-radius:50%}
+  .mk-bar span{margin-left:8px;color:var(--muted);font-size:10.5px}
+  .mk-body{padding:14px 16px;background:#141f34;line-height:1.85;color:#cdd9ec}
+  .mk-body .dim{color:#7f8fb0}
+  .mk-body .warn{color:#ed9e72}
+  .mk-body .add{color:#acc673}
+  .mk-body .head{color:#ed9e72;font-weight:700}
+  .tagx{font-size:9.5px;background:rgba(135,154,193,.18);border:1px solid var(--line2);border-radius:5px;padding:1px 6px;color:#aebbd6;margin-left:6px}
+  .mk .flag{color:#a9b7d3;background:rgba(126,147,207,.12);border-left:2px solid #7e93cf;border-radius:6px;padding:6px 9px;margin:8px 0;display:block}
+  .mk .rev{color:#acc673}
+  .mk .okrow{color:#acc673;font-weight:700;margin-top:8px}
+  .mk .kpi{margin-top:8px;display:inline-block;background:rgba(172,198,115,.16);border:1px solid rgba(172,198,115,.4);border-radius:8px;padding:5px 10px;color:#c6d98a;font-weight:700}
+  .mk-chat{background:#141f34;padding:16px}
+  .bub{border-radius:12px 12px 12px 4px;padding:11px 14px;line-height:1.6;font-size:12.5px}
+  .bub.user{background:rgba(126,147,207,.16);border:1px solid rgba(126,147,207,.4);color:#e3ebf6;border-radius:12px 12px 4px 12px}
+  .jfor{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0 0 12px}
+  .mk-ide{display:grid;grid-template-columns:122px 1fr}
+  .mk-side{border-right:1px solid var(--line);padding:10px 9px;font-size:10px;line-height:1.95;color:#aebbd6;background:#111c30}
+  .mk-side .f{color:#ed9e72}.mk-side .dir{color:#7f8fb0}
+  .mk-main{padding:12px 14px;color:#9fb0cc;font-size:10.5px;line-height:1.7}
+  .mk-term{font-size:11px;line-height:1.8;color:#cdd9ec}
+  .mk-term .p{color:#acc673;font-weight:700}.mk-term .ok{color:#acc673}.mk-term .rn{color:#879ac1}
+  .mk-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .mk-2col .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+  .mk-may .h{color:#acc673}.mk-esc .h{color:#e55e5e}
+  .mk-2col .r{font-size:10.5px;color:#cdd9ec;margin-bottom:4px}
+  .mk-stat{display:flex;gap:8px;flex-wrap:wrap}
+  .mk-stat .s{flex:1 1 0;text-align:center;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:9px 6px}
+  .mk-stat .s b{display:block;font-family:var(--display);font-size:18px;color:#fff}
+  .mk-stat .s span{font-size:9px;color:var(--muted)}
+  .mk-stat .s.flag{border-color:rgba(237,158,114,.5)}
+  .mk-tbl{width:100%;font-size:10.5px;border-collapse:collapse}
+  .mk-tbl td{padding:5px 4px;border-bottom:1px solid var(--line);color:#cdd9ec}
+  .mk-tbl .win{color:#acc673;font-weight:700}
+
+  /* principles + takeaways */
+  .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:820px){.cols3{grid-template-columns:1fr}}
+  .prin{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--pc);border-radius:14px;padding:18px 19px}
+  .prin .pi{font-size:22px}
+  .prin h4{font-family:var(--display);font-size:16px;font-weight:800;margin:8px 0 6px;color:#fff}
+  .prin p{margin:0;font-size:13px;line-height:1.55;color:var(--muted)}
+  .takes{display:flex;flex-wrap:wrap;gap:10px}
+  .take{flex:1 1 220px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .take b{display:block;font-family:var(--display);font-size:14.5px;color:#fff;margin-bottom:3px}
+  .take span{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+  footer{margin-top:50px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;color:#aeb9d0;font-size:12.5px;border-top:1px solid var(--line);padding-top:20px}
+  .cta{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:14px;color:#22314f;background:var(--orange);border-radius:999px;padding:11px 20px;text-decoration:none}
+  .brandtag{font-family:var(--mono);letter-spacing:.04em}.brandtag b{color:#ed9e72}
+
+  .home{position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 15px;text-decoration:none;box-shadow:0 6px 20px rgba(15,22,40,.35)}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="home" href="index.html#modules" title="Back to menu">&#9750; Menu Level Up</a>
+<button id="lu-fs" title="Full screen" style="position:fixed;right:16px;bottom:16px;z-index:99999;display:inline-flex;align-items:center;gap:6px;font-family:'Nunito',system-ui,sans-serif;font-size:13px;font-weight:800;color:#27385c;background:#eef2f9;border:1.5px solid #c7d3e6;border-radius:999px;padding:8px 14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,22,40,.35);">⛶ Full screen</button>
+<svg class="memphis" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <circle cx="95" cy="120" r="36" fill="none" stroke="#6f98b2" stroke-width="7"/>
+  <circle cx="95" cy="120" r="17" fill="none" stroke="#6f98b2" stroke-width="7"/>
+  <g fill="#ed9e72"><circle cx="185" cy="70" r="6"/><circle cx="210" cy="70" r="6"/><circle cx="235" cy="70" r="6"/><circle cx="185" cy="95" r="6"/><circle cx="210" cy="95" r="6"/><circle cx="235" cy="95" r="6"/></g>
+  <path d="M40 215 q18 -26 36 0 t36 0 t36 0" fill="none" stroke="#e55e5e" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="1505" cy="120" r="72" fill="#435f9c"/>
+  <path d="M1330 70 q22 -28 44 0 t44 0" fill="none" stroke="#acc673" stroke-width="7" stroke-linecap="round"/>
+  <path d="M1300 250 l26 46 -52 0 z" fill="#f6d7b8"/>
+  <path d="M55 860 a62 62 0 0 1 124 0 z" fill="#e55e5e"/>
+  <path d="M120 690 l42 74 -84 0 z" fill="none" stroke="#acc673" stroke-width="7"/>
+  <g fill="#879ac1"><circle cx="250" cy="770" r="6"/><circle cx="275" cy="770" r="6"/><circle cx="300" cy="770" r="6"/><circle cx="250" cy="795" r="6"/><circle cx="275" cy="795" r="6"/><circle cx="300" cy="795" r="6"/></g>
+  <circle cx="1525" cy="800" r="42" fill="none" stroke="#a48bac" stroke-width="7"/>
+  <g fill="#ed9e72"><circle cx="1470" cy="690" r="6"/><circle cx="1495" cy="690" r="6"/><circle cx="1520" cy="690" r="6"/></g>
+</svg>
+
+<div class="wrap">
+  <div class="langbar"><button data-l="en">EN</button><button data-l="id">ID</button></div>
+  <header>
+    <div class="eyebrow" id="h-eyebrow"></div>
+    <div class="colorbar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#435f9c"></i><i style="background:#acc673"></i></div>
+    <h1 id="h-title"></h1>
+    <p class="lede" id="h-lede"></p>
+    <div class="journeyline" id="h-journey"></div>
+    <div class="srcnote" id="h-src"></div>
+  </header>
+
+  <div class="sec-h" id="hA"></div><p class="sec-s" id="sA"></p>
+  <div class="ranks" id="ranks"></div>
+  <div id="detail"></div>
+
+  <div class="sec-h" id="hB"></div><p class="sec-s" id="sB"></p>
+  <div class="jfor" id="jfor"></div>
+  <div class="jtabs" id="jtabs"></div>
+  <div id="jpanel"></div>
+
+  <div class="sec-h" id="hC"></div><p class="sec-s" id="sC"></p>
+  <div class="cols3" id="prins"></div>
+
+  <div class="sec-h" id="hD"></div>
+  <div class="takes" id="takes"></div>
+
+  <footer>
+    <div><div class="brandtag" id="f-tag"></div><div style="margin-top:4px" id="f-sub"></div></div>
+    <a class="cta" href="index.html#modules" id="f-cta"></a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var lang = localStorage.getItem('lu-lang') || 'en';
+  var sel = 1, jstep = 0;
+  function t(o){ return (o && typeof o==='object' && ('en' in o)) ? (o[lang]||o.en) : o; }
+  var G = {rook:'♜', adept:'♞', master:'♛', gm:'♚'};
+
+  var TXT = {
+    eyebrow:{en:'Section 00 · Skills & Roadmap · Agate Level Up', id:'Section 00 · Skill & Roadmap · Agate Level Up'},
+    title:{en:['The Skills & Roadmap to Sell B2B ','with AI'], id:['Skill & Roadmap Menjual B2B ','pakai AI']},
+    lede:{en:"AI doesn't multiply everyone equally — your relationship with the tool defines your output. Find your current position, see the goal, then do the exact next thing. Practical, not theoretical.",
+          id:"AI tidak melipatgandakan semua orang sama rata — hubunganmu dengan tool-nya menentukan hasilnya. Kenali posisimu sekarang, lihat targetnya, lalu kerjakan langkah konkret berikutnya. Praktis, bukan teori."},
+    src:{en:'Based on my deck: <b>“Building Augmented Talent Through AI-Powered Learning”</b> — Level Up powered by Agate',
+         id:'Dari deck saya: <b>“Building Augmented Talent Through AI-Powered Learning”</b> — Level Up powered by Agate'},
+    from:{en:'From: Locked In', id:'Dari: Terkunci (Locked In)'}, to:{en:'The Orchestrator', id:'Jadi Orchestrator'},
+    hA:{en:'Where are you now?', id:'Kamu di posisi mana sekarang?'},
+    sA:{en:'Four levels of AI fluency. Find your current state, then the goal, then exactly what to do next.',
+        id:'Empat level kefasihan AI. Kenali posisimu sekarang, lalu targetnya, lalu langkah konkret berikutnya.'},
+    hB:{en:'The learning journey', id:'Perjalanan belajar'},
+    sB:{en:'Each rank works differently, so each has its own journey. Pick a rank above and the walk-through below adapts — Rook fixes a trap, Adept assists, Master runs a local VS Code workflow, Grandmaster runs an AI agent with its own personality.',
+        id:'Tiap rank bekerja beda, jadi tiap rank punya perjalanannya sendiri. Pilih rank di atas dan walk-through di bawah menyesuaikan — Rook memperbaiki jebakan, Adept membantu, Master menjalankan workflow lokal di VS Code, Grandmaster menjalankan AI agent dengan kepribadiannya sendiri.'},
+    jFor:{en:'Journey for', id:'Perjalanan untuk'},
+    hC:{en:'The 3 non-negotiables', id:'3 hal yang tidak bisa ditawar'},
+    sC:{en:'True at every rank — the reason clients trust an AI-augmented process.', id:'Berlaku di setiap level — alasan klien percaya pada proses ber-AI.'},
+    hD:{en:'Why it matters now', id:'Kenapa penting sekarang'},
+    lCur:{en:'Current state — you are here if', id:'Posisi sekarang — kamu di sini kalau'},
+    lGoal:{en:'The goal', id:'Target'},
+    lTodo:{en:'What to do', id:'Yang perlu dilakukan'},
+    lPractice:{en:'Practice in the modules', id:'Latihan di modul'},
+    jDo:{en:'What you do', id:'Yang kamu lakukan'},
+    jGet:{en:'Result', id:'Hasil'},
+    jPrev:{en:'← Back', id:'← Kembali'}, jNext:{en:'Next step →', id:'Langkah berikutnya →'},
+    fTag:{en:'Design system: <b>Agate Level Up Gamification Branding 2023</b>', id:'Design system: <b>Agate Level Up Gamification Branding 2023</b>'},
+    fSub:{en:'Ready to practice? Every module is your training ground.', id:'Siap latihan? Tiap modul adalah tempat berlatihmu.'},
+    fCta:{en:'Open the modules →', id:'Buka modul →'}
+  };
+
+  var RANKS = [
+    { key:'rook', name:'ROOK', role:{en:'The Delegator',id:'Si Pendelegasi'}, color:'#e55e5e', rung:'Rung 1',
+      mult:'0.3–0.8×', pop:{en:'15–20% of people',id:'15–20% orang'},
+      quote:{en:'“AI replaced their thinking — output is actually worse than before AI.”', id:'“AI menggantikan cara berpikirnya — hasilnya justru lebih buruk dari sebelum ada AI.”'},
+      current:{en:['You paste AI output straight into emails without reading it','You have sent a wrong name or an invented number at least once','AI feels faster, but your work quietly got worse'],
+               id:['Kamu tempel output AI langsung ke email tanpa dibaca','Pernah kirim nama salah atau angka karangan','AI terasa cepat, tapi kualitas kerja diam-diam turun']},
+      goal:{en:'Get back in control — supervise AI instead of outsourcing your thinking to it.', id:'Ambil kendali lagi — awasi AI, bukan menyerahkan cara berpikirmu ke AI.'},
+      todo:{en:['Read every output before it leaves your hands','Verify every number against a real source file','Add context before you ask: who, what, constraints','Treat AI output as a draft — never a decision'],
+            id:['Baca setiap output sebelum dikirim','Cek setiap angka ke file sumber asli','Beri konteks sebelum bertanya: siapa, apa, batasan','Anggap output AI sebagai draft — bukan keputusan']},
+      practice:[{l:{en:'See “grounded vs invented”',id:'Lihat “grounded vs karangan”'},h:'Marketing%20AI%20Use%20Cases.dc.html'}],
+      levelup:{en:'To reach <b>Adept</b>: stop delegating your thinking. Start supervising it — verify, add context, decide.', id:'Menuju <b>Adept</b>: berhenti mendelegasikan cara berpikirmu. Mulai mengawasinya — cek, beri konteks, putuskan.'} },
+
+    { key:'adept', name:'ADEPT', role:{en:'The Assisted',id:'Si Terbantu'}, color:'#acc673', rung:'Rung 2',
+      mult:'1.2–1.8×', pop:{en:'60–70% — most start here',id:'60–70% — mayoritas mulai di sini'},
+      quote:{en:'“AI is a tool under your control: steady, reliable gains. Most people start here.”', id:'“AI adalah alat yang kamu kendalikan: hasil stabil dan andal. Mayoritas mulai dari sini.”'},
+      current:{en:['You write clear prompts and usually get useful drafts','You use AI for research, first-draft emails, meeting summaries','But you start from a blank prompt every single time'],
+               id:['Kamu tulis prompt jelas & biasanya dapat draft berguna','Pakai AI untuk riset, draft email, ringkasan meeting','Tapi tiap kali masih mulai dari prompt kosong']},
+      goal:{en:'Reliable, repeatable leverage on every deal — AI does the grind, you do the judgment.', id:'Leverage yang andal & berulang di tiap deal — AI kerja kasar, kamu yang menilai.'},
+      todo:{en:['Prompt with structure: role → task → context → format','Ground every task in internal data: CRM, notes, price list','Delegate the grind: research, first drafts, summaries','Review reflex: “AI drafts · human decides” on every output'],
+            id:['Prompt terstruktur: peran → tugas → konteks → format','Grounding di data internal: CRM, catatan, price list','Delegasikan kerja kasar: riset, draft awal, ringkasan','Refleks review: “AI draft · manusia putuskan” di tiap output']},
+      practice:[{l:{en:'Watch an AM draft a proposal',id:'Lihat AM menyusun proposal'},h:'AI%20Workflow%20Demo.dc.html'},{l:{en:'Marketing use-cases by industry',id:'Use-case marketing per industri'},h:'Marketing%20AI%20Use%20Cases.dc.html'}],
+      levelup:{en:'To reach <b>Master</b>: stop starting from scratch. Turn your best prompts into a reusable knowledge base and multi-step workflows.', id:'Menuju <b>Master</b>: berhenti mulai dari nol. Ubah prompt terbaikmu jadi knowledge base & workflow multi-langkah yang dipakai ulang.'} },
+
+    { key:'master', name:'MASTER', role:{en:'The Orchestrator',id:'Si Orkestrator'}, color:'#5769aa', rung:'Rung 3',
+      mult:'3–5×', pop:{en:'8–12% of people',id:'8–12% orang'},
+      quote:{en:'“Runs multiple AI agents in parallel — output is multiplicative, not additive.”', id:'“Menjalankan beberapa AI agent paralel — hasilnya berlipat, bukan bertambah.”'},
+      current:{en:['One knowledge base powers every deal','You chain steps: research → brief → proposal in one flow','You run several AI tasks at once'],
+               id:['Satu knowledge base menggerakkan tiap deal','Kamu rangkai langkah: riset → brief → proposal dalam satu alur','Kamu jalankan beberapa tugas AI sekaligus']},
+      goal:{en:'Multiplicative output — you run a system, not tasks.', id:'Output berlipat — kamu menjalankan sistem, bukan tugas.'},
+      todo:{en:['Build reusable context once (rules, tone, pricing) — reuse everywhere','Chain workflows: lead-scoring → brief → proposal → tender matrix','Run tasks in parallel — 10 accounts at once','Version prompts as team playbooks; measure quality'],
+            id:['Bangun konteks pakai-ulang sekali (aturan, tone, harga) — pakai di mana saja','Rangkai workflow: lead-scoring → brief → proposal → matriks tender','Jalankan tugas paralel — 10 akun sekaligus','Versikan prompt jadi playbook tim; ukur kualitasnya']},
+      practice:[{l:{en:'The full Workflow Studio',id:'Workflow Studio lengkap'},h:'AI%20Workflow%20Studio.dc.html'},{l:{en:'Augmented vs Assisted selling',id:'Augmented vs Assisted selling'},h:'uploads/Selling%20Process%20Evolution%20Design/Selling%20Evolution.dc.html'}],
+      levelup:{en:'To reach <b>Grandmaster</b>: stop being the operator. Design systems and guardrails so AI can act for the whole team — safely.', id:'Menuju <b>Grandmaster</b>: berhenti jadi operator. Rancang sistem & guardrail supaya AI bisa bekerja untuk seluruh tim — dengan aman.'} },
+
+    { key:'gm', name:'GRANDMASTER', role:{en:'The Architect',id:'Si Arsitek'}, color:'#ed9e72', rung:'Rung 4',
+      mult:'8–15×', pop:{en:'1–3% of people',id:'1–3% orang'},
+      quote:{en:'“Designs the systems that produce the work — creates leverage for everyone else.”', id:'“Merancang sistem yang menghasilkan pekerjaan — menciptakan leverage untuk semua orang.”'},
+      current:{en:['You design AI agents that qualify leads & do first-touch 24/7','You set guardrails, price books, escalation rules','Your leverage shows up in the whole team\'s numbers'],
+               id:['Kamu rancang AI agent yang qualify lead & first-touch 24/7','Kamu tetapkan guardrail, price book, aturan eskalasi','Leverage-mu terlihat di angka seluruh tim']},
+      goal:{en:'Build the machine — leverage that multiplies across the whole sales org.', id:'Bangun mesinnya — leverage yang berlipat ke seluruh tim sales.'},
+      todo:{en:['Design customer-facing AI: qualify (BANT) & book demos 24/7 with clean hand-off','Set guardrails: authority limits, price book, escalation rules','Build shared playbooks, templates & the data pipeline','Measure with Extended Kirkpatrick: behavior → results → ROI → ecosystem'],
+            id:['Rancang AI hadap-pelanggan: qualify (BANT) & jadwalkan demo 24/7 dengan hand-off rapi','Tetapkan guardrail: batas wewenang, price book, aturan eskalasi','Bangun playbook bersama, template & pipeline data','Ukur dengan Extended Kirkpatrick: perilaku → hasil → ROI → ekosistem']},
+      practice:[{l:{en:'The Autonomous selling agent',id:'AI agent Autonomous selling'},h:'uploads/Selling%20Process%20Evolution%20Design/Selling%20Evolution.dc.html'},{l:{en:'The AI Virtual Consultant (Atlas)',id:'AI Virtual Consultant (Atlas)'},h:'uploads/Selling%20Process%20Evolution%20Design/Level%20Up%20Assistant.dc.html'}],
+      levelup:{en:'You are building leverage for everyone. Keep humans in control, protect the data, and keep evolving the system.', id:'Kamu sedang membangun leverage untuk semua orang. Jaga manusia tetap memegang kendali, lindungi data, dan terus kembangkan sistemnya.'} }
+  ];
+
+  var J_ADEPT = [
+    { name:{en:'Raw material',id:'Bahan mentah'},
+      do:{en:'Dump the raw context in one place: messy discovery-call notes, the RFP, a CRM row. Don\'t clean it up yet.', id:'Kumpulkan konteks mentah di satu tempat: catatan discovery-call yang berantakan, RFP, satu baris CRM. Belum usah dirapikan.'},
+      get:{en:'Nothing polished — just everything the AI needs, gathered.', id:'Belum rapi — sekadar semua yang AI butuhkan, terkumpul.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>meeting-notes.md · raw</span></div><div class="mk-body"><div>+ 1.200 frontliner / 40 '+t({en:'stores',id:'toko'})+'</div><div class="dim">- completion e-learning 31%??</div><div>+ budget ~900jt–1,2M</div><div class="dim">- Moodle? '+t({en:'version unknown',id:'versi ga tau'})+'</div><div class="warn">! go-live Q4 — '+t({en:'tight',id:'mepet'})+'</div></div></div>';} },
+
+    { name:{en:'Set the rules (once)',id:'Pasang aturan (sekali)'},
+      do:{en:'Write your rules once: who we are, tone, the single source of pricing, “never invent numbers.” Every future deal reuses it.', id:'Tulis aturan main sekali: siapa kita, tone, satu sumber harga, “jangan mengarang angka.” Semua deal berikutnya memakainya ulang.'},
+      get:{en:'A reusable knowledge base — the context behind every prompt.', id:'Knowledge base yang dipakai ulang — konteks di balik tiap prompt.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>explorer · knowledge base</span></div><div class="mk-body"><div class="head">◆ CLAUDE.md<span class="tagx">'+t({en:'rules',id:'aturan'})+'</span></div><div>≡ pricing-rates.md<span class="tagx">'+t({en:'source of truth',id:'sumber angka'})+'</span></div><div>≡ proposal-template.md</div><div>≡ case-retail-academy.md</div></div></div>';} },
+
+    { name:{en:'The prompt',id:'Prompt-nya'},
+      do:{en:'Ask precisely — role, task, context, format: “Draft a proposal from the template. All numbers from pricing-rates.md. Flag anything you\'re unsure of.”', id:'Minta dengan tepat — peran, tugas, konteks, format: “Susun proposal dari template. Semua angka dari pricing-rates.md. Tandai yang kamu ragu.”'},
+      get:{en:'AI has everything it needs — no guessing, no hallucinated figures.', id:'AI punya semua yang dibutuhkan — tanpa menebak, tanpa angka karangan.'},
+      mock:function(){return '<div class="mk mk-chat"><div class="bub user">'+t({en:'Draft a proposal from proposal-template.md. Every number must come from pricing-rates.md — never invent. Case study: max 2, retail-relevant. Flag anything uncertain for me.',id:'Susun proposal dari proposal-template.md. Semua angka wajib dari pricing-rates.md — jangan mengarang. Case study: maks 2, relevan retail. Tandai yang ragu untuk saya cek.'})+'</div></div>';} },
+
+    { name:{en:'Draft + review',id:'Draft + review'},
+      do:{en:'AI drafts v1 in seconds. You review with business judgment: split the budget into 2 phases, add a risk section. Specific feedback → one fast revision.', id:'AI buat draft v1 dalam hitungan detik. Kamu review pakai judgment bisnis: pecah budget jadi 2 fase, tambah bagian risiko. Feedback spesifik → satu revisi cepat.'},
+      get:{en:'AI drafts, you decide. The judgment stays human.', id:'AI draft, kamu putuskan. Judgment tetap di manusia.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>proposal-v1.md · AI draft</span></div><div class="mk-body"><div class="head">## Investasi — Paket Scale Rp1,05M</div><span class="flag">⚠ '+t({en:'check: 40 stores at once? phase the budget?',id:'cek: 40 toko sekaligus? budget difase?'})+'</span><div class="rev">☑ '+t({en:'split into 2 phases',id:'pecah jadi 2 fase'})+'</div><div class="rev">☑ '+t({en:'add Risk & Mitigation',id:'tambah Risiko & Mitigasi'})+'</div></div></div>';} },
+
+    { name:{en:'The result',id:'Hasil'},
+      do:{en:'AI runs the final check (numbers, names, structure) and prepares the send-ready version. You make the call and hit send.', id:'AI jalankan cek final (angka, nama, struktur) & siapkan versi siap kirim. Kamu yang memutuskan dan klik kirim.'},
+      get:{en:'Proposal SLA: 8 days → ~4 days. Same quality, half the time.', id:'SLA proposal: 8 hari → ~4 hari. Kualitas sama, waktu separuh.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>proposal-v2.md · FINAL ✓</span></div><div class="mk-body"><div class="add">'+t({en:'Phase 1 · Pilot 8 stores — Rp420jt',id:'Fase 1 · Pilot 8 toko — Rp420jt'})+'</div><div class="add">'+t({en:'Phase 2 · Rollout 40 stores — Rp680jt',id:'Fase 2 · Rollout 40 toko — Rp680jt'})+'</div><div class="okrow">✓ '+t({en:'numbers · names · structure checked',id:'angka · nama · struktur dicek'})+'</div><div class="kpi">SLA: 8 '+t({en:'days',id:'hari'})+' → ~4 '+t({en:'days',id:'hari'})+'</div></div></div>';} }
+  ];
+
+  var J_ROOK = [
+    { name:{en:'The shortcut',id:'Jalan pintas'},
+      do:{en:'You skip the setup and fire a one-liner — “write a proposal for a retail client.” No context, no data.',id:'Kamu lewati setup dan tembak satu baris — “buatin proposal buat klien retail.” Tanpa konteks, tanpa data.'},
+      get:{en:'AI has nothing to work with, so it fills the gaps by guessing.',id:'AI tak punya bahan, jadi ia mengisi kekosongan dengan menebak.'},
+      mock:function(){return '<div class="mk mk-chat"><div class="bub user">'+t({en:'write a proposal for a retail client',id:'buatin proposal buat klien retail dong'})+'</div></div>';} },
+    { name:{en:'The blind copy',id:'Salin buta'},
+      do:{en:'The draft looks confident, so you paste it straight into an email — without reading it.',id:'Draft-nya terlihat meyakinkan, jadi kamu tempel langsung ke email — tanpa dibaca.'},
+      get:{en:'It contains an invented price and a placeholder name.',id:'Isinya ada harga karangan dan nama placeholder.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>proposal.docx · '+t({en:'unread',id:'belum dibaca'})+'</span></div><div class="mk-body"><div>Dear [Client Name],</div><span class="flag" style="border-left-color:#e55e5e;background:rgba(229,94,94,.12);color:#f0a6a6">✗ Investment: Rp 2,3M <small style="color:#e0a0a0">'+t({en:'invented — not in the price list',id:'karangan — tidak ada di price list'})+'</small></span></div></div>';} },
+    { name:{en:'The blowback',id:'Bumerang'},
+      do:{en:'The client replies within the hour: the number is wrong, and the name is not theirs.',id:'Klien membalas dalam sejam: angkanya salah, dan namanya bukan mereka.'},
+      get:{en:'AI felt faster — but the work got worse. This is the 0.3–0.8× trap.',id:'AI terasa lebih cepat — tapi hasilnya lebih buruk. Inilah jebakan 0,3–0,8×.'},
+      mock:function(){return '<div class="mk mk-chat"><div class="bub" style="background:rgba(229,94,94,.14);border:1px solid rgba(229,94,94,.4);color:#f2c4c4;border-radius:12px 12px 12px 4px">'+t({en:'Where did this number come from? And that is not our company name 😬',id:'Ini angkanya dari mana? Nama perusahaan kami juga keliru 😬'})+'</div></div>';} },
+    { name:{en:'The fix — get in control',id:'Perbaikannya — ambil kendali'},
+      do:{en:'New habit: read every output, verify every number against a source, add context before you ask.',id:'Kebiasaan baru: baca tiap output, cek tiap angka ke sumber, beri konteks sebelum bertanya.'},
+      get:{en:'You stop delegating your thinking. Welcome to Adept.',id:'Kamu berhenti mendelegasikan cara berpikirmu. Selamat datang di Adept.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>'+t({en:'new habit',id:'kebiasaan baru'})+'</span></div><div class="mk-body"><div class="rev">☑ '+t({en:'read the output',id:'baca output-nya'})+'</div><div class="rev">☑ '+t({en:'numbers checked vs pricing.md',id:'angka dicek ke pricing.md'})+'</div><div class="rev">☑ '+t({en:'context added: who · what · limits',id:'konteks ditambah: siapa · apa · batas'})+'</div></div></div>';} }
+  ];
+
+  var J_MASTER = [
+    { name:{en:'Workspace & knowledge base',id:'Workspace & knowledge base'},
+      do:{en:'Everything lives locally in VS Code: one knowledge base (rules, tone, pricing, templates) that every deal reuses.',id:'Semua ada lokal di VS Code: satu knowledge base (aturan, tone, harga, template) yang dipakai ulang tiap deal.'},
+      get:{en:'Set up once, leveraged on every account.',id:'Disusun sekali, dipakai di tiap akun.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>agate-workspace — VS Code</span></div><div class="mk-ide"><div class="mk-side"><div class="f">◆ CLAUDE.md</div><div class="dir">▾ 01_knowledge</div><div>&nbsp;≡ pricing.md</div><div>&nbsp;≡ templates/</div><div class="dir">▾ playbooks</div><div>&nbsp;≡ proposal.md</div><div>&nbsp;≡ tender.md</div><div class="dir">▾ workflows</div><div>&nbsp;≡ pipeline.py</div></div><div class="mk-main">'+t({en:'# reusable context, read on every run',id:'# konteks pakai-ulang, dibaca tiap run'})+'<br>role: Level Up B2B<br>pricing: 01_knowledge/pricing.md<br>rule: never invent numbers</div></div></div>';} },
+    { name:{en:'Chain the workflow',id:'Rangkai workflow'},
+      do:{en:'Define the pipeline once: lead-scoring → account brief → proposal → tender matrix. One command runs the whole chain.',id:'Definisikan pipeline sekali: lead-scoring → account brief → proposal → matriks tender. Satu perintah menjalankan seluruh rantai.'},
+      get:{en:'No more one-off prompts — a repeatable system.',id:'Bukan lagi prompt sekali pakai — sistem yang berulang.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>terminal — run</span></div><div class="mk-body"><div class="mk-term"><div><span class="p">$</span> run pipeline.py --account "UrbanMart"</div><div class="ok">✓ lead-scoring</div><div class="ok">✓ account brief</div><div class="ok">✓ proposal draft</div><div class="ok">✓ tender matrix</div><div class="rn">→ 4 '+t({en:'artifacts written to 03_output/',id:'artefak ditulis ke 03_output/'})+'</div></div></div></div>';} },
+    { name:{en:'Run it in parallel',id:'Jalankan paralel'},
+      do:{en:'Point the workflow at 10 accounts and run them at once, not one at a time.',id:'Arahkan workflow ke 10 akun dan jalankan sekaligus, bukan satu-satu.'},
+      get:{en:'Output is multiplicative — 10 briefs in the time of one.',id:'Output berlipat — 10 brief dalam waktu satu.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>terminal — parallel</span></div><div class="mk-body"><div class="mk-term"><div><span class="p">$</span> run pipeline.py --batch accounts.csv --parallel</div><div class="ok">✓ UrbanMart</div><div class="ok">✓ FreshDaily</div><div class="ok">✓ StyleHub</div><div class="rn">⣿ MegaGrosir  ⣿ TokoKita  … +5</div><div class="ok">✓ 10/10 '+t({en:'briefs done',id:'brief selesai'})+'</div></div></div></div>';} },
+    { name:{en:'Version & measure',id:'Versikan & ukur'},
+      do:{en:'Prompts become versioned team playbooks; you track which version wins.',id:'Prompt jadi playbook tim ber-versi; kamu lacak versi mana yang menang.'},
+      get:{en:'Quality is measured, not guessed.',id:'Kualitas diukur, bukan ditebak.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>playbook-metrics</span></div><div class="mk-body"><table class="mk-tbl"><tr><td>proposal.md v1</td><td>win 22%</td></tr><tr><td>proposal.md v2</td><td>win 27%</td></tr><tr><td>proposal.md v3</td><td class="win">win 34% ▲</td></tr></table></div></div>';} },
+    { name:{en:'The result',id:'Hasil'},
+      do:{en:'You stopped doing tasks and started running a system that produces them.',id:'Kamu berhenti mengerjakan tugas dan mulai menjalankan sistem yang memproduksinya.'},
+      get:{en:'3–5× output. This is the Orchestrator.',id:'Output 3–5×. Inilah Orchestrator.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>run summary ✓</span></div><div class="mk-body"><div class="mk-stat"><div class="s"><b>10</b><span>'+t({en:'accounts',id:'akun'})+'</span></div><div class="s"><b>10</b><span>'+t({en:'proposals',id:'proposal'})+'</span></div><div class="s"><b>1</b><span>'+t({en:'afternoon',id:'sore'})+'</span></div></div><div class="kpi" style="margin-top:10px">3–5× '+t({en:'output',id:'output'})+'</div></div></div>';} }
+  ];
+
+  var J_GM = [
+    { name:{en:'Give the agent a personality',id:'Beri agen kepribadian'},
+      do:{en:'You write the agent persona and system prompt: who it is, its tone, how it opens, when it pushes.',id:'Kamu tulis persona & system prompt agen: siapa dia, tone-nya, cara membuka, kapan mendorong.'},
+      get:{en:'“Atlas” — a transparent, proactive AI sales agent — is born.',id:'“Atlas” — AI sales agent yang transparan & proaktif — lahir.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>agent-persona.md · system prompt</span></div><div class="mk-body"><div class="head">ROLE: “Atlas” — Autonomous Sales Agent</div><div>• '+t({en:'introduce yourself as an AI',id:'perkenalkan diri sebagai AI'})+'</div><div>• '+t({en:'proactive: end every turn with a next step',id:'proaktif: akhiri tiap giliran dengan langkah maju'})+'</div><div>• '+t({en:'tone: confident, concise, warm',id:'tone: percaya diri, ringkas, hangat'})+'</div></div></div>';} },
+    { name:{en:'Set the guardrails',id:'Pasang guardrail'},
+      do:{en:'Define its authority: what it may do alone, and what it must escalate to a human.',id:'Definisikan wewenang: apa yang boleh sendiri, dan apa yang wajib dieskalasi ke manusia.'},
+      get:{en:'The agent can act safely — within bounds.',id:'Agen bisa bertindak aman — dalam batas.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>guardrails.md</span></div><div class="mk-body"><div class="mk-2col"><div class="mk-may"><div class="h">✓ '+t({en:'May do alone',id:'Boleh sendiri'})+'</div><div class="r">'+t({en:'discount ≤ 10%',id:'diskon ≤ 10%'})+'</div><div class="r">'+t({en:'standard contract',id:'kontrak standar'})+'</div><div class="r">'+t({en:'book kickoff',id:'jadwalkan kickoff'})+'</div></div><div class="mk-esc"><div class="h">⚠ '+t({en:'Must escalate',id:'Wajib eskalasi'})+'</div><div class="r">'+t({en:'discount > 10%',id:'diskon > 10%'})+'</div><div class="r">'+t({en:'deal > Rp500jt',id:'deal > Rp500jt'})+'</div><div class="r">'+t({en:'legal / complaints',id:'legal / komplain'})+'</div></div></div></div></div>';} },
+    { name:{en:'Deploy — it works 24/7',id:'Deploy — bekerja 24/7'},
+      do:{en:'The agent handles first-touch on web and WhatsApp: qualifies (BANT), answers, books demos — day and night.',id:'Agen menangani first-touch di web & WhatsApp: qualify (BANT), menjawab, jadwalkan demo — siang malam.'},
+      get:{en:'Leads move while you sleep; clean hand-off to humans for closing.',id:'Lead bergerak saat kamu tidur; hand-off rapi ke manusia untuk closing.'},
+      mock:function(){return '<div class="mk mk-chat"><div style="font-family:var(--mono);font-size:10px;color:#ed9e72;margin-bottom:8px">● ATLAS · AI AGENT · 02:14</div><div class="bub" style="background:rgba(237,158,114,.14);border:1px solid rgba(237,158,114,.4);color:#f4d3ba;border-radius:12px 12px 4px 12px;margin-bottom:8px">'+t({en:'Hi! I am Atlas, an AI agent for Level Up. What would you like to improve — engagement or people growth?',id:'Halo! Saya Atlas, AI agent Level Up. Apa yang ingin Anda tingkatkan — engagement atau people growth?'})+'</div><div class="bub user">'+t({en:'training for 500 staff, this quarter',id:'training 500 staff, kuartal ini'})+'</div></div>';} },
+    { name:{en:'Supervise the pipeline',id:'Awasi pipeline'},
+      do:{en:'You watch a dashboard, not a chat. Handle only the escalations the agent flags.',id:'Kamu memantau dashboard, bukan chat. Tangani hanya eskalasi yang ditandai agen.'},
+      get:{en:'One person supervises what used to take a team.',id:'Satu orang mengawasi yang dulu butuh satu tim.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>pipeline · live</span></div><div class="mk-body"><div class="mk-stat"><div class="s"><b>40</b><span>'+t({en:'prospects',id:'prospek'})+'</span></div><div class="s"><b>12</b><span>qualified</span></div><div class="s"><b>5</b><span>closed</span></div><div class="s flag"><b style="color:#ed9e72">2</b><span>'+t({en:'escalations',id:'eskalasi'})+'</span></div></div></div></div>';} },
+    { name:{en:'Measure the machine',id:'Ukur mesinnya'},
+      do:{en:'Track impact with Extended Kirkpatrick: behavior → results → ROI → ecosystem — not activity.',id:'Lacak dampak dengan Extended Kirkpatrick: perilaku → hasil → ROI → ekosistem — bukan aktivitas.'},
+      get:{en:'8–15× leverage across the whole org. This is the Architect.',id:'Leverage 8–15× ke seluruh organisasi. Inilah Architect.'},
+      mock:function(){return '<div class="mk"><div class="mk-bar"><i style="background:#e55e5e"></i><i style="background:#ed9e72"></i><i style="background:#acc673"></i><span>impact · Extended Kirkpatrick</span></div><div class="mk-body"><div class="rev">L3 · '+t({en:'behavior change',id:'perubahan perilaku'})+' ▲</div><div class="rev">L4 · '+t({en:'business results',id:'hasil bisnis'})+' ▲</div><div class="rev">L5 · ROI 3.5×</div><div class="rev">L6 · '+t({en:'ecosystem health',id:'kesehatan ekosistem'})+'</div><div class="kpi" style="margin-top:8px">8–15× leverage</div></div></div>';} }
+  ];
+
+  var JOURNEYS = { rook:J_ROOK, adept:J_ADEPT, master:J_MASTER, gm:J_GM };
+  function curJourney(){ return JOURNEYS[RANKS[sel].key] || J_ADEPT; }
+
+  var PRINS = [
+    { i:'🧭', c:'#5769aa', h:{en:'Humans are always in control',id:'Manusia selalu memegang kendali'}, p:{en:'AI recommends, humans decide. Every output goes through human review — no exceptions. Your judgment and craft don\'t change.',id:'AI merekomendasikan, manusia memutuskan. Setiap output lewat review manusia — tanpa kecuali. Judgment dan keahlianmu tidak berubah.'} },
+    { i:'🔒', c:'#e55e5e', h:{en:'Data & IP is non-negotiable',id:'Data & IP tidak bisa ditawar'}, p:{en:'Client data, internal data and creative IP stay protected. NDA-compliant, ISO 27001. No proprietary assets enter AI tools without safeguards.',id:'Data klien, data internal & IP kreatif tetap terlindungi. Patuh NDA, ISO 27001. Tidak ada aset rahasia masuk ke tool AI tanpa pengaman.'} },
+    { i:'🌱', c:'#acc673', h:{en:'Roles will evolve — so should we',id:'Peran akan berubah — kita juga harus'}, p:{en:'Some of what you do today will be done differently in a year. The person who benefits most from learning AI is you — for your future, not just now.',id:'Sebagian pekerjaanmu hari ini akan dilakukan berbeda tahun depan. Yang paling diuntungkan dari belajar AI adalah kamu — untuk masa depanmu, bukan cuma sekarang.'} }
+  ];
+
+  var TAKES = [
+    { b:{en:'Urgency is real',id:'Urgensinya nyata'}, s:{en:'2.5-year skill half-life; the war for talent is intensifying. Transformation can\'t wait.',id:'Skill separuh-usia 2,5 tahun; perang talenta makin sengit. Transformasi tak bisa menunggu.'} },
+    { b:{en:'AI is not a silver bullet',id:'AI bukan peluru ajaib'}, s:{en:'Technology amplifies — it does not replace. Good strategy and strong culture still required.',id:'Teknologi memperkuat — bukan menggantikan. Strategi bagus & budaya kuat tetap wajib.'} },
+    { b:{en:'Human + AI is optimal',id:'Manusia + AI paling optimal'}, s:{en:'Divide by strength: AI does personalization & analytics; humans do mentoring & judgment.',id:'Bagi sesuai kekuatan: AI untuk personalisasi & analitik; manusia untuk mentoring & judgment.'} },
+    { b:{en:'Measurement compounds',id:'Pengukuran berlipat'}, s:{en:'More learning data → better AI recommendations → greater impact. A flywheel.',id:'Makin banyak data belajar → rekomendasi AI makin baik → dampak makin besar. Roda gila.'} },
+    { b:{en:'Behavior change is the goal',id:'Perubahan perilaku itu tujuannya'}, s:{en:'Success isn\'t completion rate — it\'s measurable behavior, applied on the job.',id:'Sukses bukan tingkat penyelesaian — tapi perilaku terukur, diterapkan di pekerjaan.'} }
+  ];
+
+  function esc(s){return s;}
+  function render(){
+    document.querySelectorAll('.langbar button').forEach(function(b){b.classList.toggle('on', b.dataset.l===lang);});
+    document.getElementById('h-eyebrow').textContent = t(TXT.eyebrow);
+    document.getElementById('h-title').innerHTML = t(TXT.title)[0] + '<span class="hl">' + t(TXT.title)[1] + '</span>';
+    document.getElementById('h-lede').textContent = t(TXT.lede);
+    document.getElementById('h-journey').innerHTML = '<span class="from">● '+t(TXT.from)+'</span><span class="arw">———→</span><span class="to">'+t(TXT.to)+' ●</span>';
+    document.getElementById('h-src').innerHTML = '📘 '+t(TXT.src);
+    document.getElementById('hA').innerHTML = '<span class="sec-n">A</span><h2 class="sec-t">'+t(TXT.hA)+'</h2>';
+    document.getElementById('sA').textContent = t(TXT.sA);
+    document.getElementById('hB').innerHTML = '<span class="sec-n">B</span><h2 class="sec-t">'+t(TXT.hB)+'</h2>';
+    document.getElementById('sB').textContent = t(TXT.sB);
+    document.getElementById('hC').innerHTML = '<span class="sec-n">C</span><h2 class="sec-t">'+t(TXT.hC)+'</h2>';
+    document.getElementById('sC').textContent = t(TXT.sC);
+    document.getElementById('hD').innerHTML = '<span class="sec-n">D</span><h2 class="sec-t">'+t(TXT.hD)+'</h2>';
+    document.getElementById('f-tag').innerHTML = t(TXT.fTag);
+    document.getElementById('f-sub').textContent = t(TXT.fSub);
+    document.getElementById('f-cta').textContent = t(TXT.fCta);
+
+    document.getElementById('ranks').innerHTML = RANKS.map(function(r,i){
+      return '<div class="rank" data-i="'+i+'" aria-selected="'+(i===sel)+'" style="--rc:'+r.color+'">'+
+        '<span class="rung">'+r.rung+'</span><div class="glyph">'+G[r.key]+'</div>'+
+        '<div class="rname">'+r.name+'</div><div class="role">'+t(r.role)+'</div>'+
+        '<div class="mult">'+r.mult+'</div><div class="pop">'+t(r.pop)+'</div></div>';
+    }).join('');
+    renderDetail();
+    renderTabs(); renderPanel();
+
+    document.getElementById('prins').innerHTML = PRINS.map(function(p){
+      return '<div class="prin" style="--pc:'+p.c+'"><div class="pi">'+p.i+'</div><h4>'+t(p.h)+'</h4><p>'+t(p.p)+'</p></div>';
+    }).join('');
+    document.getElementById('takes').innerHTML = TAKES.map(function(x){
+      return '<div class="take"><b>'+t(x.b)+'</b><span>'+t(x.s)+'</span></div>';
+    }).join('');
+  }
+
+  function renderDetail(){
+    var r = RANKS[sel];
+    var cur = t(r.current).map(function(s){return '<div class="li"><span class="b"></span><span>'+s+'</span></div>';}).join('');
+    var todo = t(r.todo).map(function(s){return '<div class="li"><span class="b"></span><span>'+s+'</span></div>';}).join('');
+    var prac = r.practice.map(function(p){return '<a class="plink" href="'+p.h+'">'+t(p.l)+'<span class="go">→</span></a>';}).join('');
+    document.getElementById('detail').innerHTML =
+      '<div class="detail" style="--dc:'+r.color+'">'+
+        '<div class="dhead"><div class="dglyph">'+G[r.key]+'</div>'+
+          '<div><div class="dtitle">'+r.name+' — '+t(r.role)+'</div><div class="drole">'+r.rung+'</div></div>'+
+          '<div class="dmeta"><div class="m">'+r.mult+'</div><div class="p">'+t(r.pop)+'</div></div></div>'+
+        '<div class="quote">'+t(r.quote)+'</div>'+
+        '<div class="cgt">'+
+          '<div class="box gcur"><div class="blabel">📍 '+t(TXT.lCur)+'</div>'+cur+'</div>'+
+          '<div class="box ggoal"><div class="blabel">🎯 '+t(TXT.lGoal)+'</div><div class="goaltext">'+t(r.goal)+'</div></div>'+
+          '<div class="box gtodo"><div class="blabel">🛠️ '+t(TXT.lTodo)+'</div><div class="todo-grid">'+todo+'</div>'+
+            '<div class="practice"><span style="font-family:var(--mono);font-size:10.5px;color:var(--muted);align-self:center;text-transform:uppercase;letter-spacing:.1em">'+t(TXT.lPractice)+':</span>'+prac+'</div></div>'+
+        '</div>'+
+        '<div class="levelup">'+t(r.levelup)+'</div>'+
+      '</div>';
+    document.querySelectorAll('.rank').forEach(function(el){
+      el.addEventListener('click', function(){ sel=+el.dataset.i; jstep=0; render(); });
+    });
+  }
+
+  function renderTabs(){
+    var J=curJourney();
+    document.getElementById('jfor').innerHTML = t(TXT.jFor)+' <b style="color:'+RANKS[sel].color+'">'+RANKS[sel].name+'</b> — '+t(RANKS[sel].role);
+    document.getElementById('jtabs').innerHTML = J.map(function(s,i){
+      return '<div class="jtab" data-j="'+i+'" aria-selected="'+(i===jstep)+'"><span class="num">'+(i+1)+'</span>'+t(s.name)+'</div>';
+    }).join('');
+    document.querySelectorAll('.jtab').forEach(function(el){
+      el.addEventListener('click', function(){ jstep=+el.dataset.j; renderTabs(); renderPanel(); });
+    });
+  }
+  function renderPanel(){
+    var J=curJourney(); if(jstep>=J.length)jstep=0;
+    var s = J[jstep];
+    document.getElementById('jpanel').innerHTML =
+      '<div class="jpanel"><div class="jleft">'+
+        '<div class="jstep">STEP '+(jstep+1)+' / '+J.length+'</div>'+
+        '<div class="jname"><span style="color:#ed9e72">'+(jstep+1)+'.</span> '+t(s.name)+'</div>'+
+        '<div class="jblock do"><div class="jl">'+t(TXT.jDo)+'</div><p>'+t(s.do)+'</p></div>'+
+        '<div class="jblock get"><div class="jl">'+t(TXT.jGet)+'</div><p>'+t(s.get)+'</p></div>'+
+        '<div class="jarrows">'+(jstep>0?'<button class="jbtn" data-nav="-1">'+t(TXT.jPrev)+'</button>':'')+
+          (jstep<J.length-1?'<button class="jbtn p" data-nav="1">'+t(TXT.jNext)+'</button>':'')+'</div>'+
+      '</div><div class="jright">'+s.mock()+'</div></div>';
+    document.querySelectorAll('#jpanel [data-nav]').forEach(function(b){
+      b.addEventListener('click', function(){ jstep += (+b.dataset.nav); renderTabs(); renderPanel(); });
+    });
+  }
+
+  document.querySelectorAll('.langbar button').forEach(function(b){
+    b.addEventListener('click', function(){ lang=b.dataset.l; localStorage.setItem('lu-lang',lang); render(); });
+  });
+  render();
+
+  // fullscreen
+  var fb=document.getElementById('lu-fs');
+  function fu(){fb.textContent=document.fullscreenElement?'⤢ Exit full screen':'⛶ Full screen';}
+  fb.addEventListener('click',function(){if(document.fullscreenElement){document.exitFullscreen();}else{document.documentElement.requestFullscreen().catch(function(){});}});
+  document.addEventListener('fullscreenchange',fu);fu();
+})();
+</script>
+</body>
+</html>
