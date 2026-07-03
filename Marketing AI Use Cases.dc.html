@@ -98,7 +98,7 @@
           <sc-for list="{{ stSkills }}" as="sk" hint-placeholder-count="4">
             <button onClick="{{ sk.onClick }}" style="{{ sk.style }}" style-hover="border-color:#8ba0cf;">{{ sk.name }}</button>
           </sc-for>
-          <span class="mono" style="font-size:10px;color:#5f7391;">· click for a sample output</span>
+          <span class="mono" style="font-size:10px;color:#5f7391;">· click a skill to switch the sample</span>
         </div>
         <sc-if value="{{ hasSample }}" hint-placeholder-val="{{ true }}">
           <div style="border:1px solid #3a4f74;border-left:3px solid #acc673;border-radius:10px;background:#182338;padding:12px 15px;margin:0 0 6px;animation:fadeUp .25s ease both;">
@@ -309,12 +309,12 @@ class Component extends DCLogic {
       numStyle: 'font-family:IBM Plex Mono,monospace;font-size:12px;font-weight:700;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;background:' + (i === idx ? s.color : '#2c3f61') + ';color:' + (i === idx ? '#22314f' : '#8194ba') + ';',
     }));
 
-    const openSkill = this.state.openSkill;
-    const inCur = st.skills.indexOf(openSkill) >= 0;
-    const smp = (openSkill && inCur) ? this.SAMPLES[openSkill] : null;
+    // always show a sample output — default to the stage's first skill
+    const openSkill = (this.state.openSkill && st.skills.indexOf(this.state.openSkill) >= 0) ? this.state.openSkill : st.skills[0];
+    const smp = this.SAMPLES[openSkill] || null;
     const stSkills = st.skills.map(name => ({
       name,
-      onClick: () => this.setState({ openSkill: this.state.openSkill === name ? null : name }),
+      onClick: () => this.setState({ openSkill: name }),
       style: 'font-family:IBM Plex Mono,monospace;font-size:11px;cursor:pointer;color:' + (openSkill === name ? '#22314f' : '#8ba0cf') + ';background:' + (openSkill === name ? '#acc673' : '#20304e') + ';border:1px solid ' + (openSkill === name ? '#acc673' : '#3a4f74') + ';border-radius:999px;padding:3px 9px;',
     }));
 
