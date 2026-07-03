@@ -89,7 +89,8 @@
   .logos span{font-size:12px;font-weight:700;color:#cdd9ec;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
 
   /* personality + video */
-  .pv{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px;align-items:stretch}
+  .pv{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px;align-items:start}
+  .video-card{align-self:center}
   @media(max-width:860px){.pv{grid-template-columns:1fr}}
   .qr-card{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--orange);border-radius:18px;
     padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
@@ -273,9 +274,8 @@
       <div class="qh">Scan &amp; isi tesnya</div>
       <div class="qs">Arahkan kamera HP ke QR ini untuk membuka tes kepribadian AI. Isi sambil menonton videonya.</div>
       <div class="qr-img"><img src="assets/qr-personality.png" alt="QR code — AI Personality Test"></div>
-      <!-- TODO: ganti href di bawah + regenerate QR: python assets/make-qr.py "LINK_ASLI" -->
-      <a class="btn btn-primary" id="quizBtn" href="https://tinyurl.com/EIRBandungJuli" target="_blank" rel="noopener" style="padding:10px 18px">Buka tes kepribadian →</a>
-      <div class="qr-note">QR sementara · ganti dengan link tes kepribadian Anda</div>
+      <a class="btn btn-primary" id="quizBtn" href="https://ai-personality-production-30d7.up.railway.app" target="_blank" rel="noopener" style="padding:10px 18px">Buka tes kepribadian →</a>
+      <div class="qr-note">Scan QR atau klik tombol untuk mulai</div>
     </div>
     <div class="video-card">
       <div class="video-wrap">
