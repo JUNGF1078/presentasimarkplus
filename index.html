@@ -56,6 +56,10 @@
   body.presenting nav.top{display:none}
   body.presenting .present-bar,body.presenting .present-ctrl{display:flex}
   body.presenting .memphis{opacity:.09}
+  body.presenting .intro-grid{grid-template-columns:1.5fr 1fr;align-items:center}
+  body.presenting .slide-card > img{max-height:58vh;object-fit:contain;background:#fff}
+  body.presenting .poster-frame img{max-height:74vh;width:auto}
+  body.presenting .sec-h{margin-top:22px}
 
   .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:34px 26px 72px}
 
@@ -265,7 +269,7 @@
   </header>
 
   <!-- ============ 01 · JUNIALDI (person first) ============ -->
-  <div class="sec-h"><span class="sec-n">01</span><h2 class="sec-t">Meet Junialdi — my journey with AI</h2></div>
+  <div class="sec-h" id="junialdi"><span class="sec-n">01</span><h2 class="sec-t">Meet Junialdi — my journey with AI</h2></div>
   <p class="sec-s">Junialdi <b style="color:#eef2f9">first</b>, then Level Up. Before the company, the person: how I went from “locked in” to running AI as a multiplier — and the credibility behind the roadmap you're about to see.</p>
   <div class="intro-grid">
     <div class="slide-card">
@@ -281,7 +285,7 @@
   </div>
 
   <!-- ============ 02 · LEVEL UP (company) ============ -->
-  <div class="sec-h"><span class="sec-n">02</span><h2 class="sec-t">Level Up powered by Agate</h2></div>
+  <div class="sec-h" id="levelup"><span class="sec-n">02</span><h2 class="sec-t">Level Up powered by Agate</h2></div>
   <p class="tagline">“We don't just design games — <span class="q">we design measurable impact.</span>”</p>
   <p class="sec-s" style="margin-top:10px">Gamification for <b style="color:#eef2f9">Brand Engagement</b> (acquisition, engagement, retention, sales) and <b style="color:#eef2f9">People Growth</b> (recruitment, onboarding, assessment, training) — trusted across every major industry in Indonesia.</p>
   <div class="slide-card">
@@ -534,12 +538,27 @@
     }
     pAnim = requestAnimationFrame(step);
   }
-  function pShow(){
-    const s=P_STEPS[pIdx]; pName.textContent=s.name; pProg.textContent=(pIdx+1)+' / '+P_STEPS.length;
-    pPrev.disabled = pIdx===0; pNext.textContent = pIdx===P_STEPS.length-1 ? 'Done ✓' : 'Next →';
-    const el=document.getElementById(s.id); if(el) pScrollTo(el);
+  function pSync(){
+    const s=P_STEPS[pIdx]; let sub=(pIdx+1)+' / '+P_STEPS.length;
+    if(s.id==='story') sub += ' · slide '+(ci+1)+'/'+SLIDES.length;
+    pName.textContent=s.name; pProg.textContent=sub;
+    const atStart = pIdx===0 && !(s.id==='story' && ci>0);
+    const atEnd = pIdx===P_STEPS.length-1 && !(s.id==='story' && ci<SLIDES.length-1);
+    pPrev.disabled = atStart; pNext.textContent = atEnd ? 'Done ✓' : 'Next →';
   }
-  function pGo(n){ pIdx=Math.max(0,Math.min(P_STEPS.length-1,pIdx+n)); pShow(); }
+  function pShow(){ const el=document.getElementById(P_STEPS[pIdx].id); if(el) pScrollTo(el); pSync(); }
+  function pGo(n){
+    const s=P_STEPS[pIdx];
+    if(s.id==='story'){                                   // carousel = sub-slides
+      if(n>0 && ci<SLIDES.length-1){ cgo(ci+1); pSync(); return; }
+      if(n<0 && ci>0){ cgo(ci-1); pSync(); return; }
+    }
+    const before=pIdx;
+    pIdx=Math.max(0,Math.min(P_STEPS.length-1,pIdx+n));
+    if(pIdx===before) return;
+    if(P_STEPS[pIdx].id==='story') cgo(n>0?0:SLIDES.length-1);   // enter carousel at start (fwd) / end (back)
+    pShow();
+  }
   function pEnter(){ presenting=true; document.body.classList.add('presenting'); pIdx=0;
     if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){});
     pShow(); }
