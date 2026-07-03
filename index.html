@@ -544,7 +544,7 @@
     pName.textContent=s.name; pProg.textContent=sub;
     const atStart = pIdx===0 && !(s.id==='story' && ci>0);
     const atEnd = pIdx===P_STEPS.length-1 && !(s.id==='story' && ci<SLIDES.length-1);
-    pPrev.disabled = atStart; pNext.textContent = atEnd ? 'Done ✓' : 'Next →';
+    pPrev.disabled = atStart; pNext.textContent = atEnd ? 'Skills & Roadmap →' : 'Next →';
   }
   function pShow(){ const el=document.getElementById(P_STEPS[pIdx].id); if(el) pScrollTo(el); pSync(); }
   function pGo(n){
@@ -564,13 +564,21 @@
     pShow(); }
   function pExit(){ presenting=false; document.body.classList.remove('presenting');
     if(document.fullscreenElement) document.exitFullscreen().catch(function(){}); }
+  function pAdvance(){
+    const s=P_STEPS[pIdx];
+    if(pIdx===P_STEPS.length-1 && !(s.id==='story' && ci<SLIDES.length-1)){
+      window.location.href='section-0-roadmap.html?present=1';   // continue into Section 0
+      return;
+    }
+    pGo(1);
+  }
   document.getElementById('presentStart').addEventListener('click',function(e){e.preventDefault();pEnter();});
-  pNext.addEventListener('click',function(){ pIdx===P_STEPS.length-1 ? pExit() : pGo(1); });
+  pNext.addEventListener('click',pAdvance);
   pPrev.addEventListener('click',function(){pGo(-1);});
   document.getElementById('presentExit').addEventListener('click',pExit);
   document.addEventListener('keydown',function(e){
     if(!presenting) return;
-    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); pGo(1); }
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); pAdvance(); }
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); pGo(-1); }
     else if(e.key==='Escape'){ pExit(); }
   });
