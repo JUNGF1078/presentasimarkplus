@@ -36,6 +36,26 @@
   nav.top .spacer{flex:1}
   nav.top a.quiz{font-size:13px;font-weight:800;color:#22314f;background:var(--orange);border-radius:999px;padding:8px 16px;text-decoration:none;white-space:nowrap}
   nav.top a.quiz:hover{filter:brightness(1.06)}
+  nav.top a.present{font-size:13px;font-weight:800;color:#eef2f9;background:rgba(255,255,255,.08);border:1px solid var(--line2);border-radius:999px;padding:8px 14px;text-decoration:none;white-space:nowrap}
+  nav.top a.present:hover{border-color:var(--orange);color:#fff}
+  /* presentation mode */
+  .present-bar{position:fixed;top:0;left:0;right:0;z-index:300;display:none;align-items:center;gap:10px;
+    padding:11px 20px;background:rgba(28,40,66,.96);backdrop-filter:blur(10px);border-bottom:2px solid var(--orange);
+    font-family:var(--mono);font-size:13px;color:#cdd9ec}
+  .present-bar b{color:#fff;font-family:var(--display);font-size:15px;font-weight:800}
+  .present-bar .prog{margin-left:auto;color:var(--muted)}
+  .present-ctrl{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:300;display:none;
+    align-items:center;gap:8px;background:rgba(28,40,66,.96);border:1px solid var(--line2);border-radius:999px;
+    padding:8px 10px;box-shadow:0 14px 38px rgba(10,16,30,.55)}
+  .present-ctrl button{font-family:var(--display);font-weight:800;font-size:14px;cursor:pointer;border:none;border-radius:999px;padding:9px 17px}
+  .present-ctrl .nav{background:rgba(255,255,255,.08);color:#eef2f9}
+  .present-ctrl .nav:hover{background:rgba(255,255,255,.16)}
+  .present-ctrl .nav:disabled{opacity:.35;cursor:default}
+  .present-ctrl .next{background:var(--orange);color:#22314f}
+  .present-ctrl .exit{background:transparent;color:var(--muted);font-family:var(--mono);font-weight:700;font-size:12px}
+  body.presenting nav.top{display:none}
+  body.presenting .present-bar,body.presenting .present-ctrl{display:flex}
+  body.presenting .memphis{opacity:.09}
 
   .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:34px 26px 72px}
 
@@ -210,9 +230,15 @@
     <a class="nl" href="#modules">Modules</a>
   </div>
   <div class="spacer"></div>
-  <!-- TODO: ganti href dengan link tes kepribadian yang asli -->
+  <a class="present" id="presentStart" href="#">▶ Present</a>
   <a class="quiz" id="quizNav" href="#personality">✦ Personality Test</a>
 </nav>
+<div class="present-bar" id="presentBar"><span>🎤 PRESENTING ·</span> <b id="presentName"></b><span class="prog" id="presentProg"></span></div>
+<div class="present-ctrl" id="presentCtrl">
+  <button class="nav" id="presentPrev">← Back</button>
+  <button class="next" id="presentNext">Next →</button>
+  <button class="exit" id="presentExit">✕ Exit (Esc)</button>
+</div>
 
 <div class="wrap">
 
@@ -304,7 +330,7 @@
   </div>
 
   <!-- ============ SECTION 0 FEATURE ============ -->
-  <div class="sec-h"><span class="sec-n">00</span><h2 class="sec-t">Start here — the Skills &amp; Roadmap</h2></div>
+  <div class="sec-h" id="roadmap-cta"><span class="sec-n">00</span><h2 class="sec-t">Start here — the Skills &amp; Roadmap</h2></div>
   <div class="feature">
     <div class="fic">🧭</div>
     <div>
@@ -478,6 +504,42 @@
   }
   renderSwim();
   crender();
+
+  // ---- Presentation view (Next / Back / arrow keys) ----
+  const P_STEPS = [
+    {id:'event',      name:'The Event'},
+    {id:'junialdi',   name:'01 · Meet Junialdi'},
+    {id:'levelup',    name:'02 · Level Up'},
+    {id:'personality',name:'Personality Test + Video'},
+    {id:'story',      name:'My AI Journey & Leadership'},
+    {id:'roadmap-cta',name:'Section 0 · Skills & Roadmap'},
+    {id:'modules',    name:'The Modules'},
+  ];
+  let pIdx = 0, presenting = false;
+  const pBar=document.getElementById('presentBar'), pName=document.getElementById('presentName'),
+        pProg=document.getElementById('presentProg'), pPrev=document.getElementById('presentPrev'),
+        pNext=document.getElementById('presentNext');
+  function pShow(){
+    const s=P_STEPS[pIdx]; pName.textContent=s.name; pProg.textContent=(pIdx+1)+' / '+P_STEPS.length;
+    pPrev.disabled = pIdx===0; pNext.textContent = pIdx===P_STEPS.length-1 ? 'Done ✓' : 'Next →';
+    const el=document.getElementById(s.id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function pGo(n){ pIdx=Math.max(0,Math.min(P_STEPS.length-1,pIdx+n)); pShow(); }
+  function pEnter(){ presenting=true; document.body.classList.add('presenting'); pIdx=0;
+    if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){});
+    pShow(); }
+  function pExit(){ presenting=false; document.body.classList.remove('presenting');
+    if(document.fullscreenElement) document.exitFullscreen().catch(function(){}); }
+  document.getElementById('presentStart').addEventListener('click',function(e){e.preventDefault();pEnter();});
+  pNext.addEventListener('click',function(){ pIdx===P_STEPS.length-1 ? pExit() : pGo(1); });
+  pPrev.addEventListener('click',function(){pGo(-1);});
+  document.getElementById('presentExit').addEventListener('click',pExit);
+  document.addEventListener('keydown',function(e){
+    if(!presenting) return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); pGo(1); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); pGo(-1); }
+    else if(e.key==='Escape'){ pExit(); }
+  });
 </script>
 </body>
 </html>
