@@ -43,6 +43,15 @@
         for (var k = 0; k < node.childNodes.length; k++) processNode(node.childNodes[k], scope, out, inst);
       return;
     }
+    if (tag === "sc-html") {                      // render a bound HTML string as real DOM
+      var hp = fullBinding(node.getAttribute("value") || "");
+      var html = hp ? resolve(scope, hp) : "";
+      var w = document.createElement("div");
+      var sty = node.getAttribute("style"); if (sty) w.setAttribute("style", interp(sty, scope));
+      w.innerHTML = (html == null ? "" : String(html));
+      out.appendChild(w);
+      return;
+    }
 
     var el = document.createElement(tag);
     var baseStyle = null, hoverStyle = null, focusStyle = null;

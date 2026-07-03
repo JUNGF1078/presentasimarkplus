@@ -137,14 +137,17 @@
 
       <!-- Output -->
       <section style="border:1px solid #2c3f61;border-radius:14px;background:#20304e;padding:16px 20px;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-          <span class="mono" style="font-size:10px;letter-spacing:.16em;color:#8194ba;">STAGE OUTPUT</span>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <span class="mono" style="font-size:10px;letter-spacing:.16em;color:#8194ba;">EXAMPLE OUTPUT · what this stage produces</span>
           <span class="mono" style="display:flex;align-items:center;gap:7px;font-size:11.5px;color:#eef2f9;background:#2c3f61;border:1px solid #3a4f74;border-radius:8px;padding:4px 10px;"><span style="width:8px;height:8px;border-radius:2px;background:{{ stColor }};"></span>{{ outFile }}</span>
         </div>
-        <sc-for list="{{ outLines }}" as="ln" hint-placeholder-count="4">
-          <div style="font-size:13px;color:#cdd9ec;line-height:1.6;display:flex;gap:8px;margin-bottom:3px;"><span style="color:#acc673;flex:none;">✓</span><span>{{ ln }}</span></div>
-        </sc-for>
-        <div class="mono" style="margin-top:10px;font-size:11px;color:#7f8fb0;border-top:1px solid #2c3f61;padding-top:8px;">Feeds the next stage → <span style="color:#8ba0cf;">{{ nextStage }}</span></div>
+        <sc-html value="{{ artifactHtml }}" style="animation:fadeUp .3s ease both;"></sc-html>
+        <div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;padding-top:10px;border-top:1px solid #2c3f61;">
+          <sc-for list="{{ outLines }}" as="ln" hint-placeholder-count="4">
+            <div style="font-size:12px;color:#b6c4dd;line-height:1.5;display:flex;gap:6px;"><span style="color:#acc673;flex:none;">✓</span><span>{{ ln }}</span></div>
+          </sc-for>
+        </div>
+        <div class="mono" style="margin-top:8px;font-size:11px;color:#7f8fb0;">Feeds the next stage → <span style="color:#8ba0cf;">{{ nextStage }}</span></div>
       </section>
     </div>
   </main>
@@ -159,6 +162,467 @@
 </div>
 </x-dc>
 <script>
+const ARTIFACTS = {
+  strategy:(I)=>`<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#20304e;border:1px solid #2c3f61;border-radius:12px;overflow:hidden;color:#eef2f9;box-shadow:0 8px 26px rgba(0,0,0,.28);">
+  <div style="display:flex;align-items:center;gap:10px;padding:9px 15px;background:#182338;border-bottom:1px solid #2c3f61;">
+    <div style="display:flex;gap:5px;">
+      <span style="width:9px;height:9px;border-radius:50%;background:#e55e5e;display:inline-block;"></span>
+      <span style="width:9px;height:9px;border-radius:50%;background:#edc07a;display:inline-block;"></span>
+      <span style="width:9px;height:9px;border-radius:50%;background:#acc673;display:inline-block;"></span>
+    </div>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;">marketing-plan.md</span>
+    <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.5px;color:#a48bac;background:#20304e;border:1px solid #3a4f74;border-radius:5px;padding:2px 8px;">STRATEGY</span>
+  </div>
+
+  <div style="padding:13px 16px 14px;">
+    <div style="font-size:15px;font-weight:700;color:#eef2f9;letter-spacing:.2px;">Marketing Plan &mdash; ${I.name}</div>
+    <div style="font-size:11px;color:#8194ba;margin-top:2px;margin-bottom:10px;">Agate Level Up &middot; gamified frontline training &middot; <span style="font-family:'IBM Plex Mono',monospace;color:#a48bac;">${I.site}</span></div>
+
+    <div style="margin-bottom:8px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#a48bac;text-transform:uppercase;">## Positioning</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#acc673;background:#182338;border:1px solid #2c3f61;border-radius:20px;padding:2px 9px;white-space:nowrap;">proof: ${I.stat}</span>
+      </div>
+      <div style="font-size:12px;line-height:1.45;color:#cdd9ec;border-left:2px solid #a48bac;padding-left:10px;">For ${I.name} teams, Level Up is the gamified microlearning platform that turns frontline training into measurable performance &mdash; where legacy LMS vendors ship courses no one finishes.</div>
+    </div>
+
+    <div style="margin-bottom:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#a48bac;text-transform:uppercase;margin-bottom:5px;">## Ideal Customer Profile</div>
+      <div style="display:flex;gap:8px;">
+        <div style="flex:1;background:#182338;border:1px solid #2c3f61;border-radius:8px;padding:6px 10px;">
+          <div style="font-size:9px;color:#7f8fb0;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px;">Primary buyer</div>
+          <div style="font-size:12px;color:#eef2f9;font-weight:600;line-height:1.3;">${I.buyer}</div>
+          <div style="font-size:10.5px;color:#8194ba;margin-top:2px;">at ${I.name} organizations</div>
+        </div>
+        <div style="flex:1;background:#182338;border:1px solid #2c3f61;border-radius:8px;padding:6px 10px;">
+          <div style="font-size:9px;color:#7f8fb0;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px;">Beachhead account</div>
+          <div style="font-size:12px;color:#eef2f9;font-weight:600;line-height:1.3;">${I.account}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8ba0cf;margin-top:2px;">${I.site}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#a48bac;text-transform:uppercase;margin-bottom:5px;">## Top-3 Pains</div>
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:4px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#e55e5e;margin-top:4px;flex:none;"></span>
+        <span style="font-size:11.5px;color:#cdd9ec;line-height:1.4;">${I.pain}</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:4px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#edc07a;margin-top:4px;flex:none;"></span>
+        <span style="font-size:11.5px;color:#cdd9ec;line-height:1.4;">Training ROI is hard to prove &mdash; leadership sees cost, not performance lift.</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#acc673;margin-top:4px;flex:none;"></span>
+        <span style="font-size:11.5px;color:#cdd9ec;line-height:1.4;">Legacy content feels like a chore, so daily engagement decays fast.</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom:9px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#a48bac;text-transform:uppercase;margin-bottom:5px;">## Channel Mix</div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#182338;border:1px solid #3a4f74;border-radius:20px;padding:4px 11px;font-size:11px;color:#cdd9ec;"><span style="width:7px;height:7px;border-radius:50%;background:#6f98b2;"></span>SEO <span style="font-family:'IBM Plex Mono',monospace;color:#8194ba;">40%</span></span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#182338;border:1px solid #3a4f74;border-radius:20px;padding:4px 11px;font-size:11px;color:#cdd9ec;"><span style="width:7px;height:7px;border-radius:50%;background:#5769aa;"></span>LinkedIn <span style="font-family:'IBM Plex Mono',monospace;color:#8194ba;">35%</span></span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#182338;border:1px solid #3a4f74;border-radius:20px;padding:4px 11px;font-size:11px;color:#cdd9ec;"><span style="width:7px;height:7px;border-radius:50%;background:#ed9e72;"></span>Email <span style="font-family:'IBM Plex Mono',monospace;color:#8194ba;">25%</span></span>
+      </div>
+      <div style="font-size:10.5px;color:#7f8fb0;margin-top:5px;">Hero asset: <span style="color:#b6c4dd;">&ldquo;${I.topic}&rdquo;</span></div>
+    </div>
+
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#a48bac;text-transform:uppercase;margin-bottom:5px;">## 90-Day Timeline</div>
+      <div style="display:flex;gap:5px;">
+        <div style="flex:1;background:linear-gradient(90deg,#435f9c,#5769aa);border-radius:7px;padding:6px 9px;">
+          <div style="font-size:10.5px;font-weight:700;color:#eef2f9;">1 &middot; Audit</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#dbe4f5;margin-top:1px;">Day 1-30</div>
+        </div>
+        <div style="flex:1;background:linear-gradient(90deg,#8b6f96,#a48bac);border-radius:7px;padding:6px 9px;">
+          <div style="font-size:10.5px;font-weight:700;color:#eef2f9;">2 &middot; Content + Convert</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#f0e9f2;margin-top:1px;">Day 31-60</div>
+        </div>
+        <div style="flex:1;background:linear-gradient(90deg,#8ba86a,#acc673);border-radius:7px;padding:6px 9px;">
+          <div style="font-size:10.5px;font-weight:700;color:#1b2942;">3 &middot; Launch</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#2a3a1e;margin-top:1px;">Day 61-90</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+  seo:(I)=>`<div style="max-width:640px;background:#20304e;border:1px solid #2c3f61;border-radius:14px;font-family:-apple-system,Segoe UI,sans-serif;color:#eef2f9;overflow:hidden">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#1b2942;border-bottom:1px solid #2c3f61">
+    <div style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#cdd9ec"><span style="width:9px;height:9px;border-radius:50%;background:#6f98b2;display:inline-block"></span>seo-content-plan.md</div>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#8194ba;border:1px solid #3a4f74;border-radius:5px;padding:2px 7px">SEO AUDIT</span>
+  </div>
+  <div style="padding:13px 15px">
+    <div style="display:flex;align-items:center;gap:13px;margin-bottom:12px">
+      <div style="width:54px;height:54px;border-radius:50%;background:conic-gradient(#6f98b2 0 68%,#2c3f61 68% 100%);display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+        <div style="width:40px;height:40px;border-radius:50%;background:#20304e;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:700;color:#eef2f9">68</span>
+          <span style="font-size:8px;color:#8194ba;margin-top:2px">/100</span>
+        </div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:600;color:#eef2f9">SEO Health Audit</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#6f98b2;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${I.site}</div>
+        <div style="font-size:10.5px;color:#7f8fb0;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${I.account} · 24 pages crawled · 2 critical · 1 warning</div>
+      </div>
+      <div style="text-align:right;flex:0 0 auto">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#acc673;font-weight:700">+18</div>
+        <div style="font-size:9px;color:#7f8fb0">est. rank pts</div>
+      </div>
+    </div>
+    <div style="border:1px solid #2c3f61;border-radius:9px;overflow:hidden;margin-bottom:12px">
+      <div style="display:flex;background:#182338;padding:5px 11px;font-size:9.5px;letter-spacing:.06em;color:#8194ba;text-transform:uppercase">
+        <span style="flex:1">Finding</span><span style="width:80px;text-align:right">Affected</span><span style="width:46px;text-align:right">Status</span>
+      </div>
+      <div style="display:flex;align-items:center;padding:6px 11px;border-top:1px solid #223046">
+        <span style="width:8px;height:8px;border-radius:50%;background:#e55e5e;flex:0 0 auto;margin-right:10px"></span>
+        <span style="flex:1;font-size:11.5px;color:#cdd9ec">Missing meta descriptions</span>
+        <span style="width:80px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8194ba">12 pages</span>
+        <span style="width:46px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#e55e5e">FIX</span>
+      </div>
+      <div style="display:flex;align-items:center;padding:6px 11px;border-top:1px solid #223046">
+        <span style="width:8px;height:8px;border-radius:50%;background:#e55e5e;flex:0 0 auto;margin-right:10px"></span>
+        <span style="flex:1;font-size:11.5px;color:#cdd9ec">Broken internal links</span>
+        <span style="width:80px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8194ba">3 links</span>
+        <span style="width:46px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#e55e5e">FIX</span>
+      </div>
+      <div style="display:flex;align-items:center;padding:6px 11px;border-top:1px solid #223046">
+        <span style="width:8px;height:8px;border-radius:50%;background:#edc07a;flex:0 0 auto;margin-right:10px"></span>
+        <span style="flex:1;font-size:11.5px;color:#cdd9ec">Thin content under 300 words</span>
+        <span style="width:80px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8194ba">5 pages</span>
+        <span style="width:46px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#edc07a">WARN</span>
+      </div>
+      <div style="display:flex;align-items:center;padding:6px 11px;border-top:1px solid #223046">
+        <span style="width:8px;height:8px;border-radius:50%;background:#acc673;flex:0 0 auto;margin-right:10px"></span>
+        <span style="flex:1;font-size:11.5px;color:#cdd9ec">Core Web Vitals</span>
+        <span style="width:80px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8194ba">LCP 2.1s</span>
+        <span style="width:46px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#acc673">PASS</span>
+      </div>
+    </div>
+    <div style="font-size:9.5px;letter-spacing:.06em;color:#8194ba;text-transform:uppercase;margin-bottom:6px">Priority content · 4 pieces</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px">
+      <div style="background:#1b2942;border:1px solid #2c3f61;border-radius:7px;padding:6px 9px;display:flex;gap:7px;align-items:flex-start">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6f98b2;font-weight:700;flex:0 0 auto">01</span>
+        <div style="min-width:0"><div style="font-size:11px;color:#eef2f9;line-height:1.25">Pillar: ${I.topic}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#7f8fb0;margin-top:3px">2,200w · PILLAR</div></div>
+      </div>
+      <div style="background:#1b2942;border:1px solid #2c3f61;border-radius:7px;padding:6px 9px;display:flex;gap:7px;align-items:flex-start">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#5769aa;font-weight:700;flex:0 0 auto">02</span>
+        <div style="min-width:0"><div style="font-size:11px;color:#eef2f9;line-height:1.25">How-to cluster: rollout playbook</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#7f8fb0;margin-top:3px">1,400w · CLUSTER</div></div>
+      </div>
+      <div style="background:#1b2942;border:1px solid #2c3f61;border-radius:7px;padding:6px 9px;display:flex;gap:7px;align-items:flex-start">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#5769aa;font-weight:700;flex:0 0 auto">03</span>
+        <div style="min-width:0"><div style="font-size:11px;color:#eef2f9;line-height:1.25">Data study: ${I.stat}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#7f8fb0;margin-top:3px">1,600w · LINKBAIT</div></div>
+      </div>
+      <div style="background:#1b2942;border:1px solid #2c3f61;border-radius:7px;padding:6px 9px;display:flex;gap:7px;align-items:flex-start">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#5769aa;font-weight:700;flex:0 0 auto">04</span>
+        <div style="min-width:0"><div style="font-size:11px;color:#eef2f9;line-height:1.25">FAQ / AI-answer hub</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#7f8fb0;margin-top:3px">900w · AEO</div></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;background:#182338;border:1px solid #2c3f61;border-radius:8px;padding:8px 11px">
+      <span style="width:26px;height:26px;border-radius:6px;background:#20304e;border:1px solid #3a4f74;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:#6f98b2;flex:0 0 auto">AI</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;color:#cdd9ec">AI-SEO visibility — <span style="font-family:'IBM Plex Mono',monospace;color:#6f98b2">cited in 4/10 prompts</span></div>
+        <div style="height:5px;border-radius:3px;background:#2c3f61;margin-top:5px;overflow:hidden"><div style="width:40%;height:100%;background:#6f98b2"></div></div>
+      </div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;color:#cdd9ec;flex:0 0 auto">40%</span>
+    </div>
+  </div>
+</div>`,
+  content:(I)=>`<div style="font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:#1b2942;border:1px solid #ed9e72;border-radius:12px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,0.32);max-width:640px;">
+  <div style="display:flex;align-items:center;gap:10px;background:#2b579a;padding:8px 14px;">
+    <div style="width:22px;height:22px;border-radius:4px;background:#ffffff;color:#2b579a;font-weight:800;font-size:14px;line-height:22px;text-align:center;font-family:'IBM Plex Mono',monospace;">W</div>
+    <div style="color:#eaf0fa;font-size:12.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.2px;">whitepaper-draft.docx</div>
+    <div style="color:#a9bce2;font-size:11px;">·</div>
+    <div style="color:#f4cfa5;font-size:11px;font-style:italic;">Draft</div>
+    <div style="margin-left:auto;display:flex;gap:7px;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#4a6cb0;"></div>
+      <div style="width:11px;height:11px;border-radius:50%;background:#4a6cb0;"></div>
+      <div style="width:11px;height:11px;border-radius:50%;background:#4a6cb0;"></div>
+    </div>
+  </div>
+  <div style="height:4px;background:linear-gradient(90deg,#21447e,#2b579a 60%,#21447e);"></div>
+  <div style="background:#182338;padding:12px 14px;">
+    <div style="background:#f7f5ef;border:1px solid #d8d3c6;border-radius:4px;padding:16px 20px 14px;box-shadow:0 5px 16px rgba(0,0,0,0.28);">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1.5px;color:#8a8575;font-weight:700;text-transform:uppercase;">Agate Level Up &nbsp;·&nbsp; ${I.name} &nbsp;·&nbsp; Whitepaper</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.24;color:#1a2436;font-weight:700;margin-top:6px;">${I.topic}</div>
+      <div style="font-size:10.5px;color:#7d7869;margin-top:6px;">Prepared for <span style="color:#40495a;font-weight:600;">${I.account}</span> &nbsp;·&nbsp; ${I.buyer} &nbsp;·&nbsp; <span style="font-family:'IBM Plex Mono',monospace;">${I.site}</span></div>
+      <div style="height:1px;background:#e2ddd0;margin:10px 0;"></div>
+      <div style="display:flex;gap:18px;">
+        <div style="flex:1;">
+          <div style="background:#eceae0;border-left:3px solid #b6b09a;border-radius:0 4px 4px 0;padding:9px 12px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:1.4px;color:#8a8371;font-weight:700;margin-bottom:4px;">EXECUTIVE SUMMARY</div>
+            <div style="font-size:11px;line-height:1.5;color:#3f4453;">${I.account} faces a familiar problem — <span style="font-style:italic;color:#5a5346;">${I.pain}</span>. The root cause is design, not content: reframing training as a game layer measurably moves the numbers.</div>
+          </div>
+          <div style="margin-top:12px;">
+            <div style="font-family:Georgia,serif;font-size:12.5px;color:#22304a;font-weight:700;">1.&nbsp;&nbsp;The completion gap</div>
+            <div style="font-size:11px;line-height:1.5;color:#4a4f5e;margin-top:4px;">Standard e-learning stalls short of target. Across the sector this gap is the pattern, not an outlier:</div>
+            <div style="margin-top:7px;background:#eef3fb;border:1px solid #cdddf5;border-radius:4px;padding:7px 10px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;color:#2b579a;">${I.stat}</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div>
+            <div style="font-family:Georgia,serif;font-size:12.5px;color:#22304a;font-weight:700;">2.&nbsp;&nbsp;What the game layer changes</div>
+            <div style="font-size:11px;line-height:1.5;color:#4a4f5e;margin-top:4px;">Points, streaks and levels turn effort into visible progress, and progress into habit. Piloted cohorts close the gap inside a single quarter.</div>
+          </div>
+          <div style="margin-top:12px;">
+            <div style="font-family:Georgia,serif;font-size:12.5px;color:#a7a291;font-weight:700;">3.&nbsp;&nbsp;Recommendations</div>
+            <div style="border:1px dashed #cbc4b0;border-radius:4px;background:#fbf6ee;padding:8px 11px;margin-top:6px;">
+              <div style="font-size:11px;font-style:italic;color:#c0392b;font-weight:600;">Section 3 — needs your POV</div>
+              <div style="height:6px;background:#e6ded0;border-radius:3px;width:88%;margin-top:8px;"></div>
+              <div style="height:6px;background:#e6ded0;border-radius:3px;width:66%;margin-top:5px;"></div>
+              <div style="height:6px;background:#e6ded0;border-radius:3px;width:74%;margin-top:5px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;background:#2b579a;padding:6px 14px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#cdddf5;">
+    <span>Page 1 of 4</span>
+    <span style="color:#7f9dd0;">·</span>
+    <span>1,240 words</span>
+    <span style="margin-left:auto;color:#f4cfa5;">English (US) &nbsp; Draft</span>
+  </div>
+</div>`,
+  cro:(I)=>`<div style="width:100%;box-sizing:border-box;background:#20304e;border:1px solid #2c3f61;border-radius:12px;overflow:hidden;font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#eef2f9">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1b2942;border-bottom:1px solid #2c3f61">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div style="width:22px;height:22px;border-radius:5px;background:linear-gradient(135deg,#5769aa,#435f9c);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#eef2f9">F</div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#eef2f9">landing-cro.fig</div>
+        <div style="font-size:10px;color:#8194ba;margin-top:1px">CRO recommendation &middot; ${I.name} &middot; ${I.account}</div>
+      </div>
+    </div>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8ba0cf;background:#182338;border:1px solid #3a4f74;border-radius:5px;padding:3px 8px">demo-request rate &middot; +15% MDE</span>
+  </div>
+
+  <div style="padding:13px 14px 14px">
+    <div style="display:flex;gap:10px;align-items:stretch">
+
+      <div style="flex:1;background:#182338;border:1px solid #3a4f74;border-radius:8px;overflow:hidden;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;gap:5px;padding:6px 8px;background:#1b2942;border-bottom:1px solid #2c3f61">
+          <span style="width:7px;height:7px;border-radius:50%;background:#e55e5e"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#ed9e72"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#acc673"></span>
+          <span style="flex:1;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8194ba;background:#182338;border:1px solid #2c3f61;border-radius:4px;padding:2px 6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${I.site}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;color:#e55e5e;background:rgba(229,94,94,0.12);border:1px solid rgba(229,94,94,0.4);border-radius:4px;padding:2px 6px">BEFORE</span>
+        </div>
+        <div style="padding:9px 9px 10px;flex:1">
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:4px">Hero &middot; feature-led</div>
+          <div style="font-size:9.5px;line-height:1.35;color:#cdd9ec;font-weight:600;margin-bottom:6px">${I.topic}</div>
+          <div style="height:5px;background:#2c3f61;border-radius:3px;margin-bottom:4px"></div>
+          <div style="height:5px;background:#2c3f61;border-radius:3px;width:80%;margin-bottom:4px"></div>
+          <div style="height:5px;background:#2c3f61;border-radius:3px;width:62%;margin-bottom:8px"></div>
+          <div style="display:flex;gap:5px;margin-bottom:9px">
+            <div style="flex:1;height:14px;background:#2c3f61;border-radius:4px"></div>
+            <div style="flex:1;height:14px;border:1px solid #3a4f74;border-radius:4px"></div>
+          </div>
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px">Form &middot; 5 fields</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8194ba;background:#101a2b;border:1px solid #2c3f61;border-radius:4px;padding:4px 6px;margin-bottom:4px">Full name</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8194ba;background:#101a2b;border:1px solid #2c3f61;border-radius:4px;padding:4px 6px;margin-bottom:4px">Work email</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8194ba;background:#101a2b;border:1px solid #2c3f61;border-radius:4px;padding:4px 6px;margin-bottom:4px">Company</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8194ba;background:#101a2b;border:1px solid #2c3f61;border-radius:4px;padding:4px 6px;margin-bottom:4px">Phone number</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8194ba;background:#101a2b;border:1px solid #2c3f61;border-radius:4px;padding:4px 6px;margin-bottom:6px">Message</div>
+          <div style="text-align:center;font-size:8.5px;font-weight:700;color:#cdd9ec;background:#435f9c;border-radius:4px;padding:5px">Submit</div>
+          <div style="display:flex;align-items:center;gap:5px;margin-top:8px">
+            <span style="width:6px;height:6px;border-radius:50%;background:#e55e5e"></span>
+            <span style="font-size:8px;color:#e55e5e;line-height:1.3">No outcome, no proof &middot; high form friction</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1;background:#182338;border:1px solid #5769aa;border-radius:8px;overflow:hidden;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;gap:5px;padding:6px 8px;background:#1b2942;border-bottom:1px solid #2c3f61">
+          <span style="width:7px;height:7px;border-radius:50%;background:#e55e5e"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#ed9e72"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#acc673"></span>
+          <span style="flex:1;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8ba0cf;background:#182338;border:1px solid #2c3f61;border-radius:4px;padding:2px 6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${I.site}/demo</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;color:#acc673;background:rgba(172,198,115,0.12);border:1px solid rgba(172,198,115,0.4);border-radius:4px;padding:2px 6px">AFTER</span>
+        </div>
+        <div style="padding:9px 9px 10px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px">Hero &middot; outcome-led</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;line-height:1.15;color:#a9bce0;margin-bottom:5px">${I.stat}</div>
+          <div style="font-size:8.5px;line-height:1.4;color:#cdd9ec;margin-bottom:9px">See exactly how teams reach this. Book a 20-min walkthrough.</div>
+          <div style="text-align:center;font-size:8.5px;font-weight:700;color:#182338;background:#acc673;border-radius:4px;padding:6px;margin-bottom:11px">Book a demo</div>
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px">Form &middot; 2 fields</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#b6c4dd;background:#101a2b;border:1px solid #3a4f74;border-radius:4px;padding:5px 6px;margin-bottom:5px">Work email</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#b6c4dd;background:#101a2b;border:1px solid #3a4f74;border-radius:4px;padding:5px 6px;margin-bottom:6px">Company</div>
+          <div style="text-align:center;font-size:8.5px;font-weight:700;color:#eef2f9;background:#5769aa;border-radius:4px;padding:6px;margin-bottom:9px">Request demo</div>
+          <div style="margin-top:auto">
+            <div style="font-size:8px;color:#8194ba;margin-bottom:4px">Trusted by teams like ${I.account}</div>
+            <div style="display:flex;gap:5px;margin-bottom:8px">
+              <div style="flex:1;height:11px;background:#2c3f61;border-radius:3px"></div>
+              <div style="flex:1;height:11px;background:#2c3f61;border-radius:3px"></div>
+              <div style="flex:1;height:11px;background:#2c3f61;border-radius:3px"></div>
+              <div style="flex:1;height:11px;background:#2c3f61;border-radius:3px"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:5px">
+              <span style="width:6px;height:6px;border-radius:50%;background:#acc673"></span>
+              <span style="font-size:8px;color:#acc673;line-height:1.3">Proof-first &middot; low friction &middot; social proof</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:12px;background:#1b2942;border:1px solid #2c3f61;border-radius:8px;padding:11px 12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#8ba0cf;background:#182338;border:1px solid #3a4f74;border-radius:4px;padding:2px 7px">A/B TEST</span>
+          <span style="font-size:11px;font-weight:600;color:#eef2f9">Landing hero + form length</span>
+        </div>
+        <span style="font-size:8.5px;font-weight:700;color:#acc673;background:rgba(172,198,115,0.12);border:1px solid rgba(172,198,115,0.4);border-radius:20px;padding:2px 9px">Ready to run</span>
+      </div>
+      <div style="display:flex;gap:7px;margin-bottom:10px">
+        <span style="font-size:8px;font-weight:700;color:#8194ba;letter-spacing:0.5px;text-transform:uppercase;padding-top:1px">Hypothesis</span>
+        <span style="flex:1;font-size:10px;line-height:1.45;color:#cdd9ec">Replacing the feature-led hero with an outcome-led promise (<span style="font-family:'IBM Plex Mono',monospace;color:#8ba0cf">${I.stat}</span>) and cutting the form from 5 &rarr; 2 fields will lift <span style="color:#eef2f9;font-weight:600">demo-request rate</span> among ${I.buyer}.</span>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;background:#182338;border:1px solid #2c3f61;border-radius:6px;padding:7px 9px">
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px">Primary metric</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#eef2f9">demo-request rate</div>
+        </div>
+        <div style="flex:1;background:#182338;border:1px solid #2c3f61;border-radius:6px;padding:7px 9px">
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px">MDE</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#acc673">+15%</div>
+        </div>
+        <div style="flex:1;background:#182338;border:1px solid #2c3f61;border-radius:6px;padding:7px 9px">
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px">Est. duration</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#eef2f9">~12 days</div>
+        </div>
+        <div style="flex:1;background:#182338;border:1px solid #2c3f61;border-radius:6px;padding:7px 9px">
+          <div style="font-size:8px;color:#8194ba;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px">Split &middot; conf.</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#eef2f9">50/50 &middot; 95%</div>
+        </div>
+      </div>
+      <div style="font-size:8.5px;color:#8194ba;line-height:1.4;margin-top:9px;border-top:1px solid #2c3f61;padding-top:8px">Rationale: current page buries the core pain (${I.pain}) below the fold.</div>
+    </div>
+
+  </div>
+</div>`,
+  paid:(I)=>`<div style="font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:#1b2942;border:1px solid #2c3f61;border-radius:14px;overflow:hidden;color:#eef2f9;max-width:640px;"><div style="display:flex;align-items:center;justify-content:space-between;padding:11px 15px;background:#182338;border-bottom:1px solid #2c3f61;"><div style="display:flex;align-items:center;gap:9px;min-width:0;"><div style="width:20px;height:20px;border-radius:5px;background:linear-gradient(135deg,#e55e5e,#ed9e72);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#eef2f9;letter-spacing:.2px;">ad-creative.set</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#7f8fb0;">2 variants · 1080&#215;1080</span></div><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#acc673;background:#20304e;border:1px solid #3a4f74;border-radius:5px;padding:3px 8px;flex-shrink:0;">READY</span></div><div style="display:flex;gap:12px;padding:14px;align-items:stretch;"><div style="flex:1;min-width:0;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.28);display:flex;flex-direction:column;"><div style="display:flex;align-items:center;justify-content:space-between;padding:7px 11px;border-bottom:1px solid #eef0f3;"><span style="font-size:9.5px;font-weight:800;color:#5769aa;letter-spacing:.5px;">META &#183; FEED</span><span style="font-size:9px;color:#8a93a6;">v1</span></div><div style="display:flex;align-items:center;gap:8px;padding:9px 11px 6px;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#e55e5e,#ed9e72);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;">A</div><div style="line-height:1.25;min-width:0;"><div style="font-size:12px;font-weight:700;color:#1c2b46;">Agate Level Up</div><div style="font-size:9.5px;color:#8a93a6;display:flex;align-items:center;gap:4px;">Sponsored <span style="display:inline-block;width:8px;height:8px;border:1px solid #b6bccb;border-radius:50%;"></span></div></div></div><div style="padding:0 11px 9px;font-size:10.5px;line-height:1.45;color:#2a3346;">${I.pain} &#8212; sound familiar? We rebuilt training for ${I.name} teams into game loops. Result: <b style="color:#c8443f;">${I.stat}</b>.</div><div style="position:relative;height:112px;background:radial-gradient(circle at 80% 18%,#3a5aa0,transparent 55%),linear-gradient(135deg,#182338,#20304e);display:flex;flex-direction:column;justify-content:space-between;padding:11px 13px;"><div style="font-size:8px;font-weight:800;letter-spacing:2px;color:#8ba0cf;">AGATE LEVEL UP</div><div style="font-size:15px;font-weight:800;line-height:1.14;color:#eef2f9;">Train like a game.<br>Retain like never before.</div><div style="display:flex;gap:5px;align-items:center;"><span style="width:22px;height:4px;border-radius:2px;background:#e55e5e;"></span><span style="width:10px;height:4px;border-radius:2px;background:#ed9e72;"></span></div></div><div style="display:flex;align-items:center;justify-content:space-between;gap:9px;padding:9px 11px;background:#f0f2f5;margin-top:auto;"><div style="min-width:0;flex:1;"><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">levelup.agate.id</div><div style="font-size:11px;font-weight:800;color:#1c2b46;line-height:1.24;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${I.topic}</div></div><div style="flex-shrink:0;background:#e55e5e;color:#fff;font-size:10px;font-weight:700;padding:7px 10px;border-radius:6px;white-space:nowrap;">Download the playbook</div></div></div><div style="flex:1;min-width:0;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.28);display:flex;flex-direction:column;"><div style="display:flex;align-items:center;justify-content:space-between;padding:7px 11px;border-bottom:1px solid #eef0f3;"><span style="font-size:9.5px;font-weight:800;color:#435f9c;letter-spacing:.5px;">LINKEDIN &#183; SINGLE IMAGE</span><span style="font-size:9px;color:#8a93a6;">v2</span></div><div style="display:flex;align-items:center;gap:8px;padding:9px 11px 6px;"><div style="width:32px;height:32px;border-radius:7px;background:linear-gradient(135deg,#e55e5e,#ed9e72);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;">A</div><div style="line-height:1.25;min-width:0;"><div style="font-size:12px;font-weight:700;color:#1c2b46;">Agate Level Up</div><div style="font-size:9.5px;color:#8a93a6;">3,204 followers &#183; Promoted</div></div></div><div style="padding:0 11px 9px;font-size:10.5px;line-height:1.45;color:#2a3346;">Still stuck with ${I.pain}? The teams winning in ${I.name} train smarter, not harder &#8212; <b style="color:#2f5aa8;">${I.stat}</b>. Full playbook, free below.</div><div style="position:relative;height:112px;background:radial-gradient(circle at 20% 22%,#3a5aa0,transparent 52%),linear-gradient(135deg,#20304e,#182338);display:flex;flex-direction:column;justify-content:space-between;padding:11px 13px;"><div style="font-size:8px;font-weight:800;letter-spacing:2px;color:#8ba0cf;">THE COMPLETION PLAYBOOK</div><div style="font-size:15px;font-weight:800;line-height:1.14;color:#eef2f9;">From skipped modules<br>to a daily streak.</div><div style="display:flex;gap:6px;align-items:center;"><span style="font-size:8.5px;font-weight:700;color:#182338;background:#acc673;border-radius:4px;padding:2px 6px;">12-page PDF</span><span style="font-size:8.5px;color:#b6c4dd;">Free download</span></div></div><div style="display:flex;align-items:center;justify-content:space-between;gap:9px;padding:9px 11px;background:#f3f6f9;border-top:1px solid #e4e8ee;margin-top:auto;"><div style="min-width:0;flex:1;"><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">levelup.agate.id</div><div style="font-size:11px;font-weight:800;color:#1c2b46;line-height:1.24;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${I.topic}</div></div><div style="flex-shrink:0;background:#e55e5e;color:#fff;font-size:10px;font-weight:700;padding:7px 10px;border-radius:6px;white-space:nowrap;">Get the free playbook</div></div></div></div><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 15px;background:#182338;border-top:1px solid #2c3f61;flex-wrap:wrap;"><div style="display:flex;align-items:center;gap:7px;font-size:10.5px;color:#8194ba;"><span style="width:6px;height:6px;border-radius:50%;background:#acc673;flex-shrink:0;"></span>Audience &#8212; ${I.buyer} &#183; ${I.name}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#7f8fb0;">ABM &#183; ${I.account} &#183; ${I.site}</div></div></div>`,
+  growth:(I)=>`<div style="font-family:'Segoe UI',system-ui,sans-serif;background:#20304e;border:1px solid #3a4f74;border-radius:12px;overflow:hidden;color:#eef2f9;max-width:640px;box-shadow:0 6px 20px rgba(0,0,0,0.28);"><div style="display:flex;align-items:center;gap:9px;padding:9px 14px;background:#182338;border-bottom:1px solid #2c3f61;"><span style="width:9px;height:9px;border-radius:50%;background:#e55e5e;display:inline-block;"></span><span style="width:9px;height:9px;border-radius:50%;background:#edc07a;display:inline-block;"></span><span style="width:9px;height:9px;border-radius:50%;background:#acc673;display:inline-block;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#cdd9ec;margin-left:5px;">nurture-sequence.md</span><span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.8px;color:#182338;background:#acc673;padding:2px 7px;border-radius:5px;font-weight:600;">GROWTH</span></div><div style="display:flex;gap:15px;padding:15px 16px;align-items:stretch;"><div style="flex:1.35;min-width:0;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;"><span style="font-size:13px;font-weight:700;color:#eef2f9;">4-Touch Email Sequence</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8194ba;">18-day drip</span></div><div style="position:relative;"><div style="position:absolute;left:6px;top:9px;bottom:16px;width:2px;background:#2c3f61;"></div><div style="display:flex;gap:11px;margin-bottom:13px;position:relative;"><div style="flex-shrink:0;position:relative;z-index:1;padding-top:2px;"><span style="display:block;width:14px;height:14px;border-radius:50%;background:#acc673;box-shadow:0 0 0 3px rgba(172,198,115,0.2);box-sizing:border-box;"></span></div><div style="min-width:0;"><div style="display:flex;align-items:center;gap:7px;margin-bottom:3px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.6px;color:#8194ba;">DAY 0</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#acc673;border:1px solid #4a5f3a;background:rgba(172,198,115,0.1);padding:1px 5px;border-radius:4px;letter-spacing:0.5px;">ACTIVE</span></div><div style="font-size:13px;font-weight:600;color:#eef2f9;line-height:1.32;">${I.topic}</div><div style="font-size:11px;color:#7f8fb0;margin-top:3px;">Fires on form submit &middot; goal 55% open</div></div></div><div style="display:flex;gap:11px;margin-bottom:13px;position:relative;"><div style="flex-shrink:0;position:relative;z-index:1;padding-top:2px;"><span style="display:block;width:14px;height:14px;border-radius:50%;background:#182338;border:2px solid #3a4f74;box-sizing:border-box;"></span></div><div style="min-width:0;"><div style="margin-bottom:3px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.6px;color:#7f8fb0;">DAY 4</span></div><div style="font-size:12.5px;font-weight:500;color:#b6c4dd;line-height:1.32;">The number behind it: ${I.stat}</div><div style="font-size:11px;color:#7f8fb0;margin-top:3px;">If T1 opened &middot; value + soft CTA</div></div></div><div style="display:flex;gap:11px;margin-bottom:13px;position:relative;"><div style="flex-shrink:0;position:relative;z-index:1;padding-top:2px;"><span style="display:block;width:14px;height:14px;border-radius:50%;background:#182338;border:2px solid #3a4f74;box-sizing:border-box;"></span></div><div style="min-width:0;"><div style="margin-bottom:3px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.6px;color:#7f8fb0;">DAY 10</span></div><div style="font-size:12.5px;font-weight:500;color:#b6c4dd;line-height:1.32;">How top ${I.name} teams tackle this</div><div style="font-size:11px;color:#7f8fb0;margin-top:3px;">If no reply &middot; social proof + case</div></div></div><div style="display:flex;gap:11px;position:relative;"><div style="flex-shrink:0;position:relative;z-index:1;padding-top:2px;"><span style="display:block;width:14px;height:14px;border-radius:50%;background:#182338;border:2px solid #3a4f74;box-sizing:border-box;"></span></div><div style="min-width:0;"><div style="margin-bottom:3px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.6px;color:#7f8fb0;">DAY 18</span></div><div style="font-size:12.5px;font-weight:500;color:#b6c4dd;line-height:1.32;">A 15-min walkthrough for ${I.buyer}?</div><div style="font-size:11px;color:#7f8fb0;margin-top:3px;">If engaged &middot; book a call</div></div></div></div></div><div style="flex:1;min-width:0;display:flex;flex-direction:column;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.8px;color:#acc673;margin-bottom:9px;">LEAD MAGNET</div><div style="background:#182338;border:1px solid #2c3f61;border-radius:10px;padding:13px;flex:1;display:flex;flex-direction:column;"><div style="display:flex;gap:10px;align-items:center;margin-bottom:9px;"><div style="width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#acc673,#6f98b2);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:700;color:#182338;">&#10003;</span></div><div style="min-width:0;"><div style="font-size:12.5px;font-weight:700;color:#eef2f9;line-height:1.25;">${I.name} Onboarding Scorecard</div><div style="font-size:10.5px;color:#8194ba;margin-top:1px;">12 readiness signals &middot; 2 min</div></div></div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.5px;color:#7f8fb0;">SAMPLE SNAPSHOT</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#edc07a;border:1px solid #5a4f30;background:rgba(237,192,122,0.08);padding:1px 5px;border-radius:4px;">LOCKED</span></div><div style="margin-bottom:5px;"><div style="display:flex;justify-content:space-between;font-size:10px;color:#b6c4dd;margin-bottom:3px;"><span>Content design</span><span style="font-family:'IBM Plex Mono',monospace;color:#acc673;">82</span></div><div style="height:6px;border-radius:4px;background:#20304e;overflow:hidden;"><div style="width:82%;height:100%;background:#acc673;"></div></div></div><div style="margin-bottom:5px;"><div style="display:flex;justify-content:space-between;font-size:10px;color:#b6c4dd;margin-bottom:3px;"><span>Adoption &amp; habit</span><span style="font-family:'IBM Plex Mono',monospace;color:#edc07a;">46</span></div><div style="height:6px;border-radius:4px;background:#20304e;overflow:hidden;"><div style="width:46%;height:100%;background:#edc07a;"></div></div></div><div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;font-size:10px;color:#b6c4dd;margin-bottom:3px;"><span>Measured impact</span><span style="font-family:'IBM Plex Mono',monospace;color:#6f98b2;">31</span></div><div style="height:6px;border-radius:4px;background:#20304e;overflow:hidden;"><div style="width:31%;height:100%;background:#6f98b2;"></div></div></div><div style="border-top:1px solid #2c3f61;padding-top:10px;margin-top:auto;"><div style="display:flex;align-items:center;background:#20304e;border:1px solid #3a4f74;border-radius:7px;padding:7px 9px;margin-bottom:7px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f8fb0;">name@${I.site}</span></div><div style="text-align:center;background:#acc673;color:#182338;font-size:12px;font-weight:700;padding:8px;border-radius:7px;">Unlock full scorecard</div><div style="font-size:9.5px;color:#7f8fb0;margin-top:7px;text-align:center;">Email-gated &middot; instant PDF + peer benchmark</div></div></div></div></div></div>`,
+  sales:(I)=>`<div style="width:100%;box-sizing:border-box;background:#1b2942;border:1px solid #2c3f61;border-radius:12px;padding:14px 14px 16px;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;color:#eef2f9;line-height:1.45;">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:9px;min-width:0;">
+      <div style="width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#435f9c,#5769aa);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#eef2f9;letter-spacing:.5px;">GTM</div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.3px;color:#eef2f9;">gtm-pack.zip</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#7f8fb0;padding:2px 6px;background:#182338;border-radius:4px;">3 files &middot; 84 KB</span>
+    </div>
+    <span style="font-size:9px;letter-spacing:.6px;text-transform:uppercase;color:#8194ba;white-space:nowrap;">Level Up &middot; Sales Pack</span>
+  </div>
+
+  <div style="display:flex;gap:12px;align-items:stretch;">
+
+    <div style="flex:1.12;min-width:0;background:#20304e;border:1px solid #2c3f61;border-radius:10px;padding:12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:6px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#8ba0cf;">SALES ONE-PAGER</span>
+        <span style="font-size:9px;color:#cdd9ec;background:#182338;border:1px solid #3a4f74;border-radius:20px;padding:2px 8px;white-space:nowrap;">${I.name}</span>
+      </div>
+      <div style="font-size:13px;font-weight:650;color:#eef2f9;margin-bottom:11px;line-height:1.3;">${I.topic}</div>
+
+      <div style="display:flex;gap:8px;margin-bottom:9px;">
+        <div style="width:7px;height:7px;border-radius:50%;background:#e55e5e;margin-top:4px;flex:none;"></div>
+        <div style="min-width:0;">
+          <div style="font-size:8.5px;letter-spacing:.9px;color:#e55e5e;font-weight:700;margin-bottom:2px;">PROBLEM</div>
+          <div style="font-size:11px;color:#cdd9ec;">${I.pain}</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:9px;">
+        <div style="width:7px;height:7px;border-radius:50%;background:#5769aa;margin-top:4px;flex:none;"></div>
+        <div style="min-width:0;">
+          <div style="font-size:8.5px;letter-spacing:.9px;color:#8ba0cf;font-weight:700;margin-bottom:2px;">SOLUTION</div>
+          <div style="font-size:11px;color:#cdd9ec;">Level Up rebuilds your program as short, gamified missions &mdash; streaks, leaderboards and manager nudges that make training a daily habit, not a mandate.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:11px;">
+        <div style="width:7px;height:7px;border-radius:50%;background:#acc673;margin-top:4px;flex:none;"></div>
+        <div style="min-width:0;flex:1;">
+          <div style="font-size:8.5px;letter-spacing:.9px;color:#acc673;font-weight:700;margin-bottom:3px;">PROOF</div>
+          <div style="background:#182338;border:1px solid #3a4f74;border-left:3px solid #acc673;border-radius:6px;padding:6px 9px;font-size:11px;color:#eef2f9;">
+            <span style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#acc673;">${I.stat}</span><span style="color:#8194ba;"> &middot; measured across pilot cohorts</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:6px;">
+        <div style="flex:1;text-align:center;background:#182338;border:1px solid #3a4f74;border-radius:7px;padding:6px 4px;">
+          <div style="font-size:10px;font-weight:700;color:#cdd9ec;">Pilot</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#7f8fb0;margin-top:1px;">1 team &middot; 4 wks</div>
+        </div>
+        <div style="flex:1;text-align:center;background:linear-gradient(135deg,#435f9c,#5769aa);border:1px solid #5769aa;border-radius:7px;padding:6px 4px;">
+          <div style="font-size:10px;font-weight:700;color:#eef2f9;">Scale</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#dbe4f5;margin-top:1px;">org-wide</div>
+        </div>
+        <div style="flex:1;text-align:center;background:#182338;border:1px solid #3a4f74;border-radius:7px;padding:6px 4px;">
+          <div style="font-size:10px;font-weight:700;color:#cdd9ec;">Custom</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#7f8fb0;margin-top:1px;">SSO + API</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;min-width:0;background:#20304e;border:1px solid #2c3f61;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 11px;background:#182338;border-bottom:1px solid #2c3f61;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#8ba0cf;">COLD EMAIL &middot; DRAFT</span>
+        <div style="display:flex;gap:4px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#e55e5e;display:inline-block;"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#edc07a;display:inline-block;"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#acc673;display:inline-block;"></span>
+        </div>
+      </div>
+
+      <div style="padding:10px 11px;border-bottom:1px solid #2c3f61;">
+        <div style="display:flex;font-size:10px;margin-bottom:5px;align-items:baseline;">
+          <span style="color:#7f8fb0;width:46px;flex:none;">To</span>
+          <span style="color:#eef2f9;min-width:0;">${I.buyer} &middot; ${I.account} <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#8194ba;background:#182338;border-radius:3px;padding:1px 4px;">@${I.site}</span></span>
+        </div>
+        <div style="display:flex;font-size:10px;align-items:baseline;">
+          <span style="color:#7f8fb0;width:46px;flex:none;">Subject</span>
+          <span style="color:#eef2f9;font-weight:600;min-width:0;">Quick idea for ${I.account} &mdash; ${I.name} training</span>
+        </div>
+      </div>
+
+      <div style="padding:10px 11px;flex:1;display:flex;flex-direction:column;">
+        <div style="font-size:11px;color:#cdd9ec;margin-bottom:7px;">Hi &mdash; quick one on ${I.account}&rsquo;s frontline training. Most ${I.name} teams hit the same wall: ${I.pain}.</div>
+        <div style="font-size:11px;color:#cdd9ec;margin-bottom:7px;">We ran the same play with a peer and landed <span style="color:#acc673;font-weight:700;">${I.stat}</span> in a single quarter.</div>
+        <div style="font-size:11px;color:#cdd9ec;margin-bottom:10px;">Open to a 20-min teardown of your current program? No pitch &mdash; just the numbers.</div>
+        <div style="display:inline-block;align-self:flex-start;background:linear-gradient(135deg,#435f9c,#5769aa);color:#eef2f9;font-size:10px;font-weight:600;padding:6px 12px;border-radius:6px;">Grab a 20-min slot &rarr;</div>
+        <div style="margin-top:auto;padding-top:10px;font-size:10px;color:#8194ba;">&mdash; Dimas &middot; Level Up <span style="font-family:'IBM Plex Mono',monospace;color:#7f8fb0;">levelup.id</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:12px;background:#20304e;border:1px solid #2c3f61;border-radius:10px;padding:10px 12px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#8ba0cf;">COMPETITOR BATTLECARD</span>
+      <span style="font-size:9px;color:#7f8fb0;">Level Up vs. legacy LMS</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.35fr 1.25fr;gap:1px;background:#2c3f61;border:1px solid #2c3f61;border-radius:7px;overflow:hidden;font-size:10px;">
+      <div style="background:#182338;padding:5px 9px;color:#7f8fb0;"></div>
+      <div style="background:#182338;padding:5px 9px;color:#acc673;font-weight:700;">Level Up &#10003;</div>
+      <div style="background:#182338;padding:5px 9px;color:#8194ba;font-weight:600;">Legacy LMS</div>
+
+      <div style="background:#20304e;padding:5px 9px;color:#8194ba;">Engagement</div>
+      <div style="background:#223255;padding:5px 9px;color:#eef2f9;">Missions + streaks</div>
+      <div style="background:#20304e;padding:5px 9px;color:#7f8fb0;">Static modules</div>
+
+      <div style="background:#20304e;padding:5px 9px;color:#8194ba;">Go-live</div>
+      <div style="background:#223255;padding:5px 9px;color:#eef2f9;"><span style="font-family:'IBM Plex Mono',monospace;">~2 weeks</span></div>
+      <div style="background:#20304e;padding:5px 9px;color:#7f8fb0;"><span style="font-family:'IBM Plex Mono',monospace;">3&ndash;6 months</span></div>
+
+      <div style="background:#20304e;padding:5px 9px;color:#8194ba;">Reporting</div>
+      <div style="background:#223255;padding:5px 9px;color:#eef2f9;">Live dashboards</div>
+      <div style="background:#20304e;padding:5px 9px;color:#7f8fb0;">Quarterly export</div>
+    </div>
+  </div>
+
+</div>`
+};
 class Component extends DCLogic {
   state = { ind: 'retail', stage: 0, ddOpen: false, openSkill: null };
 
@@ -327,6 +791,7 @@ class Component extends DCLogic {
       stName: st.name, stCat: st.cat, stColor: st.color, stNum: idx + 1, stSub: st.sub,
       stSkills, aiDoes: st.aiDoes, human: st.human, prompt: st.prompt,
       outFile: st.outFile, outLines: st.out,
+      artifactHtml: (ARTIFACTS[st.key] ? ARTIFACTS[st.key](I) : ''),
       nextStage: idx < stages.length - 1 ? stages[idx + 1].name : 'live campaign',
       hasSample: !!smp, sampleSkill: openSkill || '',
       sampleTitle: smp ? smp.t : '', sampleLines: smp ? smp.l : [],
